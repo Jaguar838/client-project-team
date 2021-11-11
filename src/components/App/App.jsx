@@ -1,3 +1,4 @@
+import Notifications from '../../UI/Notifications';
 import Spinner from '../../UI/Spinner/';
 import './App.scss';
 
@@ -6,6 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Spinner />
+        <Notifications />
       </header>
     </div>
   );
