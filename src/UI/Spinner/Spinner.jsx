@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Loader from 'react-loader-spinner';
 import css from './Spinner.module.scss';
 
