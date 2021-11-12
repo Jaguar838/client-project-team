@@ -2,6 +2,7 @@ import ModalUI from '../../UI/ModalUI';
 import Notifications from '../../UI/Notifications';
 import Spinner from '../../UI/Spinner/';
 import './App.scss';
+import Currency from './currency/currency.jsx';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Notifications />
         <ModalUI />
       </header>
+      <Currency/>
     </div>
   );
 }
