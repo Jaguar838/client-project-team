@@ -1,3 +1,4 @@
+import ModalUI from '../../UI/ModalUI';
 import Notifications from '../../UI/Notifications';
 import Spinner from '../../UI/Spinner/';
 import './App.scss';
@@ -8,6 +9,7 @@ function App() {
       <header className="App-header">
         <Spinner />
         <Notifications />
+        <ModalUI />
       </header>
     </div>
   );
