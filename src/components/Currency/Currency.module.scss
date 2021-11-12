@@ -1,0 +1,123 @@
+/* .table {
+  background: #ffffff;
+  background: #4a56e2;
+  border-radius: 30px;
+}
+.table th {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+}
+.table td {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.div {
+  width: 348px;
+  height: 347px;
+  color: #ffffff;
+  background: #4a56e2;
+}
+.oneLine {
+  height: 60px;
+}
+.vector {
+  height: 134px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) -7.46%,
+    rgba(255, 255, 255, 0) 100%
+  );
+} */
+@import '../../assets/scss/colors.scss';
+
+.currency-tbody {
+  border: none;
+  height: 100%;
+
+  tr:first-child td {
+    padding-top: 20px;
+  }
+
+  td {
+    border: none;
+    padding-bottom: 23px;
+  }
+}
+
+.currency-div {
+  @media (max-width: 767px) {
+    height: calc(100vh - 60px);
+  }
+  margin-top: 20px;
+  z-index: 2;
+  position: relative;
+}
+
+.currency-table {
+  border-radius: 30px;
+  text-align: center;
+  color: getColor('third-text-color');
+  background-color: getColor('fourth-text-color');
+  width: 100%;
+  border-spacing: 0px;
+  overflow: hidden;
+
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+  @media (min-width: 1280px) {
+    display: block;
+    height: 348px;
+    width: 347px;
+  }
+
+  &::before {
+    position: absolute;
+    content: '';
+    background-image: url('../../assets/img/wave-currency.svg');
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 96px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+}
+
+.currency-column {
+  font-size: 18px;
+  line-height: 26.53px;
+
+  @media (min-width: 420px) {
+    padding: 15px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 16px 31px 17px 31px;
+  }
+}
+.currency-row {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) -8.67%,
+    rgba(255, 255, 255, 0) 116.22%
+  );
+
+  @media (max-width: 419px) {
+    th:first-child {
+      padding: 12px 10px 11px 10px;
+    }
+
+    th:last-child {
+      padding: 12px 10px 11px 10px;
+    }
+  }
+}
