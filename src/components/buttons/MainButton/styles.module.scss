@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  //TODO add font
+  font-family: $main-font;
   transition: all 250ms ease;
   border: none;
 }
@@ -24,13 +24,14 @@
 }
 
 .buttonPrimary {
-  background-color: $btn-primary;
+  background-color: $leisure;
   color: $secondary-text;
 }
 
 .buttonSecondary {
   color: $text-cansel;
   border: 1px solid $text-cansel;
+  background-color: $main-bg;
 }
 
 .defaultWidth {
@@ -38,10 +39,10 @@
 }
 
 .regBtnWidth {
-  @media (max-width: $breakpoint-mobile) {
+  @media (max-width: $max-mobile) {
     width: 280px;
   }
-  @media (min-width: $breakpoint-min-tablet) {
+  @media (min-width: $min-tablet) {
     width: 300px;
   }
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Switch from 'react-switch';
+import SvgIcon from '../../SvgIcon';
 import styles from './styles.module.scss';
 
 const switchStyleConfig = {
@@ -7,17 +8,15 @@ const switchStyleConfig = {
   onHandleColor: '#ff6596',
   height: 40,
   width: 80,
-  handleDiameter: 40,
+  // handleDiameter: 40,
   uncheckedIcon: false,
   checkedIcon: false,
   offColor: '#fff',
   onColor: '#fff',
   boxShadow: '0px 10px 25px 0px #959595',
   className: styles.switch,
-
-  //TODO
-  //   uncheckedHandleIcon,
-  //   checkedHandleIcon,
+  // uncheckedHandleIcon: <SvgIcon iconName="plus" />,
+  // checkedHandleIcon: <SvgIcon iconName="email" />,
 };
 
 const SwitchComponent = () => {
@@ -45,6 +44,8 @@ const SwitchComponent = () => {
         onColor={switchStyleConfig.onColor}
         boxShadow={switchStyleConfig.boxShadow}
         className={switchStyleConfig.className}
+        // uncheckedHandleIcon={switchStyleConfig.uncheckedHandleIcon}
+        // checkedHandleIcon={switchStyleConfig.checkedHandleIcon}
       />
       <span className={`${styles.expenses} ${isChecked && styles.checked}`}>
         Расход

@@ -1,3 +1,4 @@
+import SvgIcon from '../../SvgIcon';
 import styles from './styles.module.scss';
 
 const AddTransactionButton = () => {
@@ -5,7 +6,7 @@ const AddTransactionButton = () => {
 
   return (
     <button className={`${styles.button} ${styles.position}`} onClick={onClick}>
-      {/* TODO add icon */}
+      <SvgIcon iconName="plus" />
     </button>
   );
 };

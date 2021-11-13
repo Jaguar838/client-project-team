@@ -1,3 +1,5 @@
+@import '../../assets//scss//utils//variables';
+
 .logo {
   width: 30px;
   height: 30px;
@@ -78,7 +80,7 @@
 .regPicture-tablet,
 .loginPicture-tablet {
   display: none;
-  @media screen and (max-width: $desktop - 1px) {
+  @media screen and (max-width: $max-tablet) {
     display: block;
     width: 260px;
     height: 250px;
