@@ -1,0 +1,32 @@
+@import '../../../assets/scss/colors.scss';
+@import '../../../assets/scss/index.scss';
+@import '../../../assets/scss/utils/base';
+@import '../../../assets/scss/utils/variables';
+
+.button {
+  width: 44px;
+  height: 44px;
+  border: none;
+  cursor: pointer;
+  box-shadow: '0px 10px 25px 0px #8ADF90';
+  border-radius: 50%;
+  background-color: $btn-primary;
+}
+
+.position {
+  position: absolute;
+  @media (max-width: $breakpoint-mobile) {
+    right: 20px;
+    bottom: 30px;
+  }
+
+  @media (min-width: $breakpoint-min-tablet) and (max-width: $breakpoint-max-tablet) {
+    right: 40px;
+    bottom: 40px;
+  }
+
+  @media (min-width: $breakpoint-desktop) {
+    right: 85px;
+    bottom: 40px;
+  }
+}
