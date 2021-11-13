@@ -1,5 +1,6 @@
 import Media from 'react-media';
 import Navigation from './Navigation';
+import Currency from '../Currency';
 import './Sidebar.scss';
 
 const Sidebar = () => {
@@ -7,7 +8,14 @@ const Sidebar = () => {
     <aside className="sidebar">
       <Navigation />
       {/* <Balance /> */}
-      <Media>{/* <Currency /> */}</Media>
+      <Media
+        queries={{
+          tablet: '(min-width: 768px)',
+        }}
+      >
+        {({ tablet }) => <>{tablet && <Currency />}</>}
+        {/* <Currency /> */}
+      </Media>
     </aside>
   );
 };

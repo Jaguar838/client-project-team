@@ -1,8 +1,10 @@
+import { Route, Switch } from 'react-router-dom';
 // import ModalUI from '../../UI/ModalUI';
 import Notifications from '../../UI/Notifications';
 import Spinner from '../../UI/Spinner/';
 // import './App.scss';
 import Currency from '../Currency';
+import DashboardPage from '../../pages/DashboardPage';
 // import Table from '../Statistics/Table';
 // import SwitchComponent from '../../UI/buttons/SwitchComponent';
 // import MainButton from '../../UI/buttons/MainButton';
@@ -12,11 +14,16 @@ import Container from '../Container';
 
 function App() {
   return (
-  <Container>
-      <Spinner />
+    <Container>
+      {/* <Spinner /> */}
       <Notifications />
-      <Currency />
-  </Container>
+      <Route path="/">
+        <DashboardPage />
+      </Route>
+      <Route exact path="/currency">
+        <Currency />
+      </Route>
+    </Container>
   );
 }
 
