@@ -1,3 +1,5 @@
+@import '../../assets/scss/utils/variables';
+
 .logo {
   width: 30px;
   height: 30px;
@@ -113,4 +115,22 @@
   width: 16px;
   height: 16px;
   fill: #000;
+}
+
+.wave-currency {
+  width: 280px;
+  height: 93px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.2) -7.46%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  @media screen and (min-width: $tablet) {
+    width: 334px;
+    height: 111px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 348px;
+    height: 134px;
+  }
 }
