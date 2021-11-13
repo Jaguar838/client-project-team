@@ -1,23 +1,28 @@
-// import ModalUI from '../../UI/ModalUI';
+import { BrowserRouter } from "react-router-dom";
+import { store, persistor } from "../../redux/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
 import Notifications from '../../UI/Notifications';
 import Spinner from '../../UI/Spinner/';
-// import './App.scss';
 import Currency from '../Currency';
-// import Table from '../Statistics/Table';
-// import SwitchComponent from '../../UI/buttons/SwitchComponent';
-// import MainButton from '../../UI/buttons/MainButton';
-// import LogoutButton from '../../UI/buttons/LogoutButton';
-// import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
 import Container from '../Container';
 
 function App() {
   return (
-  <Container>
-      <Spinner />
-      <Notifications />
-      <Currency />
-  </Container>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+            <Container>
+              <BrowserRouter>
+               <Spinner />
+               <Notifications />
+               <Currency />
+              </BrowserRouter>
+            </Container>
+      </PersistGate>
+    </Provider>
+
   );
 }
 
 export default App;
+
