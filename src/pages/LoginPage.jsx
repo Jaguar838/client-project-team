@@ -1,7 +1,7 @@
 import SectionAuthWrap from "../UI/SectionAuthWrap";
 import ContainerAuthImage from "../UI/ContainerAuthImage";
 import ContainerAuthForm from "../UI/ContainerAuthForm";
-import SvgIcon from "../components/SvgIcon";
+import SvgIcon from "../UI/SvgIcon";
 
 const HomePage = () => {
     return (

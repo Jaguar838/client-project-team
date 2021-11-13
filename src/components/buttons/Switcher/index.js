@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Switch from 'react-switch';
-import SvgIcon from '../../SvgIcon';
+import SvgIcon from '../../../UI/SvgIcon';
 import styles from './styles.module.scss';
 
 const switchStyleConfig = {

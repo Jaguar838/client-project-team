@@ -107,14 +107,18 @@
 
 .categoryArrow {
   width: 18px;
-  height: 9px;
-  fill: #000;
+  stroke: #000;
 }
 
 .modalClose {
   width: 16px;
   height: 16px;
-  fill: #000;
+  stroke: #000;
+}
+
+.minus {
+  width: 20px;
+  stroke: #000;
 }
 
 .wave-currency {

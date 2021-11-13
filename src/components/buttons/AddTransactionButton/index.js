@@ -1,4 +1,4 @@
-import SvgIcon from '../../SvgIcon';
+import SvgIcon from '../../../UI/SvgIcon';
 import styles from './styles.module.scss';
 
 const AddTransactionButton = () => {
