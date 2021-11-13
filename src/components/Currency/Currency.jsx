@@ -16,8 +16,7 @@ const Currency = () => {
     setCurs([]);
     API.fetchAPICurs().then(res => {
       setCurs(res.slice(0, 3));
-      console.log(res);
-      console.log(curs);
+    
     });
   };
   if (curs) {
@@ -25,19 +24,19 @@ const Currency = () => {
       <>
         <div className={s.div}>
           <table className={s.table}>
-            <thead>
+            <thead className={s.thead}>
               <tr>
                 <th className={s.th}>Валюта</th>
                 <th className={s.th}>Покупка</th>
                 <th className={s.th}>Продажа</th>
               </tr>
             </thead>
-            <tbody>
-              {curs?.map(item => (
-                <tr key={item.buy}>
+            <tbody className={s.tbody}>
+              {curs.map(item => (
+                <tr key={item.id}>
                   <td className={s.td}>{item.ccy}</td>
-                  <td className={s.td}>{item.buy}</td>
-                  <td className={s.td}>{item.sale}</td>
+                  <td className={s.td}>{(Math.floor((item.buy) * 100) / 100)}</td>
+                  <td className={s.td}>{(Math.floor((item.sale) * 100) / 100)}</td>
                 </tr>
               ))}
             </tbody>

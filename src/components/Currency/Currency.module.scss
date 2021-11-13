@@ -35,7 +35,7 @@
 } */
 @import '../../assets/scss/colors.scss';
 
-.currency-tbody {
+.tbody {
   border: none;
   height: 100%;
 
@@ -49,16 +49,18 @@
   }
 }
 
-.currency-div {
+.div {
   @media (max-width: 767px) {
     height: calc(100vh - 60px);
+    width: 348px;
+    height: 347px;
   }
   margin-top: 20px;
   z-index: 2;
   position: relative;
 }
 
-.currency-table {
+.table {
   border-radius: 30px;
   text-align: center;
   color: getColor('third-text-color');
@@ -70,6 +72,8 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
+  background: #4a56e2;
+  color: #ffffff;
 
   @media (min-width: 1280px) {
     display: block;
@@ -120,4 +124,8 @@
       padding: 12px 10px 11px 10px;
     }
   }
+}
+.thead {
+  /* background: #ffffff;
+  opacity: 0.2; */
 }
