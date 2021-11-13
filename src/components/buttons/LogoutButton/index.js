@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import SvgIcon from '../../SvgIcon';
+import SvgIcon from '../../../UI/SvgIcon';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { mediaBreakpoints } from '../../../assets/constants';
 
