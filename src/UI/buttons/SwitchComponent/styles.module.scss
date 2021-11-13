@@ -1,0 +1,42 @@
+@import '../../../assets/scss/colors.scss';
+@import '../../../assets/scss/index.scss';
+@import '../../../assets/scss/utils/base';
+@import '../../../assets/scss/utils/variables';
+
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  height: 200px;
+}
+
+.income {
+  margin-right: 24px;
+}
+
+.expenses {
+  margin-left: 24px;
+}
+
+.expenses,
+.income {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+  font-family: $main-font;
+  color: $text-passive;
+  transition: all 250ms ease;
+}
+
+.expenses.checked {
+  color: $text-lose;
+}
+
+.income.checked {
+  color: $text-profit;
+}
+
+.offColor {
+  color: $text-profit;
+}
