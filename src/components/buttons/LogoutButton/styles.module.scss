@@ -1,0 +1,21 @@
+@import '../../../assets/scss/colors.scss';
+@import '../../../assets/scss/index.scss';
+@import '../../../assets/scss/utils/base';
+@import '../../../assets/scss/utils/variables';
+
+.button {
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: $text-passive-toggle;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.text {
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: $main-font;
+}

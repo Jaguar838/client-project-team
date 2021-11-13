@@ -1,0 +1,48 @@
+@import '../../../assets/scss/colors.scss';
+@import '../../../assets/scss/index.scss';
+@import '../../../assets/scss/utils/base';
+@import '../../../assets/scss/utils/variables';
+
+.button {
+  height: 50px;
+  border-radius: 20px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: $main-font;
+  transition: all 250ms ease;
+  border: none;
+}
+
+.button:hover,
+.button:focus {
+  transform: scale(1.1);
+}
+
+.buttonPrimary {
+  background-color: $leisure;
+  color: $secondary-text;
+}
+
+.buttonSecondary {
+  color: $text-cansel;
+  border: 1px solid $text-cansel;
+  background-color: $main-bg;
+}
+
+.defaultWidth {
+  width: 300px;
+}
+
+.regBtnWidth {
+  @media (max-width: $max-mobile) {
+    width: 280px;
+  }
+  @media (min-width: $min-tablet) {
+    width: 300px;
+  }
+}

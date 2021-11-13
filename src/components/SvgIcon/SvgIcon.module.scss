@@ -80,7 +80,7 @@
 .regPicture-tablet,
 .loginPicture-tablet {
   display: none;
-  @media screen and (max-width: $desktop - 1px) {
+  @media screen and (max-width: $max-tablet) {
     display: block;
     width: 260px;
     height: 250px;
