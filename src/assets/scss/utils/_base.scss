@@ -1,3 +1,5 @@
+@import './variables';
+
 ul {
   list-style: none;
 }
@@ -27,11 +29,26 @@ body {
   margin: 0;
   padding: 0;
 
-  font-family: Circe;
+  font-family: $main-font;
   font-style: normal;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
+
+  background-color: $bg-color;
+
+  @media screen and (min-width: 768px) {
+    background: url('../../img/tablet/ellipse-orange-tablet.svg') no-repeat 100%
+        0,
+      url('../../img/tablet/ellipse-purple-tablet.svg') no-repeat 0 100%;
+    background-color: $bg-color;
+  }
+  @media screen and (min-width: 1280px) {
+    background: url('../../img/desktop/ellipse-orange-desktop.svg') no-repeat
+        100% 0,
+      url('../../img/desktop/ellipse-purple-desktop.svg') no-repeat 0 100%;
+    background-color: $bg-color;
+  }
 }
 
 img {
