@@ -8,19 +8,15 @@ import Currency from '../Currency';
 // import MainButton from '../../UI/buttons/MainButton';
 // import LogoutButton from '../../UI/buttons/LogoutButton';
 // import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
+import Container from '../Container';
 
 function App() {
   return (
-    <div>
+  <Container>
       <Spinner />
       <Notifications />
       <Currency />
-      {/* <Table /> */}
-      {/* <SwitchComponent/>
-      <MainButton/>
-      <LogoutButton/>
-      <AddTransactionButton/> */}
-    </div>
+  </Container>
   );
 }
 
