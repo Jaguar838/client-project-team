@@ -33,8 +33,8 @@ const Currency = () => {
               </tr>
             </thead>
             <tbody>
-              {curs.map(item => (
-                <tr key={item.id}>
+              {curs?.map(item => (
+                <tr key={item.buy}>
                   <td className={s.td}>{item.ccy}</td>
                   <td className={s.td}>{item.buy}</td>
                   <td className={s.td}>{item.sale}</td>
