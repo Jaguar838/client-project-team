@@ -5,12 +5,15 @@ import './DashboardPage.scss';
 const DashboardPage = () => {
   return (
     <>
-      {/* <Header /> */}
+      {/* <Header /> Place for header */}
       <div className="dashboard">
         <div className="main-container">
           <Sidebar />
           <main>
             <Switch>
+              <Route />
+              <Route />
+              <Route />
               {/* Here will be placed three routes: home, statistics, currency */}
             </Switch>
           </main>
