@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 // import ModalUI from '../../UI/ModalUI';
 import Notifications from '../../UI/Notifications';
-import Spinner from '../../UI/Spinner/';
+// import Spinner from '../../UI/Spinner/';
 // import './App.scss';
 import Currency from '../Currency';
 import DashboardPage from '../../pages/DashboardPage';
