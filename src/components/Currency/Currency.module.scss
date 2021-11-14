@@ -1,66 +1,7 @@
-/* .table {
-  background: #ffffff;
-  background: #4a56e2;
-  border-radius: 30px;
-}
-.table th {
-  font-family: Circe;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-}
-.table td {
-  font-family: Circe;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-}
-
-.div {
-  width: 348px;
-  height: 347px;
-  color: #ffffff;
-  background: #4a56e2;
-}
-.oneLine {
-  height: 60px;
-}
-.vector {
-  height: 134px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.2) -7.46%,
-    rgba(255, 255, 255, 0) 100%
-  );
-} */
 @import '../../assets/scss/colors.scss';
-
-.tbody {
-  border: none;
-  height: 100%;
-
-  tr:first-child td {
-    padding-top: 20px;
-  }
-
-  td {
-    border: none;
-    padding-bottom: 23px;
-  }
-}
+@import '../../assets/scss/utils/variables';
 
 .div {
-  @media (max-width: 767px) {
-    height: calc(100vh - 60px);
-    width: 348px;
-    height: 347px;
-  }
-  margin-top: 20px;
-  z-index: 2;
-  position: relative;
-}
-
-.table {
   border-radius: 30px;
   text-align: center;
   color: getColor('third-text-color');
@@ -72,60 +13,95 @@
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  background: #4a56e2;
-  color: #ffffff;
+  background: $for-house;
+  color: $main-bg;
 
-  @media (min-width: 1280px) {
-    display: block;
+  @media (max-width: $max-mobile) {
+    width: 280px;
+    height: 174px;
+  }
+  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+    width: 334px;
+    height: 174px;
+  }
+
+  @media (min-width: $min-desktop) {
+    width: 348px;
     height: 348px;
-    width: 347px;
   }
 
   &::before {
     position: absolute;
     content: '';
     background-image: url('../../assets/img/wave-currency.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
 
     left: 0;
     bottom: 0;
 
-    width: 100%;
-    height: 96px;
-    background-repeat: no-repeat;
-    background-size: 100%;
+    @media (max-width: $max-mobile) {
+      width: 280px;
+      height: 93px;
+    }
+    @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+      width: 334px;
+      height: 111px;
+    }
+
+    @media (min-width: $min-desktop) {
+      width: 348px;
+      height: 134px;
+    }
   }
 }
 
-.currency-column {
+.table {
+  border-spacing: 0px;
+  width: 100%;
+}
+
+.table th {
+  font-family: $main-font;
+  font-weight: 700;
   font-size: 18px;
-  line-height: 26.53px;
+  line-height: 1.5;
+}
 
-  @media (min-width: 420px) {
-    padding: 15px;
+.table th:first-child {
+  padding-left: 10px;
+}
+
+.table th:last-child {
+  padding-right: 10px;
+}
+
+.tbody td {
+  border: none;
+  font-family: $main-font;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.table td {
+  text-align: center;
+  @media (max-width: $max-tablet) {
+    padding-top: 10px;
   }
 
-  @media (min-width: 1280px) {
-    padding: 16px 31px 17px 31px;
+  @media (min-width: $min-desktop) {
+    padding-top: 22px;
   }
 }
-.currency-row {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.2) -8.67%,
-    rgba(255, 255, 255, 0) 116.22%
-  );
 
-  @media (max-width: 419px) {
-    th:first-child {
-      padding: 12px 10px 11px 10px;
-    }
-
-    th:last-child {
-      padding: 12px 10px 11px 10px;
-    }
-  }
-}
 .thead {
-  /* background: #ffffff;
-  opacity: 0.2; */
+  background: rgba(255, 255, 255, 0.2);
+
+  @media (max-width: $max-tablet) {
+    height: 50px;
+  }
+  @media (min-width: $min-desktop) {
+    height: 60px;
+  }
 }
