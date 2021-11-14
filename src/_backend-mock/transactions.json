@@ -3,7 +3,7 @@
     {
       "id": "6186900cee50ba6e78f43100",
       "date": "10.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Разное",
       "comment": "Подарок жене",
       "amount": 300,
@@ -12,7 +12,7 @@
     {
       "id": "6186900cee50ba6e78f43101",
       "date": "10.11.21",
-      "type": "+",
+      "isExpense": false,
       "category": "Доход",
       "comment": "Выигрыш в лотерею",
       "amount": 10000,
@@ -21,7 +21,7 @@
     {
       "id": "6186900cee50ba6e78f43102",
       "date": "10.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Машина",
       "comment": "Зимняя резина",
       "amount": 11000,
@@ -30,7 +30,7 @@
     {
       "id": "6186900cee50ba6e78f43103",
       "date": "10.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Продукты",
       "comment": "Продукты в АТБ",
       "amount": 2500,
@@ -39,7 +39,7 @@
     {
       "id": "6186900cee50ba6e78f43104",
       "date": "10.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Товаы для дома",
       "comment": "Покупка пылесоса",
       "amount": 2000,
@@ -48,7 +48,7 @@
     {
       "id": "6186900cee50ba6e78f43105",
       "date": "10.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Образование",
       "comment": "Книга \"Заветы А. Репеты\"",
       "amount": 500,
@@ -57,7 +57,7 @@
     {
       "id": "6186900cee50ba6e78f43106",
       "date": "10.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Досуг",
       "comment": "Пиво с другом",
       "amount": 500,
@@ -66,7 +66,7 @@
     {
       "id": "6186900cee50ba6e78f43107",
       "date": "11.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Забота о детях",
       "comment": "Погремушка",
       "amount": 200,
@@ -75,7 +75,7 @@
     {
       "id": "6186900cee50ba6e78f43108",
       "date": "11.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Забота о себе",
       "comment": "Велотренажер",
       "amount": 2900,
@@ -84,7 +84,7 @@
     {
       "id": "6186900cee50ba6e78f43109",
       "date": "11.11.21",
-      "type": "+",
+      "isExpense": false,
       "category": "Доход",
       "comment": "Зарплата за ноябрь",
       "amount": 30000,
@@ -93,7 +93,7 @@
     {
       "id": "6186900cee50ba6e78f43110",
       "date": "11.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Разное",
       "comment": "Подарок любовнице",
       "amount": 10000,
@@ -102,7 +102,7 @@
     {
       "id": "6186900cee50ba6e78f43111",
       "date": "11.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Машина",
       "comment": "Замена бензонасоса",
       "amount": 300,
@@ -111,7 +111,7 @@
     {
       "id": "6186900cee50ba6e78f43112",
       "date": "11.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Досуг",
       "comment": "Теннисный мячик",
       "amount": 300,
@@ -120,7 +120,7 @@
     {
       "id": "6186900cee50ba6e78f43113",
       "date": "11.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Продукты",
       "comment": "Огурцы для консервации",
       "amount": 2500,
@@ -129,7 +129,7 @@
     {
       "id": "6186900cee50ba6e78f43114",
       "date": "11.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Образование",
       "comment": "Запись на курсы макраме",
       "amount": 1000,
@@ -138,7 +138,7 @@
     {
       "id": "6186900cee50ba6e78f43115",
       "date": "12.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Товары для дома",
       "comment": "Швабра",
       "amount": 500,
@@ -147,7 +147,7 @@
     {
       "id": "6186900cee50ba6e78f43116",
       "date": "12.11.21",
-      "type": "+",
+      "isExpense": false,
       "category": "Доход",
       "comment": "Возврат долга (Вася)",
       "amount": 1000,
@@ -156,7 +156,7 @@
     {
       "id": "6186900cee50ba6e78f43117",
       "date": "11.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Образование",
       "comment": "Сказка \"Колобок и коллбэк\"",
       "amount": 300,
@@ -165,7 +165,7 @@
     {
       "id": "6186900cee50ba6e78f43118",
       "date": "12.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Продукты",
       "comment": "Мешок гречки",
       "amount": 2000,
@@ -174,7 +174,7 @@
     {
       "id": "6186900cee50ba6e78f43119",
       "date": "12.11.21",
-      "type": "-",
+      "isExpense": true,
       "category": "Машина",
       "comment": "Цепь на выхлопную трубу",
       "amount": 1000,
