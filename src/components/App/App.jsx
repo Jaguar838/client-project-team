@@ -41,11 +41,11 @@ const DashboardPage = lazy(() =>
 
 
 function App() {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   
-  useEffect(() => {
-    dispatch(authOperations.refreshCurrentUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(authOperations.refreshCurrentUser());
+  // }, [dispatch]);
 
 
   return (
