@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
+import Currency from '../../components/Currency';
 import './DashboardPage.scss';
 
 const DashboardPage = () => {
@@ -13,7 +14,7 @@ const DashboardPage = () => {
             <Switch>
               <Route />
               <Route />
-              <Route />
+              <Route path="/currency" component={Currency} />
               {/* Here will be placed three routes: home, statistics, currency */}
             </Switch>
           </main>
