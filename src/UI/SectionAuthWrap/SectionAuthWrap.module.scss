@@ -2,22 +2,22 @@
 @import '../../assets/scss/colors.scss';
 
 .section {
-  @media screen and (max-width: $tablet - 1px) {
+  @media screen and (max-width: $max-mobile) {
     padding-top: 110px;
     padding-bottom: 110px;
   }
-  @media screen and (max-width: $desktop - 1px) {
+  @media screen and (max-width: $max-tablet) {
     padding-top: 60px;
     padding-bottom: 196px;
   }
-  @media screen and (min-width: $tablet) {
-    background: url('../../images/ellipse1-tablet.svg') no-repeat top right,
-      url('../../images/ellipse2-tablet.svg') no-repeat bottom left, $bg-color;
-  }
-  @media screen and (min-width: $desktop) {
-    background: url('../../images/ellipse1-desc.svg') no-repeat top right,
-      url('../../images/ellipse2-desc.svg') no-repeat bottom left, $bg-color;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   background: url('../../images/ellipse1-tablet.svg') no-repeat top right,
+  //     url('../../images/ellipse2-tablet.svg') no-repeat bottom left, $bg-color;
+  // }
+  // @media screen and (min-width: $desktop) {
+  //   background: url('../../images/ellipse1-desc.svg') no-repeat top right,
+  //     url('../../images/ellipse2-desc.svg') no-repeat bottom left, $bg-color;
+  // }
 }
 
 .container {
