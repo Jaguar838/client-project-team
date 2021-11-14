@@ -1,0 +1,57 @@
+@import '../../../assets/scss/colors.scss';
+@import '../../../assets/scss/utils/variables';
+
+.container {
+  position: relative;
+  background-color: $bg-color;
+  width: 688px;
+  height: 319px;
+  //   padding: 0 20px;
+  margin: 0 auto;
+
+  overflow: auto;
+
+  @media screen and (min-width: $max-tablet) {
+    width: 700px;
+  }
+}
+
+.table {
+  text-align: center;
+
+  width: 100%;
+  border-spacing: 0px;
+
+  //   margin-left: auto;
+  //   margin-right: auto;
+}
+
+.thead {
+  background-color: $main-bg;
+}
+
+.tr {
+  height: 8vh;
+}
+
+.tbody {
+  //   overflow: scroll;
+}
+
+.border__start {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.border__end {
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.profit {
+  color: $text-profit;
+}
+
+.lose {
+  color: $text-lose;
+}
