@@ -21,6 +21,7 @@ import Notifications from '../../UI/Notifications';
 import Spinner from '../../UI/Spinner/';
 import Currency from '../Currency';
 import Container from '../Container';
+import Period from '../Statistics/Period'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
                <Spinner />
                <Notifications />
                <Currency />
+               <Period/>
               </BrowserRouter>
             </Container>
       </PersistGate>
