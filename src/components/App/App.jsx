@@ -3,6 +3,7 @@ import Notifications from '../../UI/Notifications';
 import Spinner from '../../UI/Spinner/';
 // import './App.scss';
 import Currency from '../Currency';
+// import Doughnut from '../Statistics/Chart';
 // import Table from '../Statistics/Table';
 // import SwitchComponent from '../../UI/buttons/SwitchComponent';
 // import MainButton from '../../UI/buttons/MainButton';
@@ -12,11 +13,11 @@ import Container from '../Container';
 
 function App() {
   return (
-  <Container>
+    <Container>
       <Spinner />
       <Notifications />
       <Currency />
-  </Container>
+    </Container>
   );
 }
 
