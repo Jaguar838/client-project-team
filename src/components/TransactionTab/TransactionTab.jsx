@@ -2,7 +2,7 @@ import Media from 'react-media';
 import HomeTab from './HomeTab';
 import MobileTab from './MobileTab';
 
-const HomeTabs = () => {
+const TransactionTab = () => {
   return (
     <Media
       queries={{
@@ -14,4 +14,4 @@ const HomeTabs = () => {
   );
 };
 
-export default HomeTabs;
+export default TransactionTab;
