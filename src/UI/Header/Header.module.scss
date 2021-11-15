@@ -1,0 +1,24 @@
+@import '../../assets/scss/utils/variables';
+@import '../../assets/scss/colors.scss';
+
+.headerContainer {
+    display: flex;
+    align-items: center;                                                                                                                        
+    justify-content: space-between;
+
+    padding: 15px 20px;
+
+    background-color: $main-bg;
+
+    @media screen and (min-width: $tablet) {
+        padding: 20px 40px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        padding-left: 85px;
+        padding-right: 85px;
+    }
+}
+
+
+

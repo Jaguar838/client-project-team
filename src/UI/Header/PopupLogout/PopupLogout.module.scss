@@ -1,0 +1,48 @@
+@import '../../../assets/scss/utils/variables';
+@import '../../../assets/scss/colors.scss';
+
+.popupBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .popupContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    min-height: 180px;
+    max-width: 280px;
+    width: 100%;
+  
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .popupQuestion {
+      margin-bottom: 30px;
+  }
+
+  .popupButton {
+      width: 100px;
+      border-radius: 20px;
+      border: 0;
+      color: $secondary-text;
+      background-color: $text-profit;
+  }
+
+  .popupButton:last-child {
+    margin-left: 10px;
+    border: 1px solid $text-cansel;
+    background-color: transparent;
+    color: $text-cansel;
+  }
