@@ -1,0 +1,25 @@
+@import '../../../assets/scss/colors.scss';
+@import '../../../assets/scss/utils/variables';
+
+.container {
+  width: 320px;
+}
+
+.item {
+  table-layout: fixed;
+  //   width: 100%;
+  width: 280px;
+  margin: 0 auto;
+  background-color: $bg-color;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border-left: 4px solid;
+}
+
+.profit {
+  color: $text-profit;
+}
+
+.lose {
+  color: $text-lose;
+}
