@@ -30,7 +30,7 @@
   @media screen and (min-width: $mobile) {
     width: $mobile;
   }
-  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px) {
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
     width: $tablet;
     padding-left: 114px;
     padding-right: 114px;
