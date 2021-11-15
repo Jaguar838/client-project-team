@@ -4,6 +4,7 @@
 @import '../../../assets/scss/utils/variables';
 
 .button {
+  display: flex;
   align-items: center;
   justify-content: center;
   border: none;

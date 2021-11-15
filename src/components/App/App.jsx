@@ -8,6 +8,7 @@ import Spinner from '../../UI/Spinner/';
 import Container from '../Container';
 import PrivateRoute from "../../routes/PrivateRouter";
 import PublicRoute from "../../routes/PublicRouter";
+import Header from '../../UI/Header';
 
 
 const LoginPage = lazy(() =>
@@ -37,6 +38,7 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
+            <Header />
             <Container>
               <BrowserRouter>
                <Suspense fallback={<Spinner />} />

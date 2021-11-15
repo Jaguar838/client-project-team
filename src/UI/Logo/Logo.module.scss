@@ -1,0 +1,13 @@
+@import '../../assets/scss/utils/variables';
+@import '../../assets/scss/colors.scss';
+
+.LogoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logoText {
+    font-family: $second-font;
+    font-size: 30px;
+    font-weight: bold;
+}
