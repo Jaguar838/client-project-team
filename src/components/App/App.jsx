@@ -9,6 +9,8 @@ import Container from '../Container';
 import PrivateRoute from "../../routes/PrivateRouter";
 import PublicRoute from "../../routes/PublicRouter";
 import Header from '../../UI/Header';
+import LoginForm from '../LoginForm'
+import RegistrationForm from '../RegistrationForm'
 
 
 const LoginPage = lazy(() =>
@@ -43,6 +45,10 @@ function App() {
               <BrowserRouter>
                <Suspense fallback={<Spinner />} />
             <Switch>
+
+              <LoginForm />
+
+              <RegistrationForm />
               
               <PublicRoute path="/login" restricted>
                 <LoginPage />
