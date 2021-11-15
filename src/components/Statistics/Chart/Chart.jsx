@@ -41,7 +41,7 @@ const NewDoughnut = withChartSizeControl(Doughnut);
 const DoughnutChart = () => (
   <>
     <div className={style.header}>
-      <h1 className={style.title}>Статистика</h1>
+      {/* <h1 className={style.title}>Статистика</h1> */}
     </div>
     <NewDoughnut className={style.newDoughnut} data={data} />
   </>

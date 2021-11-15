@@ -5,4 +5,4 @@ export const mediaBreakpoints = {
   minDesktop: '(min-width: 1280px)',
 };
 
-export const BASE_URL = 'http://localhost:3001/';
+export const BASE_URL = 'https://nameless-reef-47827.herokuapp.com/api/';

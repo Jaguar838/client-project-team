@@ -9,6 +9,7 @@ import Container from '../Container';
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
 import Header from '../../UI/Header';
+// import StatisticsTab from '../../components/Statistics/StatisticsTab';
 
 const LoginPage = lazy(() =>
   import('../../pages/LoginPage' /* webpackChunkName: "LoginPage" */),
