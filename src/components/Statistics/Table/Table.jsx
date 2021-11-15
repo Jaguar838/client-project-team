@@ -1,7 +1,14 @@
-import expenses from './expenses';
+// то как я вижу массив данных статистики с бэка
+import { data } from './statistics.json';
+
 import style from './Table.module.scss';
 
+// сюда приходит проп
 function Table() {
+  const expensesCategory = data.filter(item => item.isExpense);
+  const incomes = data.find(item => item.category === 'Доходы');
+  const expenses = data.find(item => item.category === 'Расходы');
+
   return (
     <div className={style.mainContainer}>
       <table>
@@ -12,15 +19,12 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {expenses.map(({ name, amount, color, id }) => (
+          {expensesCategory?.map(({ category, amount, color, id }) => (
             <tr key={id} className={style.raw}>
-              {/* <td className={style.boxTd}>
-                <div style={{ background: color }} className={style.box}></div>
-              </td> */}
               <td className={style.commonContainer}>
                 {' '}
                 <div style={{ background: color }} className={style.box}></div>
-                <p>{name}</p>
+                <p>{category}</p>
               </td>
               <td>{amount}</td>
             </tr>
@@ -29,11 +33,11 @@ function Table() {
         <tfoot>
           <tr className={style.raw}>
             <td className={style.manyCategory}> Расходы:</td>
-            <td className={style.expenses}>5000.00</td>
+            <td className={style.expenses}>{expenses.amount}</td>
           </tr>
           <tr className={style.raw}>
             <td className={style.manyCategory}>Доходы:</td>
-            <td className={style.income}>4500.00</td>
+            <td className={style.income}>{incomes.amount}</td>
           </tr>
         </tfoot>
       </table>

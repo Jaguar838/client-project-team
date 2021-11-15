@@ -1,17 +1,29 @@
 import { Doughnut } from 'react-chartjs-2';
 import style from './Chart.module.scss';
-import expenses from '../Table/expenses.js';
 
-const data = {
+// то как я вижу массив данных статистики с бэка
+import { data } from '../Table/statistics.json';
+
+const expensesCategory = data.filter(item => item.isExpense);
+const balance = data[data.length - 1].balance;
+
+const dataNut = {
   datasets: [
     {
       label: '# of Votes',
-      // подумать как сюда передать сумму расходов по каждой из категорий
-      data: [132, 196, 113, 115, 112, 350, 70, 45, 99],
-      backgroundColor: expenses.map(item => {
+      // по типу примера из документации
+      //   data: [132, 196, 113, 115, 112, 350, 70, 45, 99],
+
+      // изменяя поле "amount" в statistics.json можно увидеть как соответственно изменяется диаграмма
+      data: expensesCategory.map(item => {
+        return item.amount;
+      }),
+
+      backgroundColor: expensesCategory.map(item => {
         return item.color;
       }),
-      borderColor: expenses.map(item => {
+
+      borderColor: expensesCategory.map(item => {
         return item.color;
       }),
       borderWidth: 1,
@@ -29,8 +41,7 @@ function withChartSizeControl(Component) {
         width: props.width + 'px',
       }}
     >
-      <div className={style.balance}>₴ 25.0000</div>
-
+      <div className={style.balance}>₴ {balance}</div>
       <Component {...props} />
     </div>
   );
@@ -38,13 +49,10 @@ function withChartSizeControl(Component) {
 
 const NewDoughnut = withChartSizeControl(Doughnut);
 
+// проп с data будет приходить сюда, подумать как прокинуть его в обьект настроек dataNat
+
 const DoughnutChart = () => (
-  <>
-    <div className={style.header}>
-      <h1 className={style.title}>Статистика</h1>
-    </div>
-    <NewDoughnut className={style.newDoughnut} data={data} />
-  </>
+  <NewDoughnut className={style.newDoughnut} data={dataNut} />
 );
 
 export default DoughnutChart;
