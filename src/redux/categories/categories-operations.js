@@ -9,7 +9,7 @@ const setToken = token => {
 };
 
 const getCategories = createAsyncThunk(
-  'categories/getData',
+  'categories/getCategories',
   async (token, thunkAPI) => {
     try {
       setToken(token);
@@ -21,14 +21,15 @@ const getCategories = createAsyncThunk(
   },
 );
 
-const getCategoriesWithParams = createAsyncThunk(
-  'categories/getDataWithParams',
+const getTransactionStats = createAsyncThunk(
+  'categories/getStats',
   async (params, thunkAPI) => {
     const { token, year, month } = params;
 
     try {
       setToken(token);
-      const { data } = await axios.get('categories', null, {
+      console.log(token);
+      const { data } = await axios.get('transactions/stats', {
         params: {
           year,
           month,
@@ -43,6 +44,6 @@ const getCategoriesWithParams = createAsyncThunk(
 
 const apiOperations = {
   getCategories,
-  getCategoriesWithParams,
+  getTransactionStats,
 };
 export default apiOperations;
