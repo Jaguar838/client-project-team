@@ -1,3 +1,4 @@
+
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { store, persistor } from '../../redux/store';
@@ -46,6 +47,7 @@ function App() {
 
               <PublicRoute path="/login" restricted>
                 <LoginPage />
+                
               </PublicRoute>
 
               <PublicRoute path="/register" restricted>
