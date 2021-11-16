@@ -1,4 +1,3 @@
-
 import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { store, persistor } from '../../redux/store';
@@ -9,7 +8,7 @@ import Spinner from '../../UI/Spinner/';
 import Container from '../Container';
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
-// import StatisticsTab from '../../components/Statistics/StatisticsTab';
+import StatisticsTab from '../../components/Statistics/StatisticsTab';
 import LoginForm from '../LoginForm';
 import RegistrationForm from '../RegistrationForm';
 
@@ -42,19 +41,15 @@ function App() {
         <BrowserRouter>
           <Suspense fallback={<Spinner />}>
             <Switch>
-              <LoginForm />
-
+              {/* <LoginForm /> */}
+              <StatisticsTab />
               {/* <RegistrationForm /> */}
-
               <PublicRoute path="/login" restricted>
                 <LoginPage />
-                
               </PublicRoute>
-
               <PublicRoute path="/register" restricted>
                 <RegistrationPage />
               </PublicRoute>
-
               <PrivateRoute path="/dashboard">
                 <DashboardPage />
               </PrivateRoute>
