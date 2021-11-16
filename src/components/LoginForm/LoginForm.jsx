@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import loginIcon from '../../assets/img/loginIcon.svg'
 
 const LoginForm = () => {
-  const validationSchema = yup.object().shape({
+  const validationLoginSchema = yup.object().shape({
     email: yup
       .string()
       .email('Введите верный email')
@@ -19,9 +19,10 @@ const LoginForm = () => {
   });
 
   return (
-    <div class="registrationContainer">
-        <div class="regIcon">
-        <img className={loginIcon} src={loginIcon} alt={loginIcon}/>
+    <div class="loginContainer">
+        <div class="logIcon">
+        <img className={'loginIcon'} src={loginIcon} alt={loginIcon}/>
+        <h1 class="loginTitle">Finance App</h1>
         </div>
       
       <Formik
@@ -33,7 +34,7 @@ const LoginForm = () => {
         onSubmit={values => {
           console.log(values);
         }}
-        validationSchema={validationSchema}
+        validationLoginSchema={validationLoginSchema}
       >
         {({
           values,
@@ -45,14 +46,14 @@ const LoginForm = () => {
           handleSubmit,
           dirty,
         }) => (
-          <form class="form" autocomplete="off">
-            <div class="logContainer">
+          <form class="loginForm" autocomplete="off">
+            <div class="logLoginContainer">
               <Logo />
             </div>
 
-            <div class="input-container email">
+            <div class="input-logContainer email">
               <input
-                class={'input'}
+                class={'logInput'}
                 type={`text`}
                 name={`email`}
                 onChange={handleChange}
@@ -62,13 +63,13 @@ const LoginForm = () => {
                 placeholder="E-mail"
               />
               {touched.email && errors.email && (
-                <p class={'error'}>{errors.email}</p>
+                <p class={'Error'}>{errors.email}</p>
               )}
               <SvgIcon iconName={'email'} />
             </div>
-            <div class="input-container password">
+            <div class="input-logContainer password">
               <input
-                class={'input'}
+                class={'logInput'}
                 type={`password`}
                 name={`password`}
                 onChange={handleChange}
@@ -78,20 +79,20 @@ const LoginForm = () => {
                 placeholder="Пароль"
               />
               {touched.password && errors.password && (
-                <p class={'error'}>{errors.password}</p>
+                <p class={'Error'}>{errors.password}</p>
               )}
               <SvgIcon iconName={'password'} />
             </div>
             
             <button
-              class="button current-button"
+              class="logButton logCurrent-button"
               type={`submit`}
               disabled={!isValid && !dirty}
               onClick={handleSubmit}
             >
                 Вход
             </button>
-            <button class="button" type="submit">
+            <button class="logButton" type="submit">
                 Регистрация
             </button>
           </form>

@@ -41,10 +41,10 @@ function App() {
         <BrowserRouter>
           <Suspense fallback={<Spinner />}>
             <Switch>
-              {/* <LoginForm /> */}
-              <StatisticsTab />
+              <LoginForm />
+              {/* <StatisticsTab /> */}
               {/* <RegistrationForm /> */}
-              <PublicRoute path="/login" restricted>
+              {/* <PublicRoute path="/login" restricted>
                 <LoginPage />
               </PublicRoute>
               <PublicRoute path="/register" restricted>
@@ -52,7 +52,7 @@ function App() {
               </PublicRoute>
               <PrivateRoute path="/dashboard">
                 <DashboardPage />
-              </PrivateRoute>
+              </PrivateRoute> */}
             </Switch>
           </Suspense>
         </BrowserRouter>
