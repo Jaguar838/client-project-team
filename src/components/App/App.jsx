@@ -1,8 +1,8 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense} from 'react';
 import { BrowserRouter, Switch } from "react-router-dom";
 import { store, persistor } from "../../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { Provider, useDispatch } from "react-redux";
+import { Provider} from "react-redux";
 import Spinner from '../../UI/Spinner/';
 // import authOperations from '../../redux/auth/auth-operations'
 import Container from '../Container';
@@ -39,6 +39,7 @@ function App() {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
             <Header />
+            
             <Container>
               <BrowserRouter>
                <Suspense fallback={<Spinner />} />
@@ -46,6 +47,7 @@ function App() {
               
               <PublicRoute path="/login" restricted>
                 <LoginPage />
+                
               </PublicRoute>
 
               <PublicRoute path="/register" restricted>
