@@ -8,9 +8,8 @@ import Spinner from '../../UI/Spinner/';
 import Container from '../Container';
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
-import Header from '../../UI/Header';
-import LoginForm from '../LoginForm'
-import RegistrationForm from '../RegistrationForm'
+import LoginForm from '../LoginForm';
+import RegistrationForm from '../RegistrationForm';
 
 const LoginPage = lazy(() =>
   import('../../pages/LoginPage' /* webpackChunkName: "LoginPage" */),
@@ -41,11 +40,10 @@ function App() {
         <BrowserRouter>
           <Suspense fallback={<Spinner />}>
             <Switch>
-
               <LoginForm />
 
-              <RegistrationForm />
-              
+              {/* <RegistrationForm /> */}
+
               <PublicRoute path="/login" restricted>
                 <LoginPage />
               </PublicRoute>
