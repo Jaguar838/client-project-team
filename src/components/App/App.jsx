@@ -42,7 +42,7 @@ function App() {
           <Suspense fallback={<Spinner />}>
             <Switch>
               {/* <LoginForm /> */}
-              <StatisticsTab />
+              {/* <StatisticsTab /> */}
               {/* <RegistrationForm /> */}
               <PublicRoute path="/login" restricted>
                 <LoginPage />
