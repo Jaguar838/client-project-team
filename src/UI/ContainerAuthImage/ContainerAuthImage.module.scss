@@ -3,7 +3,7 @@
 
 .containerImage {
   display: none;
-  @media screen and (min-width: $tablet) and (max-width: $desktop - 1px) {
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
     display: flex;
     align-items: center;
     margin-bottom: 50px;

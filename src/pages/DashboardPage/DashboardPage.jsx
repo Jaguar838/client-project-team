@@ -1,24 +1,28 @@
 import { Route, Switch } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar';
-import Currency from '../../components/Currency';
-import './DashboardPage.scss';
+import Currency from '../../components/Currency/Currency';
+// import Header from '../../UI/Header';
+import TransactionTab from '../../components/TransactionTab';
+// import Container from '../../components/Container';
+import style from './DashboardPage.module.scss';
 
 const DashboardPage = () => {
   return (
     <>
-      {/* <Header /> Place for header */}
-      <div className="dashboard">
-        <div className="main-container">
+      {/* <Header /> */}
+      <div className={style.dashboard}>
+        {/* <Container> */}
+        <div className={style.container}>
           <Sidebar />
           <main>
             <Switch>
-              <Route />
-              <Route />
-              <Route path="/currency" component={Currency} />
-              {/* Here will be placed three routes: home, statistics, currency */}
+              <Route exact path="/home" component={TransactionTab} />
+
+              <Route exact path="/currency" component={Currency} />
             </Switch>
           </main>
         </div>
+        {/* </Container> */}
       </div>
     </>
   );
