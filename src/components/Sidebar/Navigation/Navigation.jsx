@@ -1,34 +1,34 @@
 import { NavLink } from 'react-router-dom';
 import Media from 'react-media';
-import './Navigation.scss';
+import style from './Navigation.module.scss';
 import SvgIcon from '../../../UI/SvgIcon';
 
 const Navigation = () => {
   return (
-    <ul className="nav">
-      <li className="nav__item">
+    <ul className={style.nav}>
+      <li className={style.navItem}>
         <NavLink
           exact
-          to="/home"
-          className="nav__link"
-          activeClassName="nav__link--active"
+          to="/dashboard"
+          className={style.navLink}
+          activeClassName={style.navLinkActive}
         >
-          <div className="nav__icon-wrapper">
-            <SvgIcon iconName="home" className="nav__icon" />
+          <div className={style.iconWrapper}>
+            <SvgIcon iconName="home" className={style.navIcon} />
           </div>
-          <p className="nav__text">Главная</p>
+          <p className={style.navText}>Главная</p>
         </NavLink>
       </li>
-      <li className="nav__item">
+      <li className={style.navItem}>
         <NavLink
           to="/statistics"
-          className="nav__link"
-          activeClassName="nav__link--active"
+          className={style.navLink}
+          activeClassName={style.navLinkActive}
         >
-          <div className="nav__icon-wrapper">
-            <SvgIcon iconName="statistic" className="nav__icon" />
+          <div className={style.iconWrapper}>
+            <SvgIcon iconName="statistic" className={style.navIcon} />
           </div>
-          <p className="nav__text">Статистика</p>
+          <p className={style.navText}>Статистика</p>
         </NavLink>
       </li>
 
@@ -40,16 +40,16 @@ const Navigation = () => {
         {({ mobile }) => (
           <>
             {mobile && (
-              <li className="nav__item">
+              <li className={style.navItem}>
                 <NavLink
                   to="/currency"
-                  className="nav__link"
-                  activeClassName="nav__link--active"
+                  className={style.navLink}
+                  activeClassName={style.navLinkActive}
                 >
-                  <div className="nav__icon-wrapper">
-                    <SvgIcon iconName="currency" className="nav__icon" />
+                  <div className={style.iconWrapper}>
+                    <SvgIcon iconName="currency" className={style.navIcon} />
                   </div>
-                  <p className="nav__text visually-hidden">Валюта</p>
+                  <p className={style.navText}>Валюта</p>
                 </NavLink>
               </li>
             )}
