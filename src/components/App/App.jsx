@@ -9,6 +9,7 @@ import Spinner from '../../UI/Spinner/';
 import Container from '../Container';
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
+// import StatisticsTab from '../../components/Statistics/StatisticsTab';
 import LoginForm from '../LoginForm';
 import RegistrationForm from '../RegistrationForm';
 
