@@ -6,6 +6,7 @@ import TransactionTab from '../../components/TransactionTab';
 import StatisticsTab from '../../components/Statistics/StatisticsTab';
 import Container from '../../components/Container';
 import Divider from '../../UI/Divider';
+import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
 import style from './DashboardPage.module.scss';
 
 const DashboardPage = () => {
@@ -16,13 +17,14 @@ const DashboardPage = () => {
         <Container>
           <div className={style.container}>
             <Sidebar />
-            <Divider/>
+            <Divider />
             <main>
               <Switch>
                 <Route exact path="/dashboard" component={TransactionTab} />
                 <Route exact path="/statistics" component={StatisticsTab} />
                 <Route exact path="/currency" component={Currency} />
               </Switch>
+              <AddTransactionButton />
             </main>
           </div>
         </Container>
