@@ -8,7 +8,7 @@
 }
 
 .chart {
-  //   outline: 1px solid red;
+  // outline: 1px solid red;
   //   margin-top: 10px;
   position: relative;
   margin-bottom: 30px;
@@ -19,14 +19,14 @@
   height: 280px;
 
   @media screen and (min-width: $tablet) {
-    width: 320px;
-    height: 320px;
+    width: 420px;
+    height: 420px;
   }
 }
 
 .balance {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 40%;
   font-weight: 700;
 }

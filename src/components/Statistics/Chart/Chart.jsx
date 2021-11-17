@@ -8,6 +8,9 @@
 // const balance = data[data.length - 1].balance;
 
 // const dataNut = {
+//   labels: expensesCategory.map(item => {
+//     return item.category;
+//   }),
 //   datasets: [
 //     {
 //       label: '# of Votes',
@@ -28,18 +31,32 @@
 //       }),
 //       borderWidth: 1,
 //     },
-//     { width: 1 },
+//     // { width: 1 },
 //   ],
+//   // options: {
+//   //   maintainAspectRatio: false,
+//   //   legend: {
+//   //     // display: false,
+//   //     position: 'left',
+//   //   },
+//   //   // plugins: {
+//   //   //   legend: {
+//   //   //     position: 'right',
+//   //   //   },
+//   //   // },
+//   // },
 // };
 
 // function withChartSizeControl(Component) {
 //   return props => (
 //     <div
+//       // #1 styles
 //       className={style.chart}
-//       style={{
-//         height: props.height + 'px',
-//         width: props.width + 'px',
-//       }}
+//       // #2 styles
+//       // style={{
+//       //   height: props.height + 'px',
+//       //   width: props.width + 'px',
+//       // }}
 //     >
 //       <div className={style.balance}>₴ {balance}</div>
 //       <Component {...props} />
@@ -52,30 +69,103 @@
 // // проп с data будет приходить сюда, подумать как прокинуть его в обьект настроек dataNat
 
 // const DoughnutChart = () => (
-//   <NewDoughnut className={style.newDoughnut} data={dataNut} />
+//   <NewDoughnut
+//     className={style.newDoughnut}
+//     data={dataNut}
+//     // width={320}
+//     // height={320}
+//   />
 // );
 
 // export default DoughnutChart;
 
+// #2 0
+// import { Doughnut } from 'react-chartjs-2';
+// import style from './Chart.module.scss';
+
+// function withChartSizeControl(Doughnut) {
+//   return props => (
+//     <div
+//       className={style.chart}
+//       style={{
+//         height: props.height + 'px',
+//         width: props.width + 'px',
+//       }}
+//     >
+//       <div className={style.balance}>₴ 25.0000</div>
+
+//       <Doughnut {...props} />
+//     </div>
+//   );
+// }
+
+// const Chart = withChartSizeControl(Doughnut);
+
+// export default Chart;
+
+// #3 0
+// import { Doughnut } from 'react-chartjs-2';
 import { Doughnut } from 'react-chartjs-2';
 import style from './Chart.module.scss';
 
-function withChartSizeControl(Component) {
-  return props => (
-    <div
-      className={style.chart}
-      style={{
-        height: props.height + 'px',
-        width: props.width + 'px',
-      }}
-    >
-      <div className={style.balance}>₴ 25.0000</div>
+import { data } from '../Table/statistics.json';
 
-      <Component {...props} />
-    </div>
-  );
-}
+const expensesCategory = data.filter(item => item.isExpense);
+// const balance = data[data.length - 1].balance;
 
-const Chart = withChartSizeControl(Doughnut);
+const dataNut = {
+  labels: expensesCategory.map(item => {
+    return item.category;
+  }),
+  datasets: [
+    {
+      label: '# of Votes',
+      data: expensesCategory.map(item => {
+        return item.amount;
+      }),
 
-export default Chart;
+      backgroundColor: expensesCategory.map(item => {
+        return item.color;
+      }),
+
+      borderColor: expensesCategory.map(item => {
+        return item.color;
+      }),
+      borderWidth: 1,
+    },
+    { width: 1 },
+  ],
+};
+
+const options = {
+  // maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      labels: {
+        boxWidth: 20,
+        boxHeight: 10,
+        font: {
+          size: 14,
+        },
+        // usePointStyle: true,
+      },
+      // скрывает
+      // display: false,
+      position: 'top',
+      align: 'start',
+    },
+  },
+};
+
+const DoughnutChart = () => (
+  <div className={style.chart}>
+    <Doughnut data={dataNut} options={options} />
+    <div className={style.balance}>₴ 25.0000</div>
+  </div>
+);
+
+export default DoughnutChart;
+
+// const Chart = withChartSizeControl(Doughnut);
+
+// export default Chart;

@@ -76,7 +76,7 @@ function App() {
     <Container>
       {/* <Spinner /> */}
       <Notifications />
-      <Currency />
+      {/* <Currency /> */}
       <ParentStats />
     </Container>
   );
