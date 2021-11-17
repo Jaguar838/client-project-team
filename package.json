@@ -2,6 +2,7 @@
   "name": "wallet-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/Jaguar838/client-project-team#readme",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
