@@ -1,9 +1,28 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import getTransactionOperation from '../../../redux/transactions/transactions-operations';
+import {
+  getAllTransactions,
+  getLoader,
+} from '../../../redux/transactions/transactions-selectors';
+import authSelectors from '../../../redux/auth/auth-selectors';
+
 import Spiner from '../../../UI/Spinner';
-import base from '../../../_backend-mock/transactions.json';
 import styles from './HomeTab.module.scss';
 
 const HomeTab = () => {
-  const res = base.data;
+  const transactions = useSelector(state => getAllTransactions(state));
+  const isLoading = useSelector(state => getLoader(state));
+  const token = useSelector(state => {
+    authSelectors.getToken(state);
+  });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTransactionOperation(token));
+  }, [dispatch, token]);
+
   return (
     <div className={styles.container}>
       <table className={styles.table}>
@@ -18,20 +37,27 @@ const HomeTab = () => {
           </tr>
         </thead>
         <tbody className={styles.tbody}>
-          {res?.map(item => {
-            const text = item.isExpense ? '-' : '+';
-            const colorTxt = item.isExpense ? styles.lose : styles.profit;
-            return (
-              <tr key={item.id} className={styles.tr}>
-                <td>{item.date}</td>
-                <td>{text}</td>
-                <td>{item.category}</td>
-                <td>{item.comment}</td>
-                <td className={colorTxt}>{item.amount}</td>
-                <td>{item.balance}</td>
-              </tr>
-            );
-          })}
+          {isLoading ? (
+            <Spiner />
+          ) : (
+            transactions?.map(item => {
+              const text = item.isExpense ? '-' : '+';
+              const colorTxt = item.isExpense ? styles.lose : styles.profit;
+
+              const date = new Date(item.date);
+              const parsDate = date.toLocaleDateString();
+              return (
+                <tr key={item.id} className={styles.tr}>
+                  <td>{parsDate}</td>
+                  <td>{text}</td>
+                  <td>{item.category}</td>
+                  <td>{item.comment}</td>
+                  <td className={colorTxt}>{item.amount}</td>
+                  <td>{item.balance}</td>
+                </tr>
+              );
+            })
+          )}
         </tbody>
       </table>
     </div>
