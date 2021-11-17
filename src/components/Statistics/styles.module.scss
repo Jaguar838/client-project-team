@@ -1,0 +1,55 @@
+// @import '../../../assets/scss/colors.scss';
+// @import '../../../assets/scss/utils/variables';
+// @import '../../../assets/scss/utils/mixins';
+
+// .statsContainer {
+//   @media screen and (max-width: $max-mobile) {
+//     width: 280px;
+//   }
+//   @media screen and (min-width: $min-desktop) {
+//     width: 700px;
+//   }
+
+//   @media screen and (max-width: $max-tablet) {
+//     margin-left: auto;
+//     margin-right: auto;
+//   }
+// }
+
+// .title {
+//   font-family: $second-font;
+//   font-weight: 400;
+//   @include font(30px, 45px);
+//   color: $main-text;
+
+//   @media screen and (max-width: $max-mobile) {
+//     margin-bottom: 10px;
+//   }
+//   @media screen and (min-width: $min-tablet) {
+//     margin-bottom: 20px;
+//   }
+// }
+
+// .statsWrapper {
+//   display: flex;
+
+//   @media screen and (max-width: $max-mobile) {
+//     flex-direction: column;
+//   }
+//   @media screen and (min-width: $min-tablet) {
+//     flex-direction: row;
+//   }
+// }
+
+// .chartTab {
+//   @media screen and (min-width: $min-tablet) and (max-width: $max-tablet) {
+//     margin-right: 35px;
+//   }
+
+//   @media screen and (min-width: $min-desktop) {
+//     margin-right: 30px;
+//   }
+// }
+
+// // .categoriesTab {
+// // }

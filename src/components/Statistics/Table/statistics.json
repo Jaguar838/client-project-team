@@ -36,7 +36,7 @@
       "id": "6186900cee50ba6e78f43105",
       "isExpense": true,
       "category": "Забота о детях",
-      "amount": 500,
+      "amount": 3500,
       "color": "#6e78e8",
       "balance": 3700.0
     },
@@ -44,7 +44,7 @@
       "id": "6186900cee50ba6e78f43106",
       "isExpense": true,
       "category": "Товары для дома",
-      "amount": 500,
+      "amount": 1500,
       "color": "#4a56e2",
       "balance": 3200.0
     },

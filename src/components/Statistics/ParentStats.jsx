@@ -13,20 +13,28 @@
 
 import Table from './Table';
 import Chart from './Chart';
-import expenses from './Table/statistics.json';
-import styles from './styles.module.scss';
+import { data } from './Table/statistics.json';
+
+const expensesCategory = data.filter(item => item.isExpense);
+// позже
+// const balance = data[data.length - 1].balance;
+console.log(expensesCategory);
+// import styles from './styles.module.scss';
 
 const ParentStats = () => {
   const data = {
     datasets: [
       {
         label: '# of Votes',
-        // подумать как сюда передать сумму расходов по каждой из категорий
-        data: [132, 196, 113, 115, 112, 350, 70, 45, 99],
-        backgroundColor: expenses.map(item => {
+        // data: [132, 196, 113, 115, 112, 350, 70, 45, 99],
+        data: expensesCategory.map(item => {
+          return item.amount;
+        }),
+
+        backgroundColor: expensesCategory.map(item => {
           return item.color;
         }),
-        borderColor: expenses.map(item => {
+        borderColor: expensesCategory.map(item => {
           return item.color;
         }),
         borderWidth: 1,
@@ -36,13 +44,13 @@ const ParentStats = () => {
   };
 
   return (
-    <div className={styles.statsContainer}>
-      <h2 className={styles.title}>Статистика</h2>
-      <div className={styles.statsWrapper}>
-        <div className={styles.chartTab}>
+    <div>
+      <h2>Статистика</h2>
+      <div>
+        <div>
           <Chart data={data} />
         </div>
-        <div className={styles.categoriesTab}>
+        <div>
           <Table />
         </div>
       </div>
