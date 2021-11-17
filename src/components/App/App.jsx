@@ -35,8 +35,12 @@ function App() {
       <Notifications />
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <PublicRoute path="/login" restricted>
+          {/* <PublicRoute path="/login" restricted>
             <LoginPage />
+          </PublicRoute> */}
+
+          <PublicRoute path="/dashboard">
+            <DashboardPage />
           </PublicRoute>
 
           <PrivateRoute path="/dashboard">
@@ -47,7 +51,8 @@ function App() {
             <RegistrationPage />
           </PublicRoute>
 
-          <Redirect from="/" to="/login" />
+          {/* <Redirect from="/" to="/login" /> */}
+          <Redirect from="/" to="/dashboard" />
         </Switch>
       </Suspense>
     </Container>
