@@ -1,16 +1,17 @@
-import { lazy, Suspense, useEffect } from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
-import { store, persistor } from '../../redux/store';
+import { Provider } from 'react-redux';
+import { BrowserRouter} from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
-import { Provider, useDispatch } from 'react-redux';
+import { store, persistor } from '../../redux/store';
+
+import { lazy, Suspense, useEffect } from 'react';
+import { Switch } from 'react-router-dom';
+
+import {useDispatch } from 'react-redux';
+
 import Spinner from '../../UI/Spinner/';
 // import authOperations from '../../redux/auth/auth-operations'
-import Container from '../Container';
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
-import StatisticsTab from '../../components/Statistics/StatisticsTab';
-import LoginForm from '../LoginForm';
-import RegistrationForm from '../RegistrationForm';
 
 const LoginPage = lazy(() =>
   import('../../pages/LoginPage' /* webpackChunkName: "LoginPage" */),
@@ -41,18 +42,19 @@ function App() {
         <BrowserRouter>
           <Suspense fallback={<Spinner />}>
             <Switch>
-              {/* <LoginForm /> */}
-              {/* <StatisticsTab /> */}
-              {/* <RegistrationForm /> */}
               <PublicRoute path="/login" restricted>
                 <LoginPage />
               </PublicRoute>
-              <PublicRoute path="/register" restricted>
-                <RegistrationPage />
-              </PublicRoute>
+
               <PrivateRoute path="/dashboard">
                 <DashboardPage />
               </PrivateRoute>
+
+              <PublicRoute path="/register" restricted>
+                <RegistrationPage />
+              </PublicRoute>
+
+              <Redirect from="/" to="/login" />
             </Switch>
           </Suspense>
         </BrowserRouter>

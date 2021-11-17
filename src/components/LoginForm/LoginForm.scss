@@ -1,40 +1,95 @@
 @import '../../assets/scss/utils/variables';
 
-.registrationContainer {
+.loginContainer {
   display: flex;
-}
+  justify-content: center;
 
-.registerIcon {
-  width: 435px;
-  height: 419px;
-}
-
-.regIcon {
-  margin-top: 150px;
-  margin-bottom: 150px;
-  margin-right: 144px;
-  margin-left: 76px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 540px;
-  height: 468px;
-  background: #fff;
-  @media screen and (min-width: $tablet) {
-    padding: 40px 65px 60px 65px;
-    border-radius: 20px;
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
-.logContainer {
+.logIcon {
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    display: flex;
+  }
+}
+
+.loginIcon {
+  width: 435px;
+  height: 419px;
+  margin-top: 150px;
+  margin-bottom: 28px;
+  margin-right: 49px;
+  // margin-left: 66px;
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    width: 260px;
+    height: 250px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    margin-right: 40px;
+    margin-left: 114px;
+  }
+
+  @media screen and (min-width: $mobile) and (max-width: $max-mobile) {
+    display: none;
+  }
+}
+
+.loginTitle {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 45px;
+
+  text-align: center;
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    text-align: right;
+
+    margin-right: 153px;
+    margin-top: 163px;
+  }
+
+  @media screen and (min-width: $mobile) and (max-width: $max-mobile) {
+    display: none;
+  }
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+
+  width: 540px;
+  height: 468px;
+  padding: 40px 65px 60px 65px;
+  margin-top: 136px;
+  margin-bottom: 116px;
+  margin-left: 95px;
+  border-radius: 20px;
+
+  background: #fff;
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    margin: 0;
+  }
+
+  @media screen and (min-width: $mobile) and (max-width: $max-mobile) {
+    padding: 36px 20px;
+    margin: 0;
+  }
+}
+
+.logLoginContainer {
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
 }
 
-.input-container {
+.input-logContainer {
   position: relative;
 }
 
@@ -43,7 +98,7 @@
   margin-bottom: 40px;
 }
 
-.input {
+.logInput {
   width: 100%;
   height: 34px;
   padding: 10px 10px 10px 55px;
@@ -65,7 +120,7 @@
   }
 }
 
-.error {
+.loginError {
   font-family: Circe;
   font-style: normal;
   font-weight: normal;
@@ -74,7 +129,7 @@
   color: #ff0000;
 }
 
-.button {
+.logButton {
   height: 50px;
   padding: 13px 55px;
   border-radius: 20px;
@@ -90,19 +145,23 @@
   background: #ffffff;
   border: 1px solid #4a56e2;
   color: #4a56e2;
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
     width: 300px;
     margin: 0 auto;
   }
+
+  @media screen and (min-width: $mobile) and (max-width: $max-mobile) {
+    width: 280px;
+  }
 }
 
-.current-button {
-  margin-top: 40px;
+.logCurrent-button {
+  margin-top: 10px;
   margin-bottom: 20px;
   border: none;
   background: #24cca7;
   color: #ffffff;
-  @media screen and (min-width: $tablet) {
-    margin-top: 50px;
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    // margin-top: 50px;
   }
 }

@@ -2,29 +2,84 @@
 
 .registrationContainer {
   display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.regIcon {
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    display: flex;
+  }
 }
 
 .registerIcon {
   width: 452px;
   height: 413px;
+  margin-top: 153px;
+  margin-bottom: 32px;
+  margin-right: 42px;
+  // margin-left: 66px;
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    width: 274px;
+    height: 250px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    margin-right: 40px;
+    margin-left: 114px;
+  }
+
+  @media screen and (min-width: $mobile) and (max-width: $max-mobile) {
+    display: none;
+  }
 }
 
-.regIcon {
-  margin-top: 153px;
-  margin-bottom: 154px;
-  margin-right: 137px;
-  margin-left: 66px;
+.registrationTitle {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 45px;
+
+  text-align: center;
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    text-align: right;
+
+    margin-right: 153px;
+    margin-top: 163px;
+  }
+
+  @media screen and (min-width: $mobile) and (max-width: $max-mobile) {
+    display: none;
+  }
 }
 
 .form {
   display: flex;
   flex-direction: column;
+
   width: 540px;
   height: 616px;
+  padding: 40px 65px 60px 65px;
+  margin-top: 52px;
+  margin-bottom: 52px;
+  margin-left: 95px;
+  border-radius: 20px;
+
   background: #fff;
-  @media screen and (min-width: $tablet) {
-    padding: 40px 65px 60px 65px;
-    border-radius: 20px;
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    margin: 0;
+  }
+
+  @media screen and (min-width: $mobile) and (max-width: $max-mobile) {
+    padding: 36px 20px;
+    margin: 0;
   }
 }
 
@@ -101,6 +156,10 @@
   @media screen and (min-width: $tablet) {
     width: 300px;
     margin: 0 auto;
+  }
+
+  @media screen and (min-width: $mobile) and (max-width: $max-mobile) {
+    width: 280px;
   }
 }
 

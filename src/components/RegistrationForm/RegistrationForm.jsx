@@ -27,6 +27,7 @@ const RegistrationForm = () => {
     <div class="registrationContainer">
         <div class="regIcon">
         <img className={'registerIcon'} src={registerIcon} alt={registerIcon}/>
+        <h1 class="registrationTitle">Finance App</h1>
         </div>
       
       <Formik
@@ -54,7 +55,7 @@ const RegistrationForm = () => {
         }) => (
           <form class="form" autocomplete="off">
             <div class="logContainer">
-              <Logo />
+              <Logo class="logCon" />
             </div>
 
             <div class="input-container email">
