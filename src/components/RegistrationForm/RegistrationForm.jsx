@@ -1,3 +1,6 @@
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import authOperations from '../../redux/auth/auth-operations'
 import './RegistrationForm.scss';
 import SvgIcon from '../../UI/SvgIcon';
 import Logo from '../../UI/Logo';
@@ -7,6 +10,8 @@ import * as yup from 'yup';
 import registerIcon from '../../assets/img/registerIcon.svg'
 
 const RegistrationForm = () => {
+const dispatch = useDispatch()
+
   const validationSchema = yup.object().shape({
     email: yup
       .string()
@@ -23,13 +28,19 @@ const RegistrationForm = () => {
     name: yup.string().typeError('Должно быть строкой').required('Обязательно'),
   });
 
+  const handleSubmit = e => {
+    const name = e.name
+    const email = e.email
+    const password = e.password
+    console.log(name, email, password)
+    // e.preventDefault();
+    dispatch(authOperations.signUp({ email, password, name }));
+    // setName('');
+    // setEmail('');
+    // setPassword('');
+  };
+
   return (
-    <div class="registrationContainer">
-        <div class="regIcon">
-        <img className={'registerIcon'} src={registerIcon} alt={registerIcon}/>
-        <h1 class="registrationTitle">Finance App</h1>
-        </div>
-      
       <Formik
         initialValues={{
           email: '',
@@ -38,9 +49,7 @@ const RegistrationForm = () => {
           name: '',
         }}
         validateOnBlur
-        onSubmit={values => {
-          console.log(values);
-        }}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         {({
@@ -53,14 +62,14 @@ const RegistrationForm = () => {
           handleSubmit,
           dirty,
         }) => (
-          <form class="form" autocomplete="off">
-            <div class="logContainer">
-              <Logo class="logCon" />
+          <form className="form" autoComplete="off">
+            <div className="logContainer">
+              <Logo className="logCon" />
             </div>
 
-            <div class="input-container email">
+            <div className="input-container email">
               <input
-                class={'input'}
+                className={'input'}
                 type={`text`}
                 name={`email`}
                 onChange={handleChange}
@@ -70,13 +79,13 @@ const RegistrationForm = () => {
                 placeholder="E-mail"
               />
               {touched.email && errors.email && (
-                <p class={'error'}>{errors.email}</p>
+                <p className={'error'}>{errors.email}</p>
               )}
               <SvgIcon iconName={'email'} />
             </div>
-            <div class="input-container password">
+            <div className="input-container password">
               <input
-                class={'input'}
+                className={'input'}
                 type={`password`}
                 name={`password`}
                 onChange={handleChange}
@@ -86,13 +95,13 @@ const RegistrationForm = () => {
                 placeholder="Пароль"
               />
               {touched.password && errors.password && (
-                <p class={'error'}>{errors.password}</p>
+                <p className={'error'}>{errors.password}</p>
               )}
               <SvgIcon iconName={'password'} />
             </div>
-            <div class="input-container password-confirm">
+            <div className="input-container password-confirm">
               <input
-                class={'input'}
+                className={'input'}
                 type={`password`}
                 name={`confirmPassword`}
                 onChange={handleChange}
@@ -102,14 +111,14 @@ const RegistrationForm = () => {
                 placeholder="Подтвердите пароль"
               />
               {touched.confirmPassword && errors.confirmPassword && (
-                <p class={'error'}>{errors.confirmPassword}</p>
+                <p className={'error'}>{errors.confirmPassword}</p>
               )}
               <SvgIcon iconName={'password'} />
             </div>
-            <div class="progressbar"></div>
-            <div class="input-container">
+            <div className="progressbar"></div>
+            <div className="input-container">
               <input
-                class={'input'}
+                className={'input'}
                 type={`text`}
                 name={`name`}
                 onChange={handleChange}
@@ -119,25 +128,24 @@ const RegistrationForm = () => {
                 placeholder="Ваше имя"
               />
               {touched.name && errors.name && (
-                <p class={'error'}>{errors.name}</p>
+                <p className={'error'}>{errors.name}</p>
               )}
               <SvgIcon iconName={'name'} />
             </div>
             <button
-              class="button current-button"
+              className="button current-button"
               type={`submit`}
               disabled={!isValid && !dirty}
               onClick={handleSubmit}
             >
               Регистрация
             </button>
-            <button class="button" type="submit">
-              Вход
-            </button>
+            <NavLink to="/login" className="button">
+            Login
+          </NavLink>
           </form>
         )}
       </Formik>
-    </div>
   );
 };
 
