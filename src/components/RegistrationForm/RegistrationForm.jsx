@@ -1,35 +1,43 @@
+import React from 'react';
+import { useState } from 'react';
 import './RegistrationForm.scss';
 import SvgIcon from '../../UI/SvgIcon';
 import Logo from '../../UI/Logo';
-import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import registerIcon from '../../assets/img/registerIcon.svg'
+import registerIcon from '../../assets/img/registerIcon.svg';
+import PasswordStrengthMete from './PasswordStrengthMeter'
 
 const RegistrationForm = () => {
+  const [ password, setPassword ] = useState('');
+
   const validationSchema = yup.object().shape({
-    email: yup
-      .string()
-      .email('Введите верный email')
-      .required('Обязательно'),
+    email: yup.string().email('Введите верный email').required('Обязательно'),
     password: yup
       .string()
+      .min(6)
+      .max(12)
       .typeError('Должно быть строкой')
       .required('Обязательно'),
     confirmPassword: yup
       .string()
       .oneOf([yup.ref('password')], 'Пароли не совпадают')
       .required('Обязательно'),
-    name: yup.string().typeError('Должно быть строкой').required('Обязательно'),
+    name: yup
+      .string()
+      .min(1)
+      .max(12)
+      .typeError('Должно быть строкой')
+      .required('Обязательно'),
   });
 
   return (
     <div class="registrationContainer">
-        <div class="regIcon">
-        <img className={'registerIcon'} src={registerIcon} alt={registerIcon}/>
+      <div class="regIcon">
+        <img className={'registerIcon'} src={registerIcon} alt={registerIcon} />
         <h1 class="registrationTitle">Finance App</h1>
-        </div>
-      
+      </div>
+
       <Formik
         initialValues={{
           email: '',
@@ -55,7 +63,7 @@ const RegistrationForm = () => {
         }) => (
           <form class="form" autocomplete="off">
             <div class="logContainer">
-              <Logo class="logCon" />
+              <Logo />
             </div>
 
             <div class="input-container email">
@@ -95,18 +103,19 @@ const RegistrationForm = () => {
                 class={'input'}
                 type={`password`}
                 name={`confirmPassword`}
-                onChange={handleChange}
+                onChange={e => setPassword(e.target.value)}
                 onBlur={handleBlur}
-                value={values.confirmPassword}
+                // value={values.confirmPassword}
                 id="confirm-password"
                 placeholder="Подтвердите пароль"
               />
               {touched.confirmPassword && errors.confirmPassword && (
                 <p class={'error'}>{errors.confirmPassword}</p>
               )}
+              <PasswordStrengthMete password={password} />
               <SvgIcon iconName={'password'} />
             </div>
-            <div class="progressbar"></div>
+            {/* <div class="progressbar"></div> */}
             <div class="input-container">
               <input
                 class={'input'}

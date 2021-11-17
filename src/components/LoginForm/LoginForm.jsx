@@ -4,27 +4,26 @@ import Logo from '../../UI/Logo';
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import loginIcon from '../../assets/img/loginIcon.svg'
+import loginIcon from '../../assets/img/loginIcon.svg';
 
 const LoginForm = () => {
-  const validationLoginSchema = yup.object().shape({
-    email: yup
-      .string()
-      .email('Введите верный email')
-      .required('Обязательно'),
+  const validationSchema = yup.object().shape({
+    email: yup.string().email('Введите верный email').required('Обязательно'),
     password: yup
       .string()
+      .min(6)
+      .max(12)
       .typeError('Должно быть строкой')
       .required('Обязательно'),
   });
 
   return (
     <div class="loginContainer">
-        <div class="logIcon">
-        <img className={'loginIcon'} src={loginIcon} alt={loginIcon}/>
+      <div class="logIcon">
+        <img className={'loginIcon'} src={loginIcon} alt={loginIcon} />
         <h1 class="loginTitle">Finance App</h1>
-        </div>
-      
+      </div>
+
       <Formik
         initialValues={{
           email: '',
@@ -34,7 +33,7 @@ const LoginForm = () => {
         onSubmit={values => {
           console.log(values);
         }}
-        validationLoginSchema={validationLoginSchema}
+        validationSchema={validationSchema}
       >
         {({
           values,
@@ -63,7 +62,7 @@ const LoginForm = () => {
                 placeholder="E-mail"
               />
               {touched.email && errors.email && (
-                <p class={'Error'}>{errors.email}</p>
+                <p class={'loginError'}>{errors.email}</p>
               )}
               <SvgIcon iconName={'email'} />
             </div>
@@ -79,21 +78,21 @@ const LoginForm = () => {
                 placeholder="Пароль"
               />
               {touched.password && errors.password && (
-                <p class={'Error'}>{errors.password}</p>
+                <p class={'loginError'}>{errors.password}</p>
               )}
               <SvgIcon iconName={'password'} />
             </div>
-            
+
             <button
               class="logButton logCurrent-button"
               type={`submit`}
               disabled={!isValid && !dirty}
               onClick={handleSubmit}
             >
-                Вход
+              Вход
             </button>
             <button class="logButton" type="submit">
-                Регистрация
+              Регистрация
             </button>
           </form>
         )}
