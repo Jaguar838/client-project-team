@@ -41,6 +41,14 @@ const HomeTab = () => {
             <Spiner />
           ) : (
             transactions?.map(item => {
+              const checked = () => {
+                if (!item.category) {
+                  return 'sorry';
+                }
+
+                return item.category.name;
+              };
+
               const text = item.isExpense ? '-' : '+';
               const colorTxt = item.isExpense ? styles.lose : styles.profit;
 
@@ -50,7 +58,7 @@ const HomeTab = () => {
                 <tr key={item.id} className={styles.tr}>
                   <td>{parsDate}</td>
                   <td>{text}</td>
-                  <td>{item.category}</td>
+                  <td>{checked()}</td>
                   <td>{item.comment}</td>
                   <td className={colorTxt}>{item.amount}</td>
                   <td>{item.balance}</td>
