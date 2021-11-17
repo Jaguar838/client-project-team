@@ -1,4 +1,6 @@
+import {Suspense} from 'react'
 import { Route, Switch } from 'react-router-dom';
+import Spinner from '../../UI/Spinner/';
 import Sidebar from '../../components/Sidebar';
 import Currency from '../../components/Currency/Currency';
 import Header from '../../UI/Header';
@@ -8,6 +10,8 @@ import Container from '../../components/Container';
 import Divider from '../../UI/Divider';
 import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
 import style from './DashboardPage.module.scss';
+
+
 
 const DashboardPage = () => {
   return (
@@ -19,11 +23,14 @@ const DashboardPage = () => {
             <Sidebar />
             <Divider />
             <main>
+              <Suspense fallback={<Spinner />}>
               <Switch>
                 <Route exact path="/dashboard" component={TransactionTab} />
                 <Route exact path="/statistics" component={StatisticsTab} />
                 <Route exact path="/currency" component={Currency} />
+               
               </Switch>
+              </Suspense>
               <AddTransactionButton />
             </main>
           </div>

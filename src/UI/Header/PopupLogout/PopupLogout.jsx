@@ -1,11 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { useDispatch } from 'react-redux';
+import authOperations from '../../../redux/auth/auth-operations';
 
 import css from './PopupLogout.module.scss'
 
 const modalRoot = document.querySelector('#root-modal');
 
-const PopupLogout = ({onClose}) => {
+const PopupLogout = ({ onClose }) => {
+   const dispatch = useDispatch()
     const windowListener = useRef(null);
 
     useEffect(() => {
@@ -32,7 +35,7 @@ const PopupLogout = ({onClose}) => {
         <div className={css.popupBackdrop} onClick={handleBackdropClick}>
           <div className={css.popupContent}>
             <p className={css.popupQuestion}>Вы действительно хотите выйти?</p>
-            <button className={css.popupButton} onClick={onClose}>Да</button>
+            <button className={css.popupButton} onClick={() => dispatch(authOperations.logOut())}>Да</button>
             <button className={css.popupButton} onClick={onClose}>Нет</button>              
           </div>
         </div>,
