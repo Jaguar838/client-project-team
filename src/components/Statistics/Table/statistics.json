@@ -1,0 +1,92 @@
+{
+  "data": [
+    {
+      "id": "6186900cee50ba6e78f43100",
+      "isExpense": true,
+      "category": "Основные расходы",
+      "amount": 2300,
+      "color": "#fed057",
+      "balance": 9700.0
+    },
+    {
+      "id": "6186900cee50ba6e78f43102",
+      "isExpense": true,
+      "category": "Продукты",
+      "amount": 3000,
+      "color": "#ffd8d0",
+      "balance": 8700.0
+    },
+    {
+      "id": "6186900cee50ba6e78f43103",
+      "isExpense": true,
+      "category": "Машина",
+      "amount": 2500,
+      "color": "#fd9498",
+      "balance": 6200.0
+    },
+    {
+      "id": "6186900cee50ba6e78f43104",
+      "isExpense": true,
+      "category": "Забота о себе",
+      "amount": 2000,
+      "color": "#c5baff",
+      "balance": 4200.0
+    },
+    {
+      "id": "6186900cee50ba6e78f43105",
+      "isExpense": true,
+      "category": "Забота о детях",
+      "amount": 500,
+      "color": "#6e78e8",
+      "balance": 3700.0
+    },
+    {
+      "id": "6186900cee50ba6e78f43106",
+      "isExpense": true,
+      "category": "Товары для дома",
+      "amount": 500,
+      "color": "#4a56e2",
+      "balance": 3200.0
+    },
+    {
+      "id": "6186900cee50ba6e78f43107",
+      "isExpense": true,
+      "category": "Образование",
+      "amount": 200,
+      "color": "#81e1ff",
+      "balance": 3000.0
+    },
+    {
+      "id": "6186900cee50ba6e78f43108",
+      "isExpense": true,
+      "category": "Досуг",
+      "amount": 2900,
+      "color": "#24cca7",
+      "balance": 100.0
+    },
+    {
+      "id": "6186900cee50ba6e78f43111",
+      "isExpense": true,
+      "category": "Другие расходы",
+      "amount": 300,
+      "color": "#00ad84",
+      "balance": 19800.0
+    },
+    {
+      "id": "6186900cee50ba6e78f43109",
+      "isExpense": false,
+      "category": "Доходы",
+      "amount": 30000,
+      "color": "#24CCA7",
+      "balance": 30100.0
+    },
+    {
+      "id": "6186900cee50ba6e78f43101",
+      "isExpense": false,
+      "category": "Расходы",
+      "amount": 100000,
+      "color": "#FF6596",
+      "balance": 19700.0
+    }
+  ]
+}
