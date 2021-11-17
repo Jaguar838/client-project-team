@@ -12,15 +12,17 @@ const ParentStats = () => {
 };
 export default ParentStats;
 
+// #2
+// import Media from 'react-media';
+
 // import Table from './Table';
 // import Chart from './Chart';
 // import { data } from './Table/statistics.json';
+// import s from './styles.module.scss';
+// import style from './Chart/Chart.module.scss';
 
 // const expensesCategory = data.filter(item => item.isExpense);
-// // позже
-// // const balance = data[data.length - 1].balance;
 // console.log(expensesCategory);
-// // import styles from './styles.module.scss';
 
 // const ParentStats = () => {
 //   const data = {
@@ -30,7 +32,6 @@ export default ParentStats;
 //     datasets: [
 //       {
 //         label: '# of Votes',
-//         // data: [132, 196, 113, 115, 112, 350, 70, 45, 99],
 //         data: expensesCategory.map(item => {
 //           return item.amount;
 //         }),
@@ -45,39 +46,72 @@ export default ParentStats;
 //       },
 //       { width: 1 },
 //     ],
-//     options: {
+//   };
+//   const options = {
+//     plugins: {
 //       legend: {
-//         display: false,
-//         position: 'left',
+//         labels: {
+//           boxWidth: 20,
+//           boxHeight: 10,
+//           font: {
+//             size: 14,
+//           },
+//         },
+//         // display: false,
+//         position: 'top',
+//         align: 'start',
 //       },
-//       //   plugins: {
-//       //     legend: {
-//       //       position: 'right',
-//       //     },
-//       //   },
 //     },
-//     // options: {
-//     //   scales: {
-//     //     y: {
-//     //       beginAtZero: true,
-//     //     },
-//     //   },
-//     // },
+//   };
+//   const secondOptions = {
+//     plugins: {
+//       legend: {
+//         labels: {
+//           boxWidth: 20,
+//           boxHeight: 10,
+//           font: {
+//             size: 14,
+//           },
+//         },
+//         display: false,
+//         position: 'top',
+//         align: 'start',
+//       },
+//     },
 //   };
 
 //   return (
-//     <div>
-//       <h2>Статистика</h2>
-//       <div>
-//         <div>
-//           <Chart data={data} />
-//         </div>
-//         <div>
-//           <Table />
-//         </div>
-//       </div>
-//     </div>
+//     <Media
+//       queries={{
+//         mobile: '(max-width: 767px)',
+//       }}
+//     >
+//       {({ mobile }) => (
+//         <>
+//           {mobile ? (
+//             <div>
+//               <h2>Статистика</h2>
+//               <div className={s.parent}>
+//                 <Chart data={data} options={secondOptions} />
+//                 <Table />
+//               </div>
+//             </div>
+//           ) : (
+//             <div className={s.parent}>
+//               <h2>Статистика</h2>
+//               <div>
+//                 <Chart data={data} options={options} />
+//                 <Table />
+//               </div>
+//             </div>
+//           )}
+//         </>
+//       )}
+//     </Media>
 //   );
 // };
 
 // export default ParentStats;
+
+// позже
+// const balance = data[data.length - 1].balance;
