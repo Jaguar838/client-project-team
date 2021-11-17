@@ -7,8 +7,8 @@ export default function PublicRoute({
   restricted = false,
   ...routeProps
 }) {
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const isLoggedIn = false
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  // const isLoggedIn = false
   const shouldRedirect = isLoggedIn && restricted;
   return (
     <Route {...routeProps}>

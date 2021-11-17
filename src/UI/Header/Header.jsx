@@ -4,10 +4,14 @@ import UserMenu from './UserMenu';
 import PopupLogout from './PopupLogout';
 import css from './Header.module.scss'
 
+
+
 const HeaderComponent = () => {
+   
     const [isModalLogoutOpen, setIsModalLogoutOpen] = useState(false);
     
     const toggleModal = () => {
+        
         setIsModalLogoutOpen(!isModalLogoutOpen);
     };
 

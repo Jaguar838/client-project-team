@@ -44,38 +44,38 @@ const authSlice = createSlice({
     },
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.token = action.payload.data.token;
       state.isLoggedIn = true;
       state.isLoading = false;
     },
-    // [authOperations.logOut.pending](state) {
-    //   state.isLoading = true;
-    //   state.error = false;
-    // },
-    // [authOperations.logOut.rejected](state) {
-    //   state = {
-    //     ...state,
-    //     isLoading: false,
-    //     error: true,
-    //   };
-    // },
-    // [authOperations.logOut.fulfilled](state) {
-    //   state.user = { name: null, email: null };
-    //   state.token = null;
-    //   state.isLoggedIn = false;
-    //   state.isLoading = false;
-    // },
-    // [authOperations.refreshCurrentUser.pending](state, _) {
-    //   state.isLoading = true;
-    // },
-    // [authOperations.refreshCurrentUser.rejected](state, _) {
-    //   state.isLoading = false;
-    // },
-    // [authOperations.refreshCurrentUser.fulfilled](state, action) {
-    //   state.user = action.payload;
-    //   state.isLoggedIn = true;
-    //   state.isLoading = false;
-    // },
+    [authOperations.logOut.pending](state) {
+      state.isLoading = true;
+      state.error = false;
+    },
+    [authOperations.logOut.rejected](state) {
+      state = {
+        ...state,
+        isLoading: false,
+        error: true,
+      };
+    },
+    [authOperations.logOut.fulfilled](state) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+      state.isLoading = false;
+    },
+    [authOperations.refreshCurrentUser.pending](state, _) {
+      state.isLoading = true;
+    },
+    [authOperations.refreshCurrentUser.rejected](state, _) {
+      state.isLoading = false;
+    },
+    [authOperations.refreshCurrentUser.fulfilled](state, action) {
+      state.user = action.payload.data;
+      state.isLoggedIn = true;
+      state.isLoading = false;
+    },
   },
 });
 export default authSlice.reducer;
