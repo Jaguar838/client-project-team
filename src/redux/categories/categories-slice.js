@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import apiOperations from './categories-operations';
 
 const initialState = {
-  categories: [],
+  categories: {},
   transactionStats: {},
   isLoading: false,
   error: false,
