@@ -1,18 +1,12 @@
-import { Provider } from 'react-redux';
-import { BrowserRouter} from 'react-router-dom';
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from '../../redux/store';
-
 import { lazy, Suspense, useEffect } from 'react';
-import { Switch } from 'react-router-dom';
-
-import {useDispatch } from 'react-redux';
-
-import Spinner from '../../UI/Spinner/';
+import { Redirect, Switch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 // import authOperations from '../../redux/auth/auth-operations'
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
-
+import Spinner from '../../UI/Spinner/';
+import Container from '../Container';
+import Notifications from '../../UI/Notifications';
 const LoginPage = lazy(() =>
   import('../../pages/LoginPage' /* webpackChunkName: "LoginPage" */),
 );
@@ -37,29 +31,26 @@ function App() {
   // }, [dispatch]);
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter>
-          <Suspense fallback={<Spinner />}>
-            <Switch>
-              <PublicRoute path="/login" restricted>
-                <LoginPage />
-              </PublicRoute>
+    <Container>
+      <Notifications />
+      <Suspense fallback={<Spinner />}>
+        <Switch>
+          <PublicRoute path="/login" restricted>
+            <LoginPage />
+          </PublicRoute>
 
-              <PrivateRoute path="/dashboard">
-                <DashboardPage />
-              </PrivateRoute>
+          <PrivateRoute path="/dashboard">
+            <DashboardPage />
+          </PrivateRoute>
 
-              <PublicRoute path="/register" restricted>
-                <RegistrationPage />
-              </PublicRoute>
+          <PublicRoute path="/register" restricted>
+            <RegistrationPage />
+          </PublicRoute>
 
-              <Redirect from="/" to="/login" />
-            </Switch>
-          </Suspense>
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
+          <Redirect from="/" to="/login" />
+        </Switch>
+      </Suspense>
+    </Container>
   );
 }
 
