@@ -6,9 +6,10 @@ import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
 import Spinner from '../../UI/Spinner/';
 import Notifications from '../../UI/Notifications';
-import TransactionTab from '../TransactionTab/TransactionTab';
-import StatisticsTab from '../Statistics/StatisticsTab';
-import Currency from '../Currency/Currency';
+
+//import TransactionTab from '../TransactionTab/TransactionTab';
+//import StatisticsTab from '../Statistics/StatisticsTab';
+//import Currency from '../Currency/Currency';
 const LoginPage = lazy(() =>
   import('../../pages/LoginPage' /* webpackChunkName: "LoginPage" */),
 );
@@ -36,6 +37,7 @@ function App() {
     <>
       <Notifications />
       <Suspense fallback={<Spinner />}>
+        
         <Switch>
           <PublicRoute path="/login" restricted>
             <LoginPage />
