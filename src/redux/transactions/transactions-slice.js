@@ -3,6 +3,7 @@ import getTransactionOperation from './transactions-operations';
 
 const initialState = {
   finance: [],
+  years: [],
   isLoading: false,
   error: null,
 };
@@ -17,11 +18,13 @@ const transactionsSlice = createSlice({
     },
     [getTransactionOperation.rejected](state, action) {
       state.finance = [...state.finance];
+      state.years = [...state.years];
       state.isLoading = false;
       state.error = action.payload;
     },
     [getTransactionOperation.fulfilled](state, action) {
-      state.finance = [...action.payload];
+      state.finance = [...action.payload.transactions];
+      state.years = [...action.payload.years];
       state.isLoading = false;
     },
   },

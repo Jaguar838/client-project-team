@@ -35,7 +35,10 @@
 }
 
 .tbody {
-  //   overflow: scroll;
+  background-color: transparent;
+  width: 688px;
+  height: 319px;
+  overflow: auto;
 }
 
 .border__start {

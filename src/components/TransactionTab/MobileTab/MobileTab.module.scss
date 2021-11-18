@@ -1,17 +1,32 @@
 @import '../../../assets/scss/colors.scss';
 @import '../../../assets/scss/utils/variables';
 
+th {
+  @media screen and (max-width: $min-tablet) {
+    text-align: left;
+    padding-left: 20px;
+  }
+}
+
+td {
+  @media screen and (max-width: $min-tablet) {
+    text-align: right;
+    padding-right: 20px;
+  }
+}
+
 .container {
   width: 320px;
 }
 
 .item {
   table-layout: fixed;
-  //   width: 100%;
   width: 280px;
+  height: 282px;
   margin: 0 auto;
-  background-color: $bg-color;
+  background-color: $main-bg;
   margin-bottom: 10px;
+  padding: 0 20px;
   border-radius: 6px;
   border-left: 4px solid;
 }

@@ -1,16 +1,27 @@
-import Spiner from '../../../UI/Spinner';
-import base from '../../../_backend-mock/transactions.json';
+import { useSelector } from 'react-redux';
+import {
+  getAllTransactions,
+  getLoader,
+} from '../../../redux/transactions/transactions-selectors';
 import styles from './MobileTab.module.scss';
 
 const MobileTab = () => {
-  const res = base.data;
+  const transactions = useSelector(state => getAllTransactions(state));
+  const isLoading = useSelector(state => getLoader(state));
+
   return (
     <div className={styles.container}>
-      {res?.map(item => {
+      {transactions?.map(item => {
+        const checked = () => {
+          if (!item.category) {
+            return 'sorry';
+          }
+
+          return item.category.name;
+        };
         const border = item.isExpense ? '#ff6596' : '#24cca7';
         const text = item.isExpense ? '-' : '+';
         const colorTxt = item.isExpense ? styles.lose : styles.profit;
-        console.log(`item`, item.isExpense);
         return (
           <table
             key={item.id}
@@ -20,7 +31,7 @@ const MobileTab = () => {
             <tbody>
               <tr>
                 <th>Дата</th>
-                <td>{item.date}</td>
+                <td>{item.date_str}</td>
               </tr>
               <tr>
                 <th>Тип</th>
@@ -28,7 +39,7 @@ const MobileTab = () => {
               </tr>
               <tr>
                 <th>Категория</th>
-                <td>{item.category}</td>
+                <td>{checked()}</td>
               </tr>
               <tr>
                 <th>Комментарий</th>
@@ -40,7 +51,7 @@ const MobileTab = () => {
               </tr>
               <tr>
                 <th className={styles.border__end}>Баланс</th>
-                <td>{item.balance}</td>
+                <td>{item.balanceAfter}</td>
               </tr>
             </tbody>
           </table>

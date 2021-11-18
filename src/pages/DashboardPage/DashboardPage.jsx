@@ -1,3 +1,4 @@
+
 import { useEffect, Suspense, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -15,6 +16,7 @@ import Divider from '../../UI/Divider';
 import ModalUI from '../../UI/ModalUI';
 import AddTransaction from '../../components/AddTransaction';
 import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
+
 import style from './DashboardPage.module.scss';
 
 const DashboardPage = () => {

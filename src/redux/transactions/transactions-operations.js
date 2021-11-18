@@ -14,7 +14,7 @@ const getTransactionOperation = createAsyncThunk(
     try {
       setToken(token);
       const { data } = await axios.get('transactions');
-      return data.data.transactions;
+      return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
