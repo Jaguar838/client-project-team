@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-axios.defaults.baseURL = process.env.REACT_APP_BASE_URL
-// import { BASE_URL } from '../../assets/constants';
-
+import { BASE_URL } from '../../assets/constants';
+// axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+axios.defaults.baseURL = BASE_URL;
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -14,13 +14,13 @@ const token = {
 
 const signUp = createAsyncThunk('auth/signup', async credentials => {
   const res = await axios.post('/users/signup', credentials);
-    token.set(res.data.token);
+  token.set(res.data.token);
   return res.data;
 });
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
   const res = await axios.post('/users/login', credentials);
-    token.set(res.data.data.token);
+  token.set(res.data.data.token);
   return res.data;
 });
 
@@ -44,10 +44,10 @@ const refreshCurrentUser = createAsyncThunk(
 );
 
 const authOperations = {
-    signUp,
+  signUp,
   logIn,
-    logOut,
-  refreshCurrentUser
+  logOut,
+  refreshCurrentUser,
 };
 
 export default authOperations;
