@@ -95,7 +95,7 @@ const LoginForm = () => {
             Вход
           </button>
           <NavLink to="/register" className="logButton">
-            Register
+            Регистрация
           </NavLink>
         </form>
       )}

@@ -7,7 +7,7 @@ import Logo from '../../UI/Logo';
 import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import registerIcon from '../../assets/img/registerIcon.svg'
+// import registerIcon from '../../assets/img/registerIcon.svg'
 
 const RegistrationForm = () => {
 const dispatch = useDispatch()
@@ -141,7 +141,7 @@ const dispatch = useDispatch()
               Регистрация
             </button>
             <NavLink to="/login" className="button">
-            Login
+            Вход
           </NavLink>
           </form>
         )}
