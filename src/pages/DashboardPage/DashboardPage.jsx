@@ -1,6 +1,6 @@
 
 import { useEffect, Suspense, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import apiOperations from '../../redux/categories/categories-operations';
 import getTransactionOperation from '../../redux/transactions/transactions-operations';
@@ -45,11 +45,12 @@ const DashboardPage = () => {
             <Divider />
             <main>
               <Suspense fallback={<Spinner />}>
-                <Switch>
-                  <Route exact path="/dashboard" component={TransactionTab} />
-                  <Route exact path="/statistics" component={StatisticsTab} />
-                  <Route exact path="/currency" component={Currency} />
-                </Switch>
+                <Routes>
+                  <Route index element={<TransactionTab />} />
+                  <Route path="home" element={<TransactionTab />} />
+                  <Route path="statistics" element={<StatisticsTab />} />
+                  <Route path="currency" element={<Currency />} />
+                </Routes>
               </Suspense>
               <AddTransactionButton onChange={() => handleChange} />
               <ModalUI

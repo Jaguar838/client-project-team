@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Redirect, Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+// Navigate is Redirect for react-router-dom v6
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
 import authOperations from '../../redux/auth/auth-operations'
@@ -7,9 +8,7 @@ import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
 import Spinner from '../../UI/Spinner/';
 import Notifications from '../../UI/Notifications';
-import TransactionTab from '../TransactionTab/TransactionTab';
-import StatisticsTab from '../Statistics/StatisticsTab';
-import Currency from '../Currency/Currency';
+
 const LoginPage = lazy(() =>
   import('../../pages/LoginPage' /* webpackChunkName: "LoginPage" */),
 );
@@ -40,29 +39,41 @@ function App() {
     <>
       <Notifications />
       <Suspense fallback={<Spinner />}>
-        <Switch>
-          <PublicRoute path="/login" restricted>
-            <LoginPage />
-          </PublicRoute>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <PublicRoute restricted>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute restricted>
+                <RegistrationPage />
+              </PublicRoute>
+            }
+          />
 
-          <PublicRoute path="/register" restricted>
-            <RegistrationPage />
-          </PublicRoute>
-
-          <PrivateRoute path="/dashboard">
-            <DashboardPage />
-          </PrivateRoute>
-
-          <PrivateRoute path="/statistics">
-            <DashboardPage />
-          </PrivateRoute>
-
-          <PrivateRoute path="/currency" restricted>
-            <DashboardPage />
-          </PrivateRoute>
-
-          <Redirect from="/" to="/login" />
-        </Switch>
+          <Route
+            path="/login"
+            element={
+              <PublicRoute restricted>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/dashboard/*"
+            element={
+              <PrivateRoute>
+                <DashboardPage />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
       </Suspense>
     </>
   );

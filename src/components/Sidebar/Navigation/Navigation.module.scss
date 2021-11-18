@@ -74,9 +74,17 @@
   &:focus {
     color: $for-house;
   }
+}
 
-  .navLinkActive:hover,
-  .navLinkActive:focus {
+.navLinkActive {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $main-text;
+  transition: color 250ms linear;
+
+  &:hover,
+  &:focus {
     color: $main-text;
   }
 }
