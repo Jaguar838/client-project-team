@@ -1,0 +1,87 @@
+@import '../../assets/scss/utils/variables';
+
+.transactionContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  @media screen and (min-width: $min-tablet) {
+    padding: 40px 80px 60px 80px;
+  }
+}
+
+.title {
+  margin-bottom: 40px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 1.5;
+  text-align: center;
+  color: #000000;
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.formTransactionContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.transactionButton {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.cancelButton {
+  margin: 0 auto;
+}
+
+.textOption {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #bdbdbd;
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(50px);
+  border-radius: 20px;
+}
+
+.selectorOption {
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(50px);
+  border-radius: 20px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.textOption {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(50px);
+}
+
+.inputWrapper {
+  margin-bottom: 40px;
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
