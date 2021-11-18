@@ -1,5 +1,6 @@
 
 
+
 import { useEffect, useState } from 'react';
 import s from './Period.module.scss';
 
@@ -26,11 +27,13 @@ const Period = ({setRequestedMonth,setRequestedYear,years}) => {
   
   
   const validateMounth=(e)=>{
-      setRequestedMonth(e.target.value+1)
-      
+    const b=allMonths.findIndex(e.target.value)
+    setRequestedMonth(b+1)
   }
+    
   const validateYears=(e)=>{
     setRequestedYear(e.target.value)
+    
 }
 
   

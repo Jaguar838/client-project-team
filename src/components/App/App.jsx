@@ -37,7 +37,7 @@ function App() {
     <>
       <Notifications />
       <Suspense fallback={<Spinner />}>
-        
+       
         <Switch>
           <PublicRoute path="/login" restricted>
             <LoginPage />
