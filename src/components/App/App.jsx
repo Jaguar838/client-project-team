@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 // Navigate is Redirect for react-router-dom v6
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
-import authOperations from '../../redux/auth/auth-operations'
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
 import Spinner from '../../UI/Spinner/';
@@ -26,10 +25,7 @@ const DashboardPage = lazy(() =>
 );
 
 function App() {
-
-  const dispatch = useDispatch()
-
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(authOperations.refreshCurrentUser());
