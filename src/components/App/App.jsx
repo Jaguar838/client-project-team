@@ -37,6 +37,14 @@ function App() {
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route
+            path="/"
+            element={
+              <PublicRoute restricted>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
             path="/register"
             element={
               <PublicRoute restricted>
