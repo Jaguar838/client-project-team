@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Redirect, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import authOperations from '../../redux/auth/auth-operations'
+import authOperations from '../../redux/auth/auth-operations';
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
 import Spinner from '../../UI/Spinner/';
@@ -27,7 +27,7 @@ const DashboardPage = lazy(() =>
 );
 
 function App() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(authOperations.refreshCurrentUser());
