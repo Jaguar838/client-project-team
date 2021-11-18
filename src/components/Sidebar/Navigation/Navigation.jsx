@@ -8,10 +8,10 @@ const Navigation = () => {
     <ul className={style.nav}>
       <li className={style.navItem}>
         <NavLink
-          exact
-          to="/dashboard"
-          className={style.navLink}
-          activeClassName={style.navLinkActive}
+          to="home"
+          className={({ isActive }) => {
+            return isActive ? style.navLinkActive : style.navLink;
+          }}
         >
           <div className={style.iconWrapper}>
             <SvgIcon iconName="home" className={style.navIcon} />
@@ -21,9 +21,10 @@ const Navigation = () => {
       </li>
       <li className={style.navItem}>
         <NavLink
-          to="/statistics"
-          className={style.navLink}
-          activeClassName={style.navLinkActive}
+          to="statistics"
+          className={({ isActive }) => {
+            return isActive ? style.navLinkActive : style.navLink;
+          }}
         >
           <div className={style.iconWrapper}>
             <SvgIcon iconName="statistic" className={style.navIcon} />
@@ -42,9 +43,10 @@ const Navigation = () => {
             {mobile && (
               <li className={style.navItem}>
                 <NavLink
-                  to="/currency"
-                  className={style.navLink}
-                  activeClassName={style.navLinkActive}
+                  to="currency"
+                  className={({ isActive }) => {
+                    return isActive ? style.navLinkActive : style.navLink;
+                  }}
                 >
                   <div className={style.iconWrapper}>
                     <SvgIcon iconName="currency" className={style.navIcon} />
