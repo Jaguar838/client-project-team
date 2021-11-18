@@ -3,13 +3,19 @@ import { useEffect, useState } from 'react';
 import s from './Period.module.scss';
 
 const Period = (props) => {
+  /* Все пропы:
+  1. setYear
+  2. setMonth
+  3. years
+  */
+  
     
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
   //conts [date,setDate]=useState('');
 
-  const allMonth=['Месяц','Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь' ]
-  const allYears=['Год',2020,2021]
+  const allMonth = ['Месяц', 'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+  const allYears = ['Год', ...props.years];
 
 
   useEffect(()=>{
@@ -51,7 +57,7 @@ const Period = (props) => {
               >
              {allMonth.map(value=>
                  
-             <option >{value}</option>)}    
+             <option key={value}>{value}</option>)}    
               </select>
               <select 
               name="SelectedYears"
@@ -59,7 +65,7 @@ const Period = (props) => {
               id="area"
               onChange={validateYears}
               >
-             {allYears.map(value=><option>{value}</option>)}    
+             {allYears.map(value=><option key={value}>{value}</option>)}    
               </select>
               
               </form>

@@ -2,8 +2,11 @@ import { NavLink } from 'react-router-dom';
 import Media from 'react-media';
 import style from './Navigation.module.scss';
 import SvgIcon from '../../../UI/SvgIcon';
+import { useMediaQuery } from '../../../hooks/useMediaQuery';
+import { mediaBreakpoints } from '../../../assets/constants';
 
 const Navigation = () => {
+   const maxMobile = useMediaQuery(mediaBreakpoints.maxMobile);
   return (
     <ul className={style.nav}>
       <li className={style.navItem}>
@@ -33,14 +36,14 @@ const Navigation = () => {
         </NavLink>
       </li>
 
-      <Media
+      {/* <Media
         queries={{
           mobile: '(max-width: 767px)',
         }}
       >
-        {({ mobile }) => (
+        {({ mobile }) => ( */}
           <>
-            {mobile && (
+            {maxMobile && (
               <li className={style.navItem}>
                 <NavLink
                   to="currency"
@@ -56,8 +59,8 @@ const Navigation = () => {
               </li>
             )}
           </>
-        )}
-      </Media>
+        {/* )} */}
+      {/* </Media> */}
     </ul>
   );
 };
