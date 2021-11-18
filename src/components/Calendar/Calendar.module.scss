@@ -1,0 +1,52 @@
+.calendarContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputIcon {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.calendarInput {
+  width: 100%;
+  padding: 0 20px 10px 20px;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #000000;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #e0e0e0;
+  outline: none;
+}
+
+.text {
+  font-family: Circe;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #000000;
+}
+
+.calendar {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+.datePicker {
+  // width: 82px;
+  position: absolute;
+  top: 40px;
+}
