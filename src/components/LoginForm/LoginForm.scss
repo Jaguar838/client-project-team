@@ -63,23 +63,21 @@
   display: flex;
   flex-direction: column;
 
-  width: 540px;
-  height: 468px;
-  padding: 40px 65px 60px 65px;
-  margin-top: 136px;
-  margin-bottom: 116px;
-  margin-left: 95px;
-  border-radius: 20px;
-
+  height: 100vh;
+  margin: 0;
+  padding: 110px 20px;
   background: #fff;
 
-  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
-    margin: 0;
+  @media screen and (min-width: $max-mobile) {
+    max-width: $max-mobile;
   }
 
-  @media screen and (min-width: $mobile) and (max-width: $max-mobile) {
-    padding: 36px 20px;
-    margin: 0;
+  @media screen and (min-width: $tablet) {
+    width: 540px;
+    max-width: 540px;
+    height: 468px;
+    padding: 40px 65px 60px 65px;
+    border-radius: 20px;
   }
 }
 
@@ -95,7 +93,14 @@
 
 .email,
 .password {
+  width: 280px;
   margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
+    width: 410px;
+  }
 }
 
 .logInput {
@@ -131,6 +136,9 @@
 
 .logButton {
   height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+
   padding: 13px 55px;
   border-radius: 20px;
   cursor: pointer;
@@ -156,7 +164,9 @@
 }
 
 .logCurrent-button {
-  margin-top: 10px;
+  // margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 20px;
   border: none;
   background: #24cca7;

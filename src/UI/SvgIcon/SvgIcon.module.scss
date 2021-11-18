@@ -13,11 +13,14 @@
 
 .email {
   position: absolute;
-  top: 50%;
+  top: 45%;
+  // top: 50%;
   left: 15px;
   transform: translateY(-50%);
-  width: 20px;
-  height: 16px;
+  // width: 20px;
+  // height: 16px;
+  width: 24px;
+  height: 24px;
   fill: #e0e0e0;
 }
 
@@ -33,11 +36,14 @@
 
 .password {
   position: absolute;
-  top: 50%;
+  top: 45%;
+  // top: 50%;
   left: 15px;
   transform: translateY(-50%);
-  width: 16px;
-  height: 21px;
+  // width: 16px;
+  // height: 21px;
+  width: 24px;
+  height: 24px;
   fill: #e0e0e0;
 }
 
