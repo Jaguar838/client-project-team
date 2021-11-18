@@ -12,7 +12,7 @@ const BalanceComponent = ({totalBalance}) => {
 }
 
 BalanceComponent.defaultProps = {
-    totalBalance: 24000,
+    totalBalance: 0,
   };
   
   BalanceComponent.propTypes = {

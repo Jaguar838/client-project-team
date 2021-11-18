@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import Media from 'react-media';
 import style from './Navigation.module.scss';
 import SvgIcon from '../../../UI/SvgIcon';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
@@ -35,14 +34,7 @@ const Navigation = () => {
           <p className={style.navText}>Статистика</p>
         </NavLink>
       </li>
-
-      {/* <Media
-        queries={{
-          mobile: '(max-width: 767px)',
-        }}
-      >
-        {({ mobile }) => ( */}
-          <>
+         
             {maxMobile && (
               <li className={style.navItem}>
                 <NavLink
@@ -58,9 +50,6 @@ const Navigation = () => {
                 </NavLink>
               </li>
             )}
-          </>
-        {/* )} */}
-      {/* </Media> */}
     </ul>
   );
 };

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import s from './Period.module.scss';
 
 const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
-  const [monthsState, setMonthState] = useState([]);
-  const [yearsState, setYearState] = useState([]);
+  const date = new Date();
+  const [monthsState, setMonthState] = useState(date.getUTCMonth());
+  const [yearsState, setYearState] = useState(date.getFullYear());
 
   const allMonths = [
     'Январь',
@@ -18,23 +19,28 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
     'Октябрь',
     'Ноябрь',
     'Декабрь',
+    'Все месяцы',
   ];
   
   const allYears = ['Год', ...years];
 
-  useEffect(() => {
-    const date = new Date();
-    setMonthState(date.getUTCMonth());
-    setYearState(date.getFullYear());
-  }, []);
-
   const validateMounth = e => {
-    const b = allMonths.findIndex(e.target.value);
+    const b = allMonths.indexOf(e.target.value);
+    setMonthState(e.target.value);
+
+    if (b === allMonths.length - 1) {
+      setRequestedMonth('');
+      return;
+    }
     setRequestedMonth(b + 1);
   };
 
   const validateYears = e => {
+    if (e.target.value === 'Год') {
+      return;
+    }
     setRequestedYear(e.target.value);
+    setYearState(e.target.value);
   };
 
   return (
@@ -45,9 +51,10 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
           className={s.select}
           id="area"
           onChange={validateMounth}
+          value={monthsState}
         >
           {allMonths.map(month => (
-            <option selected={allMonths.indexOf(month) === monthsState}>
+            <option key={month}>
               {month}
             </option>
           ))}
@@ -57,9 +64,10 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
           className={s.select}
           id="area"
           onChange={validateYears}
+          value={yearsState}
         >
           {allYears.map(year => (
-            <option selected={year === yearsState}>{year}</option>
+            <option key={year}>{year}</option>
           ))}
         </select>
       </form>
