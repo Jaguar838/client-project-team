@@ -1,16 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+
 import authOperations from '../../redux/auth/auth-operations'
+
 import './LoginForm.scss';
 import SvgIcon from '../../UI/SvgIcon';
 import Logo from '../../UI/Logo';
-import React from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import loginIcon from '../../assets/img/loginIcon.svg';
 
 const LoginForm = () => {
+
   const dispatch = useDispatch()
+
   const validationLoginSchema = yup.object().shape({
     email: yup.string().email('Введите верный email').required('Обязательно'),
     password: yup
@@ -20,14 +23,9 @@ const LoginForm = () => {
   });
 
     const handleSubmit = e => {
-    // e.preventDefault();
-      console.log(e.email)
-      console.log(e.password)
       const email = e.email
       const password = e.password
     dispatch(authOperations.logIn({email, password} ));
-    // setEmail('');
-    // setPassword('');
   };
 
   return (
