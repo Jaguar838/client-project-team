@@ -2,18 +2,27 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import apiOperations from '../../../redux/categories/categories-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
+import { useMediaQuery } from '../../../hooks/useMediaQuery';
+import { mediaBreakpoints } from '../../../assets/constants';
 import {
   getCategories,
   getIsLoading,
   getTransactionStats,
 } from '../../../redux/categories/categories-selectors';
 import Table from '../Table';
-import Chart from '../Chart';
+import DoughnutChart from '../Chart';
 import Period from '../Period';
-import expenses from '../Table/expenses';
 import styles from './styles.module.scss';
 
 const StatisticsTab = () => {
+  const mobile = useMediaQuery(mediaBreakpoints.maxMobile);
+  //TODO get balance and years from Redux
+
+  // const balance = useSelector(state => getBalance(state));
+  const balance = 20000;
+  // const years = useSelector(state => getYears(state));
+  const years = ['2019', '2020', '2021'];
+
   const categories = useSelector(state => getCategories(state));
   const transactionStats = useSelector(state => getTransactionStats(state));
   const isLoading = useSelector(state => getIsLoading(state));
@@ -24,52 +33,79 @@ const StatisticsTab = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // api request for the very first render
-    dispatch(apiOperations.getCategories(token));
     dispatch(apiOperations.getTransactionStats({ token }));
   }, []);
 
   useEffect(() => {
-    // api request depending on passed conditions
-    // const params = { token, year, month };
-    //   dispatch(apiOperations.getTransactionStats(params));
+    const params = { token, year, month };
+    dispatch(apiOperations.getTransactionStats(params));
   }, [month, year]);
 
-  //TODO write function that merges data and creates dataset for chart
-  //   console.log('categories', categories);
-  //   console.log('transactionStats', transactionStats);
-  //mock
+  let data;
+  if (categories.expenses && transactionStats.expenseStats) {
+    data = categories.expenses.map((el, index) => {
+      const { expenseStats } = transactionStats;
+      return { ...el, ...expenseStats[index] };
+    });
+  }
 
-  const data = {
+  const dataNut = {
+    labels: data?.map(item => item.name),
     datasets: [
       {
         label: '# of Votes',
-        // подумать как сюда передать сумму расходов по каждой из категорий
-        data: [132, 196, 113, 115, 112, 350, 70, 45, 99],
-        backgroundColor: expenses.map(item => {
-          return item.color;
-        }),
-        borderColor: expenses.map(item => {
-          return item.color;
-        }),
+        data: data?.map(item => item.amount),
+        backgroundColor: data?.map(item => item.color),
+        borderColor: data?.map(item => item.color),
         borderWidth: 1,
       },
       { width: 1 },
     ],
   };
 
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          boxWidth: 20,
+          boxHeight: 10,
+          font: {
+            size: 14,
+          },
+        },
+        display: mobile ? false : true,
+        position: 'top',
+        align: 'start',
+      },
+    },
+  };
+
   return (
     <div className={styles.statsContainer}>
       <h2 className={styles.title}>Статистика</h2>
-      <div className={styles.statsWrapper}>
-        <div className={styles.chartTab}>
-          <Chart data={data} />
+      {data && (
+        <div className={styles.statsWrapper}>
+          <div className={styles.chartTab}>
+            <DoughnutChart
+              dataNut={dataNut}
+              options={options}
+              balance={balance}
+            />
+          </div>
+          <div className={styles.categoriesTab}>
+            <Period
+              setRequestedMonth={setMonth}
+              setRequestedYear={setYear}
+              years={years}
+            />
+            <Table
+              data={data}
+              expenses={transactionStats.expenses}
+              incomes={transactionStats.incomes}
+            />
+          </div>
         </div>
-        <div className={styles.categoriesTab}>
-          <Period setMonth={setMonth} setYear={setYear} />
-          <Table />
-        </div>
-      </div>
+      )}
       {isLoading && <div>Loading...</div>}
     </div>
   );

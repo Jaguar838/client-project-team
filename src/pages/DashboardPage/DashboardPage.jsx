@@ -1,5 +1,9 @@
-import {Suspense, useState} from 'react'
+import { useEffect, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import apiOperations from '../../redux/categories/categories-operations';
+import getTransactionOperation from '../../redux/transactions/transactions-operations';
+import authSelectors from '../../redux/auth/auth-selectors';
 import Spinner from '../../UI/Spinner/';
 import Sidebar from '../../components/Sidebar';
 import Currency from '../../components/Currency/Currency';
@@ -16,11 +20,20 @@ import style from './DashboardPage.module.scss';
 
 
 const DashboardPage = () => {
-  const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] = useState(false)
+  const token = useSelector(state => authSelectors.getToken(state));
+  const dispatch = useDispatch();
 
-  const handleChange = () => {
-    setIsModalAddTransactionOpen(!isModalAddTransactionOpen)
-  }
+  useEffect(() => {
+
+    dispatch(apiOperations.getCategories(token));
+    dispatch(getTransactionOperation(token));
+  }, []);
+
+//   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] = useState(false)
+
+//   const handleChange = () => {
+//     setIsModalAddTransactionOpen(!isModalAddTransactionOpen)
+//   }
 
   return (
     <>
