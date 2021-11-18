@@ -15,14 +15,12 @@ const token = {
 const signUp = createAsyncThunk('auth/signup', async credentials => {
   const res = await axios.post('/users/signup', credentials);
     token.set(res.data.token);
-    console.log(res.data)
   return res.data;
 });
 
 const logIn = createAsyncThunk('auth/login', async credentials => {
   const res = await axios.post('/users/login', credentials);
-    token.set(res.data.token);
-    
+    token.set(res.data.data.token);
   return res.data;
 });
 

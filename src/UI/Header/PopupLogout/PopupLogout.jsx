@@ -35,7 +35,9 @@ const PopupLogout = ({ onClose }) => {
         <div className={css.popupBackdrop} onClick={handleBackdropClick}>
           <div className={css.popupContent}>
             <p className={css.popupQuestion}>Вы действительно хотите выйти?</p>
-            <button className={css.popupButton} onClick={() => dispatch(authOperations.logOut())}>Да</button>
+
+            <button className={css.popupButton} type="button" onClick={() => dispatch(authOperations.logOut())}>Да</button>
+
             <button className={css.popupButton} onClick={onClose}>Нет</button>              
           </div>
         </div>,
