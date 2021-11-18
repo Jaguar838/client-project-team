@@ -2,10 +2,10 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Redirect, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
+import authOperations from '../../redux/auth/auth-operations'
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
 import Spinner from '../../UI/Spinner/';
-import Container from '../Container';
 import Notifications from '../../UI/Notifications';
 import TransactionTab from '../TransactionTab/TransactionTab';
 import StatisticsTab from '../Statistics/StatisticsTab';
@@ -27,14 +27,17 @@ const DashboardPage = lazy(() =>
 );
 
 function App() {
-  const dispatch = useDispatch();
+
+  const dispatch = useDispatch()
+
+
 
   useEffect(() => {
     dispatch(authOperations.refreshCurrentUser());
   }, [dispatch]);
 
   return (
-    <Container>
+    <>
       <Notifications />
       <Suspense fallback={<Spinner />}>
         <Switch>
@@ -61,7 +64,7 @@ function App() {
           <Redirect from="/" to="/login" />
         </Switch>
       </Suspense>
-    </Container>
+    </>
   );
 }
 
