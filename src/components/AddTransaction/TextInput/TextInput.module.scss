@@ -1,0 +1,41 @@
+@import '../../../assets/scss/utils/variables';
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputContainer {
+  @media screen and (max-width: $max-mobile) {
+    margin-bottom: 40px;
+  }
+  @media screen and (min-width: $min-tablet) {
+    margin-right: 30px;
+  }
+}
+
+.textInput {
+  position: relative;
+  width: 100%;
+  padding: 0 20px 10px 20px;
+  font-family: Circe;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #000000;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #e0e0e0;
+  outline: none;
+}
+
+.textInput::placeholder {
+  color: #bdbdbd;
+}
+
+.error {
+  position: absolute;
+  color: red;
+}

@@ -45,9 +45,9 @@ function App() {
             <RegistrationPage />
           </PublicRoute>
 
-          <PrivateRoute path="/dashboard">
-            <DashboardPage />
-          </PrivateRoute>
+          <PrivatRoute path="/dashboard">
+            <DasehboardPage />
+          </PrivatRoute>
 
           <PrivateRoute path="/statistics">
             <DashboardPage />

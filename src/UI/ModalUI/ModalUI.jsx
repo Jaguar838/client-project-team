@@ -5,6 +5,7 @@ import { Modal } from '@material-ui/core';
 const rootModal = document.getElementById('root-modal');
 
 const ModalUI = ({ modalValue, modalAction, children }) => {
+  
   return createPortal(
     <div>
       <Modal
