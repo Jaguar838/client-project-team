@@ -9,6 +9,7 @@ import {
   getIsLoading,
   getTransactionStats,
 } from '../../../redux/categories/categories-selectors';
+import { getYears } from '../../../redux/transactions/transactions-selectors';
 import Table from '../Table';
 import DoughnutChart from '../Chart';
 import Period from '../Period';
@@ -20,8 +21,8 @@ const StatisticsTab = () => {
 
   // const balance = useSelector(state => getBalance(state));
   const balance = 20000;
-  // const years = useSelector(state => getYears(state));
-  const years = ['2019', '2020', '2021'];
+  const years = useSelector(state => getYears(state)) || [];
+  // const years = ['2019', '2020', '2021'];
 
   const categories = useSelector(state => getCategories(state));
   const transactionStats = useSelector(state => getTransactionStats(state));

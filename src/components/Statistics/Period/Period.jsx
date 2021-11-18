@@ -19,14 +19,13 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
     'Ноябрь',
     'Декабрь',
   ];
-  const allYears = [2020, 2021]; //получить в пропах года и записать вместо массива
+  
+  const allYears = ['Год', ...years];
 
   useEffect(() => {
     const date = new Date();
     setMonthState(date.getUTCMonth());
     setYearState(date.getFullYear());
-
-    // eslint-disable-next-line
   }, []);
 
   const validateMounth = e => {
@@ -53,7 +52,6 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
             </option>
           ))}
         </select>
-
         <select
           name="SelectedYears"
           className={s.select}

@@ -2,7 +2,7 @@
 // @import '../../assets/scss/index.scss';
 
 .dashboard {
-  padding: 0 0 35px;
+  // padding: 0 0 35px;
 }
 
 @media screen and (min-width: 768px) {
@@ -20,7 +20,7 @@
 
 @media screen and (min-width: 1280px) {
   .dashboard {
-    padding-top: 40px;
+    // padding-top: 40px;
     backdrop-filter: blur(50px);
 
     & .container {

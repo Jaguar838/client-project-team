@@ -4,7 +4,7 @@ import API from '../../API/privatbank-api';
 import Spiner from '../../UI/Spinner';
 
 const Currency = () => {
-  const [curs, setCurs] = useState();
+  const [curs, setCurs] = useState([]);
 
   useEffect(() => {
     getFetchCurs();
@@ -19,7 +19,8 @@ const Currency = () => {
     
     });
   };
-  if (curs) {
+
+  if (curs.length) {
     return (
       <>
         <div className={s.div}>
@@ -32,11 +33,11 @@ const Currency = () => {
               </tr>
             </thead>
             <tbody className={s.tbody}>
-              {curs.map(item => (
-                <tr key={item.id}>
-                  <td className={s.td}>{item.ccy}</td>
-                  <td className={s.td}>{(Math.floor((item.buy) * 100) / 100)}</td>
-                  <td className={s.td}>{(Math.floor((item.sale) * 100) / 100)}</td>
+              {curs.map(({buy, sale, ccy}) => (
+                <tr key={ccy}>
+                  <td className={s.td}>{ccy}</td>
+                  <td className={s.td}>{(Math.floor((buy) * 100) / 100)}</td>
+                  <td className={s.td}>{(Math.floor((sale) * 100) / 100)}</td>
                 </tr>
               ))}
             </tbody>
