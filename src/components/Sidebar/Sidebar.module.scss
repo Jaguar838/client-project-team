@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  padding-top: 40px;
+  padding-right: 30px;
 }
 
 .balance {
@@ -16,11 +18,26 @@
     flex-direction: column;
     flex-wrap: wrap;
     max-height: 204px;
-    margin-bottom: 40px;
+    padding-top: 40px;
   }
 
   .balance {
     margin-right: 20px;
     margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 204px;
+    padding-top: 13px;
+    padding-right: 0;
+  }
+
+  .balance {
+    margin-bottom: 30px;
   }
 }
