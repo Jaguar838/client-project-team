@@ -16,10 +16,13 @@ import Divider from '../../UI/Divider';
 import ModalUI from '../../UI/ModalUI';
 import AddTransaction from '../../components/AddTransaction';
 import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
+import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { mediaBreakpoints } from '../../assets/constants';
 
 import style from './DashboardPage.module.scss';
 
 const DashboardPage = () => {
+  const maxMobile = useMediaQuery(mediaBreakpoints.maxMobile);
   const token = useSelector(state => authSelectors.getToken(state));
   const dispatch = useDispatch();
 
@@ -49,7 +52,7 @@ const DashboardPage = () => {
                   <Route index element={<TransactionTab />} />
                   <Route path="home" element={<TransactionTab />} />
                   <Route path="statistics" element={<StatisticsTab />} />
-                  <Route path="currency" element={<Currency />} />
+                  <Route path="currency" element={maxMobile && <Currency />} />
                 </Routes>
               </Suspense>
               <AddTransactionButton onChange={() => handleChange} />

@@ -17,13 +17,9 @@ import styles from './styles.module.scss';
 
 const StatisticsTab = () => {
   const mobile = useMediaQuery(mediaBreakpoints.maxMobile);
-  //TODO get balance and years from Redux
 
-  // const balance = useSelector(state => getBalance(state));
-  const balance = 20000;
+  const balance = useSelector(state => authSelectors.getBalance(state));
   const years = useSelector(state => getYears(state)) || [];
-  // const years = ['2019', '2020', '2021'];
-
   const categories = useSelector(state => getCategories(state));
   const transactionStats = useSelector(state => getTransactionStats(state));
   const isLoading = useSelector(state => getIsLoading(state));
@@ -83,30 +79,33 @@ const StatisticsTab = () => {
 
   return (
     <div className={styles.statsContainer}>
-      <h2 className={styles.title}>Статистика</h2>
-      {data && (
-        <div className={styles.statsWrapper}>
-          <div className={styles.chartTab}>
-            <DoughnutChart
-              dataNut={dataNut}
-              options={options}
-              balance={balance}
-            />
+      {data && balance !== 0 && (
+        <>
+          <h2 className={styles.title}>Статистика</h2>
+          <div className={styles.statsWrapper}>
+            <div className={styles.chartTab}>
+              <DoughnutChart
+                dataNut={dataNut}
+                options={options}
+                balance={balance}
+              />
+            </div>
+            <div className={styles.categoriesTab}>
+              <Period
+                setRequestedMonth={setMonth}
+                setRequestedYear={setYear}
+                years={years}
+              />
+              <Table
+                data={data}
+                expenses={transactionStats.expenses}
+                incomes={transactionStats.incomes}
+              />
+            </div>
           </div>
-          <div className={styles.categoriesTab}>
-            <Period
-              setRequestedMonth={setMonth}
-              setRequestedYear={setYear}
-              years={years}
-            />
-            <Table
-              data={data}
-              expenses={transactionStats.expenses}
-              incomes={transactionStats.incomes}
-            />
-          </div>
-        </div>
+        </>
       )}
+      {balance === 0 && <p>There aren't any statistics yet</p>}
       {isLoading && <div>Loading...</div>}
     </div>
   );
