@@ -2,51 +2,98 @@
 @import '../../../assets/scss/utils/variables';
 
 .container {
-  position: relative;
-  background-color: transparent;
-  width: 688px;
-  height: 319px;
-  //   padding: 0 20px;
-  margin: 0 auto;
-
-  overflow: auto;
-
-  @media screen and (min-width: $max-tablet) {
-    width: 700px;
+  @media (min-width: 768px) {
+    margin-top: 40px;
+    max-height: 60vh;
+    overflow: auto;
   }
+
+  @media (min-width: 1280px) {
+    width: 100%;
+    margin-top: 46px;
+    margin-left: 30px;
+  }
+
+  // background-color: transparent;
+  // width: 688px;
+  // height: 319px;
+  // //   padding: 0 20px;
+  // margin: 0 auto;
+
+  // overflow: auto;
+
+  // @media screen and (min-width: $max-tablet) {
+  //   width: 700px;
+  // }
 }
 
 .table {
-  text-align: center;
+  border-spacing: 0;
+  border-radius: 30px;
+  border-collapse: collapse;
 
-  width: 100%;
-  border-spacing: 0px;
+  @media (min-width: 768px) {
+    width: 100%;
+    text-align: center;
+  }
+  // text-align: center;
 
-  //   margin-left: auto;
-  //   margin-right: auto;
+  // width: 100%;
+  // border-spacing: 0px;
+
+  // margin-left: auto;
+  // margin-right: auto;
+}
+
+.table tr th:first-child {
+  padding-left: 20px;
+}
+
+.table tr th:nth-child(n + 2) {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .thead {
-  background-color: $main-bg;
+  position: sticky;
+  top: 0;
+  font-family: Circe, sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.5;
+  background-color: #fff;
+  z-index: 1;
+  // background-color: $main-bg;
+}
+
+.thead:first-child tr {
+  // height: 58px;
+  border-radius: 25px;
+  // background: $main-bg;
+  border: 1px solid transparent;
 }
 
 .tr {
   height: 8vh;
+  border-bottom: 1px solid $border-table;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 }
 
 .tbody {
-  background-color: transparent;
-  width: 688px;
-  height: 319px;
-  overflow: auto;
+  // background-color: transparent;
+  // width: 688px;
+  // height: 319px;
+  // overflow: auto;
 }
 
 .border__start {
+  padding-left: 20px;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
 }
 
 .border__end {
+  padding-right: 20px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }
