@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+import { addTransaction } from '../../redux/transactions/transactions-operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -38,7 +39,10 @@ const authSlice = createSlice({
       state.error = true;
     },
     [authOperations.logIn.fulfilled](state, action) {
-      state.user = {name: action.payload.data.name, email: action.payload.data.email};
+      state.user = {
+        name: action.payload.data.name,
+        email: action.payload.data.email,
+      };
       state.token = action.payload.data.token;
       state.balance = action.payload.data.balance;
       state.isLoggedIn = true;
@@ -70,6 +74,10 @@ const authSlice = createSlice({
     [authOperations.refreshCurrentUser.fulfilled](state, action) {
       state.user = action.payload.data;
       state.isLoggedIn = true;
+      state.isLoading = false;
+    },
+    [addTransaction.fulfilled](state, action) {
+      state.balance = action.payload.balance;
       state.isLoading = false;
     },
   },

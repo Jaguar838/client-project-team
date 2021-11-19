@@ -21,16 +21,17 @@ const getTransactionOperation = createAsyncThunk(
   },
 );
 
-const addTransaction = createAsyncThunk('transactions/addTransaction',
+const addTransaction = createAsyncThunk(
+  'transactions/addTransaction',
   async (transaction, thunkAPI) => {
     // setToken(token);
     try {
-      const operation = await axios.post('transactions', transaction);
-      return operation;
+      const { data } = await axios.post('transactions', transaction);
+      return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
-  }
+  },
 );
 
-export {getTransactionOperation,addTransaction};
+export { getTransactionOperation, addTransaction };
