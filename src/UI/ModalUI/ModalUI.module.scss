@@ -9,7 +9,21 @@
 
 .Paper {
   background-color: $main-bg;
+  overflow-y: scroll;
   // width: 100%;
+  &::-webkit-scrollbar {
+    width: 5px;
+    background-color: #ffffff;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: $btn-profit;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background-color: #ffffff;
+  }
   @media screen and (max-width: $mobile) {
     width: 100%;
     height: 100%;

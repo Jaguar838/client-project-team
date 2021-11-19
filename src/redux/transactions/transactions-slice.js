@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import getTransactionOperation from './transactions-operations';
+import {getTransactionOperation, addTransaction} from './transactions-operations';
 
 const initialState = {
   finance: [],
   years: [],
+  operations: [],
   isLoading: false,
   error: null,
 };
@@ -27,6 +28,19 @@ const transactionsSlice = createSlice({
       state.years = [...action.payload.years];
       state.isLoading = false;
     },
+    [addTransaction.pending](state, action) {
+      state.isLoading = true;
+    },
+    [addTransaction.rejected](state, action) {
+      state.operations = [...state.operations];
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    [addTransaction.fulfilled](state, action) {
+      state.operations = [action.payload, ...state.operations];
+      state.isLoading = false;
+    },
   },
 });
+
 export default transactionsSlice.reducer;

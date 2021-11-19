@@ -9,7 +9,7 @@ const Select = ({ label, ...props }) => {
        <label htmlFor={props.id || props.name}></label>
        <select className={css.textSelector} {...field} {...props} />
        {meta.touched && meta.error ? (
-         <div className="error">{meta.error}</div>
+         <div className={css.error}>{meta.error}</div>
        ) : null}
      </div>
    );
