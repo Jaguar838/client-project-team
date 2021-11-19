@@ -104,10 +104,10 @@ const RegistrationForm = () => {
               className={'input'}
               type={`password`}
               name={`confirmPassword`}
-              // onChange={handleChange}
+              onInput={handleChange}
               onChange={e => setPassword(e.target.value)}
               onBlur={handleBlur}
-              // value={values.confirmPassword}
+              value={values.confirmPassword}
               id="confirm-password"
               placeholder="Подтвердите пароль"
             />
