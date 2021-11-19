@@ -211,6 +211,7 @@
 
 .progressbar {
   position: absolute;
+  width: 100%;
 }
 
 .password-strength-meter {
@@ -221,9 +222,10 @@
   position: absolute;
   -webkit-appearance: none;
   appearance: none;
-  width: 250px;
-  height: 8px;
-  // margin-top: 20px;
+  width: 100%;
+  height: 4px;
+  margin-top: 5px;
+  border-radius: 4px;
 }
 
 .password-strength-meter-progress::-webkit-progress-bar {
@@ -232,11 +234,10 @@
 }
 
 .password-strength-meter-label {
-  // position: absolute;
-  font-size: 14px;
-  // text-align: right;
-  margin-left: 375px;
-  color: $text-cansel;
+  display: none;
+  // font-size: 14px;
+  // margin-left: 375px;
+  // color: $text-cansel;
 }
 
 .password-strength-meter-progress::-webkit-progress-value {
