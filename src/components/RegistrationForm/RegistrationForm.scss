@@ -62,24 +62,34 @@
 .form {
   display: flex;
   flex-direction: column;
-
-  width: 540px;
-  height: 616px;
-  padding: 40px 65px 60px 65px;
-  margin-top: 52px;
-  margin-bottom: 52px;
-  margin-left: 95px;
-  border-radius: 20px;
+  
+  min-height: 568px;
+  height: 100vh;
+  
+  margin: 0;
+  padding: 36px 20px;
 
   background: #fff;
+  // width: 540px;
+  // height: 616px;
+  // padding: 40px 65px 60px 65px;
+  // margin-top: 52px;
+  // margin-bottom: 52px;
+  // margin-left: 95px;
+  // border-radius: 20px;
 
-  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
-    margin: 0;
+  
+
+  @media screen and (min-width: $max-mobile) {
+    max-width: $max-mobile;
   }
 
-  @media screen and (min-width: $mobile) and (max-width: $max-mobile) {
-    padding: 36px 20px;
-    margin: 0;
+  @media screen and (min-width: $tablet) {
+    width: 540px;
+    max-width: 540px;
+    height: 616px;
+    padding: 40px 65px 60px 65px;
+    border-radius: 20px;
   }
 }
 
@@ -91,20 +101,41 @@
 
 .input-container {
   position: relative;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: $tablet) {
+    width: 410px;
+  }
 }
 
 .email,
 .password {
+  width: 280px;
   margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: $tablet) {
+    width: 410px;
+  }
 }
 
 .password-confirm {
-  margin-bottom: 10px;
+  width: 280px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: $tablet) {
+    width: 410px;
+  }
 }
 
-.progressbar {
-  margin-bottom: 30px;
-}
+// .progressbar {
+//   margin-bottom: 30px;
+// }
 
 .input {
   width: 100%;
@@ -129,6 +160,7 @@
 }
 
 .error {
+  position: absolute;
   font-family: Circe;
   font-style: normal;
   font-weight: normal;
@@ -139,6 +171,8 @@
 
 .button {
   height: 50px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 13px 55px;
   border-radius: 20px;
   cursor: pointer;
