@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {getTransactionOperation, addTransaction} from './transactions-operations';
+import {
+  getTransactionOperation,
+  addTransaction,
+} from './transactions-operations';
 
 const initialState = {
   finance: [],
   years: [],
-  operations: [],
   isLoading: false,
-  error: null,
+  error: false,
 };
 
 const transactionsSlice = createSlice({
@@ -16,12 +18,13 @@ const transactionsSlice = createSlice({
   extraReducers: {
     [getTransactionOperation.pending](state, action) {
       state.isLoading = true;
+      state.error = false;
     },
     [getTransactionOperation.rejected](state, action) {
       state.finance = [...state.finance];
       state.years = [...state.years];
       state.isLoading = false;
-      state.error = action.payload;
+      state.error = true;
     },
     [getTransactionOperation.fulfilled](state, action) {
       state.finance = [...action.payload.transactions];
@@ -30,14 +33,14 @@ const transactionsSlice = createSlice({
     },
     [addTransaction.pending](state, action) {
       state.isLoading = true;
+      state.error = false;
     },
     [addTransaction.rejected](state, action) {
-      state.operations = [...state.operations];
       state.isLoading = false;
-      state.error = action.payload;
+      state.error = true;
     },
     [addTransaction.fulfilled](state, action) {
-      state.operations = [action.payload, ...state.operations];
+      state.finance = [...state.finance, action.payload.transaction];
       state.isLoading = false;
     },
   },
