@@ -1,6 +1,5 @@
-
 import { useEffect, Suspense, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import apiOperations from '../../redux/categories/categories-operations';
 import getTransactionOperation from '../../redux/transactions/transactions-operations';
@@ -22,7 +21,7 @@ import { mediaBreakpoints } from '../../assets/constants';
 import style from './DashboardPage.module.scss';
 
 const DashboardPage = () => {
-  const maxMobile = useMediaQuery(mediaBreakpoints.maxMobile);
+  const minTablet = useMediaQuery(mediaBreakpoints.minTablet);
   const token = useSelector(state => authSelectors.getToken(state));
   const dispatch = useDispatch();
 
@@ -48,12 +47,24 @@ const DashboardPage = () => {
             <Divider />
             <main>
               <Suspense fallback={<Spinner />}>
-                <Routes>
-                  <Route index element={<TransactionTab />} />
-                  <Route path="home" element={<TransactionTab />} />
-                  <Route path="statistics" element={<StatisticsTab />} />
-                  <Route path="currency" element={maxMobile && <Currency />} />
-                </Routes>
+                {minTablet ? (
+                  <Routes>
+                    <Route index element={<TransactionTab />} />
+                    <Route path="home" element={<TransactionTab />} />
+                    <Route path="statistics" element={<StatisticsTab />} />
+                    <Route
+                      path="currency"
+                      element={<Navigate to="/dashboard/home" />}
+                    />
+                  </Routes>
+                ) : (
+                  <Routes>
+                    <Route index element={<TransactionTab />} />
+                    <Route path="home" element={<TransactionTab />} />
+                    <Route path="statistics" element={<StatisticsTab />} />
+                    <Route path="currency" element={<Currency />} />
+                  </Routes>
+                )}
               </Suspense>
               <AddTransactionButton onChange={() => handleChange} />
               <ModalUI
