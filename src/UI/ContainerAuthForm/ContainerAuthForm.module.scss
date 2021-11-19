@@ -1,7 +1,8 @@
 @import '../../assets/scss/index.scss';
 .loginForm {
   @media screen and (min-width: $desktop) {
-    width: 720px;
+    width: 56.25%;
+    height: 100vh;
     padding: 136px 85px 116px 95px;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(50px);
@@ -10,7 +11,8 @@
 
 .registrationForm {
   @media screen and (min-width: $desktop) {
-    width: 720px;
+    width: 56.25%;
+    height: 100vh;
     padding: 52px 85px 52px 95px;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(50px);

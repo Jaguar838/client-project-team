@@ -2,45 +2,42 @@
 @import '../../assets/scss/colors.scss';
 
 .section {
-  @media screen and (max-width: $max-mobile) {
-    padding-top: 110px;
-    padding-bottom: 110px;
-  }
-  @media screen and (max-width: $max-tablet) {
-    padding-top: 60px;
-    padding-bottom: 196px;
-  }
-  // @media screen and (min-width: $tablet) {
-  //   background: url('../../images/ellipse1-tablet.svg') no-repeat top right,
-  //     url('../../images/ellipse2-tablet.svg') no-repeat bottom left, $bg-color;
-  // }
-  // @media screen and (min-width: $desktop) {
-  //   background: url('../../images/ellipse1-desc.svg') no-repeat top right,
-  //     url('../../images/ellipse2-desc.svg') no-repeat bottom left, $bg-color;
-  // }
-}
-
-.container {
-  width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
+  max-width: 480px;
   margin-left: auto;
   margin-right: auto;
 
-  @media screen and (min-width: $mobile) {
-    width: $mobile;
+  @media screen and (min-width: $mobile-middle) {
+    max-width: $max-mobile;
   }
-  @media screen and (min-width: $tablet) and (max-width: $max-tablet) {
-    width: $tablet;
-    padding-left: 114px;
-    padding-right: 114px;
+  @media screen and (min-width: $min-tablet) {
+    padding-top: 60px;
+    padding-bottom: 196px;
+    max-width: $max-tablet;
+    display: flex;
+    justify-content: center;
   }
+
+  @media screen and (min-width: $min-desktop) {
+    max-width: 1920px;
+    height: 100vh;
+    display: block;
+    padding: 0;
+  }
+}
+
+.container {
+
+  @media screen and (min-width: $mobile-middle) {
+    max-width: $max-mobile;
+  }
+  
   @media screen and (min-width: $desktop) {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: $desktop;
-    padding-left: 76px;
+    justify-content: flex-end;
+    max-width: 1920px;
+    height: 100%;
+    padding-left: 0;
     padding-right: 0;
   }
 }

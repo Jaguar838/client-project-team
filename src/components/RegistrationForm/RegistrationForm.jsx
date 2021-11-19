@@ -141,7 +141,7 @@ const dispatch = useDispatch()
               Регистрация
             </button>
             <NavLink to="/login" className="button">
-            Login
+            Вход
           </NavLink>
           </form>
         )}
