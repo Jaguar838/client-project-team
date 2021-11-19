@@ -38,7 +38,7 @@ const authSlice = createSlice({
       state.error = true;
     },
     [authOperations.logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
+      state.user = {name: action.payload.data.name, email: action.payload.data.email};
       state.token = action.payload.data.token;
       state.balance = action.payload.data.balance;
       state.isLoggedIn = true;
