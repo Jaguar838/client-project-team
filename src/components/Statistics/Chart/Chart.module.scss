@@ -1,15 +1,7 @@
 @import '../../../assets/scss/utils/variables';
 
-.title {
-  font-family: $second-font;
-  font-size: 30px;
-  font-weight: normal;
-  text-align: left;
-}
-
 .chart {
   //   outline: 1px solid red;
-  //   margin-top: 10px;
   position: relative;
   margin-bottom: 30px;
   margin-left: auto;
@@ -18,15 +10,17 @@
   width: 280px;
   height: 280px;
 
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: $min-tablet) {
     width: 320px;
     height: 320px;
+    // width: 350px;
+    // height: 350px;
   }
 }
 
 .balance {
   position: absolute;
-  top: 50%;
+  top: 65%;
   left: 40%;
   font-weight: 700;
 }
