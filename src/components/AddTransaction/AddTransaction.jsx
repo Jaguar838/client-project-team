@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Formik, Form } from 'formik';
+import { useSelector, useDispatch } from 'react-redux';
+import {getCategories} from '../../redux/categories/categories-selectors';
 import PropTypes from 'prop-types'
 import ValidationTransaction from "./ValidationTransaction";
+import { addTransaction } from "../../redux/transactions/transactions-operations";
 import BtnClose from "./BtnClose";
-import { data } from "../../_backend-mock/categories.json";
 import TextInput from "./TextInput";
 import CommentInput from "./CommentInput";
 import Select from "./Select";
@@ -14,14 +16,20 @@ import css from "./AddTransaction.module.scss";
  
 const AddTransaction = ({ onClose }) => {
     const [checkBox, setCheckBox] = useState(true);
+    const categories = useSelector(state => getCategories(state));
+    const idIncomes = categories.incomes.find(category => category.id);
+    const schema = ValidationTransaction();
+    const dispatch=useDispatch()
     const handleChange = () => {
         setCheckBox(!checkBox)
     };
 
+    const IdCategory = !checkBox ? '' : idIncomes.id;
+    
     return (
         <>
             <div className={css.transactionContainer}>
-            <BtnClose onClick={onClose} />
+                <BtnClose onClick={onClose} />
                 <h1 className={css.title}>Добавить транзакцию</h1>
 
                 <SwitchComponent
@@ -29,15 +37,17 @@ const AddTransaction = ({ onClose }) => {
                     onChange={handleChange}
                 />
                 <Formik
+                    enableReinitialize
                     initialValues={{
                         amount: '',
                         date: new Date(),
                         comment: '',
-                        category: '',
+                        category: IdCategory,
                     }}
-                    validationSchema={ValidationTransaction}
+                    validationSchema={schema}
                     onSubmit={(values, { resetForm }) => {
-                        alert(JSON.stringify(values, null, 2));
+                        dispatch(addTransaction(values));
+                        // alert(JSON.stringify(values, null, 2));
                         resetForm();
                         onClose()
                     }}
@@ -55,16 +65,17 @@ const AddTransaction = ({ onClose }) => {
                         <Form
                             className={css.formTransactionContainer}
                         >
-
+                    
                             {!checkBox &&
-                                <Select
+                                (<Select
                                     label="category"
                                     name="category">
-                                    <option className={css.textOption} value="">Выберите категорию</option>
-                                    {data.map((category) => (
-                                        <option className={css.selectorOption} key={category.color} value={category.color}>{category.name}</option>
+                                    <option className={css.textOption} value=''>Выберите категорию</option>
+                                    {categories.expenses.map((category) => (
+                                        <option className={css.selectorOption} key={category.id} value={category.id}>{category.name}</option>
                                     ))}
-                                </Select>}
+                                </Select>)
+                            }
 
                             <div className={css.inputWrapper}>
                                 <TextInput

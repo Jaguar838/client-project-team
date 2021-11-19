@@ -1,8 +1,8 @@
 import { useEffect, Suspense, useState } from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import apiOperations from '../../redux/categories/categories-operations';
-import getTransactionOperation from '../../redux/transactions/transactions-operations';
+import {getTransactionOperation} from '../../redux/transactions/transactions-operations';
 import authSelectors from '../../redux/auth/auth-selectors';
 import Spinner from '../../UI/Spinner/';
 import Sidebar from '../../components/Sidebar';
@@ -24,6 +24,7 @@ const DashboardPage = () => {
   const minTablet = useMediaQuery(mediaBreakpoints.minTablet);
   const token = useSelector(state => authSelectors.getToken(state));
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     dispatch(apiOperations.getCategories(token));
@@ -66,7 +67,9 @@ const DashboardPage = () => {
                   </Routes>
                 )}
               </Suspense>
-              <AddTransactionButton onChange={() => handleChange} />
+              { (pathname==='/dashboard/home' || pathname==='/dashboard') &&
+                <AddTransactionButton onChange={() => handleChange} />
+              }
               <ModalUI
                 modalValue={isModalAddTransactionOpen}
                 modalAction={handleChange}
