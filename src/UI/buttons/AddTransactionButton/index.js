@@ -1,14 +1,13 @@
-import SvgIcon from '../../../UI/SvgIcon';
 import styles from './styles.module.scss';
+import Plus from '../../../components/AddTransaction/SwitchComponent/Switch/plus.svg';
 
-const AddTransactionButton = ({onChange}) => {
-  const onClick = () => {};
-
+const AddTransactionButton = ({ onChange }) => {
   return (
-    <button className={`${styles.button} ${styles.position}`}
+    <button
+      className={`${styles.button} ${styles.position}`}
       onClick={onChange()}
     >
-      <SvgIcon iconName="plus" />
+      <img className={styles.icon} src={Plus} alt="Add transaction" />
     </button>
   );
 };

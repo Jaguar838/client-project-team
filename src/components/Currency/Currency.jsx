@@ -1,14 +1,16 @@
 import s from './Currency.module.scss';
 import { useEffect, useState } from 'react';
 import API from '../../API/privatbank-api';
-import Spiner from '../../UI/Spinner';
+import { useDispatch } from 'react-redux';
+import { setLoader, unsetLoader } from '../../redux/auth/auth-slice';
 
 const Currency = () => {
+  const dispatch = useDispatch();
   const [curs, setCurs] = useState([]);
 
   useEffect(() => {
     getFetchCurs();
-
+    dispatch(setLoader());
     // eslint-disable-next-line
   }, []);
 
@@ -16,7 +18,9 @@ const Currency = () => {
     setCurs([]);
     API.fetchAPICurs().then(res => {
       setCurs(res.slice(0, 3));
-    
+      dispatch(unsetLoader());
+    }).catch(err => {
+      dispatch(unsetLoader());
     });
   };
 
@@ -47,10 +51,6 @@ const Currency = () => {
       </>
     );
   }
-  return (
-    <>
-      {/* <Spiner /> */}
-    </>
-  );
+  return null;
 };
 export default Currency;
