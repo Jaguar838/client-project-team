@@ -8,6 +8,13 @@
 
 .logoText {
   font-family: $second-font;
-  font-size: 30px;
   font-weight: bold;
+
+  @media screen and (max-width: $max-mobile) {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: $min-tablet) {
+    font-size: 30px;
+  }
 }

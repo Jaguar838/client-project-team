@@ -16,12 +16,14 @@ const HeaderComponent = () => {
     };
 
     return (
-        <div className={css.headerContainer}>
+        <div className={css.background}>
+            <div className={css.headerContainer}>
             <Logo />
             <UserMenu onClick={toggleModal}/>
             {isModalLogoutOpen && (
                 <PopupLogout onClose={toggleModal}/>
             )}
+        </div>
         </div>
     )
 }
