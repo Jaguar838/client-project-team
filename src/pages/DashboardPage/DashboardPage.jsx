@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import apiOperations from '../../redux/categories/categories-operations';
 import {getTransactionOperation} from '../../redux/transactions/transactions-operations';
 import authSelectors from '../../redux/auth/auth-selectors';
+import transactionSelectors from '../../redux/transactions/transactions-selectors';
+import {getIsLoading} from '../../redux/categories/categories-selectors';
 import Spinner from '../../UI/Spinner/';
 import Sidebar from '../../components/Sidebar';
 import Currency from '../../components/Currency/Currency';
@@ -27,7 +29,7 @@ const DashboardPage = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    dispatch(apiOperations.getCategories(token));
+    dispatch(apiOperations.getCategories());
     dispatch(getTransactionOperation(token));
   }, []);
 
@@ -38,6 +40,12 @@ const DashboardPage = () => {
     setIsModalAddTransactionOpen(!isModalAddTransactionOpen);
   };
 
+  const authLoading = useSelector(state => authSelectors.isLoading(state));
+  const transactionsLoading = useSelector(state => transactionSelectors.getLoader(state));
+  const categoriesLoading = useSelector(state => getIsLoading(state));
+  const isFetchingData = authLoading || transactionsLoading || categoriesLoading;
+
+
   return (
     <>
       <Header />
@@ -47,7 +55,8 @@ const DashboardPage = () => {
             <Sidebar />
             <Divider />
             <main>
-              <Suspense fallback={<Spinner />}>
+              {/* <Suspense fallback={<Spinner />}> */}
+              <Suspense fallback={null}>
                 {minTablet ? (
                   <Routes>
                     <Route index element={<TransactionTab />} />
@@ -80,6 +89,7 @@ const DashboardPage = () => {
           </div>
         </Container>
       </div>
+      { isFetchingData && <div className={style.spinnerWrapper}><Spinner/></div>}
     </>
   );
 };

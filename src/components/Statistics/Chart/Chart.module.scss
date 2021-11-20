@@ -1,7 +1,6 @@
 @import '../../../assets/scss/utils/variables';
 
 .chart {
-  //   outline: 1px solid red;
   position: relative;
   margin-bottom: 30px;
   margin-left: auto;
@@ -13,14 +12,52 @@
   @media screen and (min-width: $min-tablet) {
     width: 320px;
     height: 320px;
-    // width: 350px;
-    // height: 350px;
   }
 }
 
 .balance {
   position: absolute;
-  top: 65%;
-  left: 40%;
   font-weight: 700;
+  font-size: 18px;
+
+  @media screen and (min-width: $min-desktop) {
+    top: 67%;
+    left: 40%;
+  }
+
+  @media screen and (min-width: $min-tablet) and (max-width: $max-tablet) {
+    top: 47%;
+    left: 38%;
+  }
+
+  @media screen and (max-width: $max-mobile) {
+    top: 47%;
+    left: 38%;
+  }
+}
+
+.balanceWithoutTransactions {
+  position: absolute;
+  font-weight: 700;
+  font-size: 18px;
+
+  @media screen and (min-width: $min-desktop) {
+    top: 47%;
+    left: 40%;
+  }
+
+  @media screen and (min-width: $min-tablet) and (max-width: $max-tablet) {
+    top: 47%;
+    left: 38%;
+  }
+
+  @media screen and (max-width: $max-mobile) {
+    top: 47%;
+    left: 38%;
+  }
+}
+
+.balance,
+.balanceWithoutTransactions {
+  transition: all 400ms ease;
 }

@@ -49,7 +49,7 @@ const Currency = () => {
   }
   return (
     <>
-      <Spiner />
+      {/* <Spiner /> */}
     </>
   );
 };

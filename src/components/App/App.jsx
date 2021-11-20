@@ -34,7 +34,8 @@ function App() {
   return (
     <>
       <Notifications />
-      <Suspense fallback={<Spinner />}>
+      {/* <Suspense fallback={<Spinner />}> */}
+      <Suspense fallback={null}>
         <Routes>
           <Route
             path="/"

@@ -1,0 +1,97 @@
+@import '../../../assets/scss/colors.scss';
+@import '../../../assets/scss/utils/variables';
+
+.notification {
+  font-family: $main-font;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  margin-top: 30px;
+  color: $modal-bg;
+
+  @media screen and (max-width: $max-tablet) {
+    margin: 100px auto 0 auto;
+  }
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 550px;
+  height: 300px;
+  border-bottom: 5px solid $border-table;
+}
+.clear {
+  clear: both;
+}
+.leftWall {
+  float: left;
+  width: 10px;
+  height: 100px;
+  background: $kids;
+  animation: left-wall 3s infinite;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.rightWall {
+  float: right;
+  width: 10px;
+  height: 100px;
+  background: $kids;
+  animation: right-wall 3s infinite;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ball {
+  float: left;
+  width: 30px;
+  height: 30px;
+  background: $modal-bg;
+  border-radius: 50%;
+  margin-top: 30px;
+  animation: bounce_ball 3s linear infinite;
+}
+@keyframes left-wall {
+  0% {
+    margin-top: 0px;
+  }
+  25% {
+    margin-top: 200px;
+  }
+  100% {
+    margin-top: 0px;
+  }
+}
+@keyframes right-wall {
+  0% {
+    margin-top: 200px;
+  }
+
+  50% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: 200px;
+  }
+}
+@keyframes bounce_ball {
+  0% {
+    margin-top: 30px;
+  }
+  25% {
+    margin-left: 250px;
+    margin-top: 252px;
+  }
+  50% {
+    margin-left: 490px;
+    margin-top: 30px;
+  }
+  75% {
+    margin-left: 250px;
+    margin-top: 252px;
+  }
+  100% {
+    margin-left: 0px;
+    margin-top: 30px;
+  }
+}
