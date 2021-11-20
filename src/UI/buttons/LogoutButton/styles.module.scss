@@ -13,10 +13,18 @@
   cursor: pointer;
 }
 
+.button:hover {
+  transform: scale(1.1);
+}
+
 .text {
   margin-left: 10px;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.5;
   font-family: $main-font;
+}
+
+.button:hover .text{
+  color: #ff6596;
 }
