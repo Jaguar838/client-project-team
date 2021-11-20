@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 import css from './ModalUI.module.scss';
 import { Modal } from '@material-ui/core';
 
@@ -21,6 +22,12 @@ const ModalUI = ({ modalValue, modalAction, children }) => {
     </div>,
     rootModal,
   );
+};
+
+ModalUI.propTypes = {
+  modalValue: PropTypes.bool.isRequired,
+  modalAction: PropTypes.func.isRequired,
+  children: PropTypes.node,
 };
 
 export default ModalUI;
