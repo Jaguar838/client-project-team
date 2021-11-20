@@ -8,10 +8,16 @@ import styles from './MobileTab.module.scss';
 const MobileTab = () => {
   const transactions = useSelector(state => getAllTransactions(state));
   const isLoading = useSelector(state => getLoader(state));
+  let filterTrans = [...transactions];
+  filterTrans = filterTrans?.reverse();
 
-  return (
+  return isLoading ? (
+    <div>
+      <span> Loading... </span>
+    </div>
+  ) : (
     <div className={styles.container}>
-      {transactions?.map(item => {
+      {filterTrans?.map(item => {
         const checked = () => {
           if (!item.category) {
             return 'sorry';

@@ -9,7 +9,8 @@ import styles from './HomeTab.module.scss';
 const HomeTab = () => {
   const transactions = useSelector(state => getAllTransactions(state));
   const isLoading = useSelector(state => getLoader(state));
-
+  let filterTrans = [...transactions];
+  filterTrans = filterTrans?.reverse();
   return (
     <div className={styles.container}>
       <table className={styles.table}>
@@ -29,7 +30,7 @@ const HomeTab = () => {
               <td> Loading... </td>
             </tr>
           ) : (
-            transactions?.map(item => {
+            filterTrans?.map(item => {
               const checked = () => {
                 if (!item.category) {
                   return 'sorry';
