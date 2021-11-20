@@ -4,12 +4,6 @@ import './RegistrationForm.scss';
 
 const PasswordStrengthMete = ({ password }) => {
   const testResult = zxcvbn(password);
-  //   const num = (testResult.score * 100) / 4;
-  //   console.log(num);
-
-  //   const changePasswordCollor = () => ({
-  //       with:
-  //   })
 
   const createPasswordLabel = result => {
     switch (result.score) {

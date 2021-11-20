@@ -89,6 +89,7 @@ const RegistrationForm = () => {
               type={`password`}
               name={`password`}
               onChange={handleChange}
+              onInput={e => setPassword(e.target.value)}
               onBlur={handleBlur}
               value={values.password}
               id="password"
@@ -97,6 +98,7 @@ const RegistrationForm = () => {
             {touched.password && errors.password && (
               <p className={'error'}>{errors.password}</p>
             )}
+            <PasswordStrengthMete password={password} />
             <SvgIcon iconName={'password'} />
           </div>
           <div className="input-container password-confirm">
@@ -104,17 +106,15 @@ const RegistrationForm = () => {
               className={'input'}
               type={`password`}
               name={`confirmPassword`}
-              // onChange={handleChange}
-              onChange={e => setPassword(e.target.value)}
+              onChange={handleChange}
               onBlur={handleBlur}
-              // value={values.confirmPassword}
+              value={values.confirmPassword}
               id="confirm-password"
               placeholder="Подтвердите пароль"
             />
             {touched.confirmPassword && errors.confirmPassword && (
               <p className={'error'}>{errors.confirmPassword}</p>
             )}
-            <PasswordStrengthMete password={password} />
             <SvgIcon iconName={'password'} />
           </div>
           <div className="progressbar"></div>
