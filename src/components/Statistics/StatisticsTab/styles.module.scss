@@ -5,14 +5,23 @@
 .statsContainer {
   @media screen and (max-width: $max-mobile) {
     width: 280px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
   @media screen and (min-width: $min-desktop) {
     width: 700px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 
   @media screen and (max-width: $max-tablet) {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  @media screen and (max-width: $max-tablet) and (min-width: $min-tablet) {
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 }
 
@@ -49,7 +58,4 @@
   @media screen and (min-width: $min-desktop) {
     margin-right: 30px;
   }
-}
-
-.categoriesTab {
 }

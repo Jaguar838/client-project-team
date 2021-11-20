@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import s from './Period.module.scss';
 
-const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
-  const date = new Date();
-  const [monthsState, setMonthState] = useState(date.getUTCMonth());
-  const [yearsState, setYearState] = useState(date.getFullYear());
-
-  const allMonths = [
+ const allMonths = [
+   'Все месяцы',
     'Январь',
     'Февраль',
     'Март',
@@ -19,8 +15,14 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
     'Октябрь',
     'Ноябрь',
     'Декабрь',
-    'Все месяцы',
   ];
+
+const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
+  const date = new Date();
+  const [monthsState, setMonthState] = useState(() => allMonths[date.getUTCMonth() + 1]);
+  const [yearsState, setYearState] = useState(() => date.getFullYear());
+
+ 
   
   const allYears = ['Год', ...years];
 
@@ -28,11 +30,11 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
     const b = allMonths.indexOf(e.target.value);
     setMonthState(e.target.value);
 
-    if (b === allMonths.length - 1) {
+    if (b === allMonths[0]) {
       setRequestedMonth('');
       return;
     }
-    setRequestedMonth(b + 1);
+    setRequestedMonth(b);
   };
 
   const validateYears = e => {
