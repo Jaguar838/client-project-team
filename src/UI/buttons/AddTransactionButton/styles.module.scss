@@ -4,6 +4,7 @@
 @import '../../../assets/scss/utils/variables';
 
 .button {
+  position: relative;
   width: 44px;
   height: 44px;
   border: none;
@@ -12,10 +13,6 @@
   border-radius: 50%;
   background-color: $leisure;
   transition: all 250ms ease;
-  align-items: center;
-  justify-content: center;
-  padding-top: 5px;
-  padding-right: 4px;
 }
 
 .button:hover,
@@ -40,4 +37,12 @@
     right: 85px;
     bottom: 40px;
   }
+}
+
+.icon {
+  position: absolute;
+  bottom: 5px;
+  left: 3px;
+  width: 34px;
+  height: 34px;
 }
