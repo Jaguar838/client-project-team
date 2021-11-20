@@ -26,11 +26,11 @@
 }
 
 .container {
-
+  
   @media screen and (min-width: $mobile-middle) {
     max-width: $max-mobile;
   }
-  
+
   @media screen and (min-width: $desktop) {
     display: flex;
     align-items: center;

@@ -20,6 +20,8 @@ import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { mediaBreakpoints } from '../../assets/constants';
 
+// import FireworksCanvas from '../../components/FireworksCanvas';
+
 import style from './DashboardPage.module.scss';
 
 const DashboardPage = () => {
@@ -48,6 +50,7 @@ const DashboardPage = () => {
 
   return (
     <>
+    {/* <FireworksCanvas/> */}
       <Header />
       <div className={style.dashboard}>
         <Container>
@@ -76,9 +79,9 @@ const DashboardPage = () => {
                   </Routes>
                 )}
               </Suspense>
-              { (pathname==='/dashboard/home' || pathname==='/dashboard') &&
+              {/* { (pathname==='/dashboard/home' || pathname==='/dashboard') &&
                 <AddTransactionButton onChange={() => handleChange} />
-              }
+              } */}
               <ModalUI
                 modalValue={isModalAddTransactionOpen}
                 modalAction={handleChange}
@@ -89,7 +92,10 @@ const DashboardPage = () => {
           </div>
         </Container>
       </div>
-      { isFetchingData && <div className={style.spinnerWrapper}><Spinner/></div>}
+      {isFetchingData && <div className={style.spinnerWrapper}><Spinner /></div>}
+                   { (pathname==='/dashboard/home' || pathname==='/dashboard') &&
+                <AddTransactionButton onChange={() => handleChange} />
+              }
     </>
   );
 };
