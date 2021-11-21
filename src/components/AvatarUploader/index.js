@@ -48,7 +48,14 @@ const AvatarUploader = () => {
 
   return (
     <div className={styles.uploadWrapper}>
-      <MainButton onClick={onHiddenInputClick} text="Выберите аватар" />
+      {/* <MainButton onClick={onHiddenInputClick} text="Выберите аватар" /> */}
+      <button
+        className={styles.uploadButton}
+        type="button"
+        onClick={onHiddenInputClick}
+      >
+        Выберите аватар
+      </button>
       <input
         className={styles.uploadInput}
         type="file"
@@ -73,7 +80,10 @@ const AvatarUploader = () => {
           )}
         </>
       )}
-      <MainButton text="Загрузить" secondary onClick={onFileUpload} />
+      {/* <MainButton text="Загрузить" secondary onClick={onFileUpload} /> */}
+      <button className={styles.submitButton} onClick={onFileUpload}>
+        Загрузить
+      </button>
     </div>
   );
 };
