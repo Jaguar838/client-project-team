@@ -8,10 +8,13 @@ import styles from './styles.module.scss';
 const AvatarUploader = () => {
   const dispatch = useDispatch();
   const [file, setFile] = useState(null);
+  const [error, setError] = useState(null);
   const hiddenInput = useRef(null);
   const isLoading = useSelector(state => authSelectors.isLoading(state));
+  const fileSizeLimit = 2 * 1024 * 1024;
 
   const onHiddenInputClick = () => {
+    setError(null);
     hiddenInput.current.click();
   };
 
@@ -21,8 +24,22 @@ const AvatarUploader = () => {
 
   const onFileUpload = () => {
     if (!file) {
+      setError('Выберите файл для загрузки');
       return;
     }
+
+    if (!file?.type.includes('image')) {
+      setError('Неверный формат файла');
+      setFile(null);
+      return;
+    }
+
+    if (file?.size > fileSizeLimit) {
+      setError('Размер файла превышает лимит 2 Мб');
+      setFile(null);
+      return;
+    }
+
     const formData = new FormData();
     formData.append('avatar', file, file.name);
     dispatch(avatarOperations.setAvatar(formData));
@@ -42,7 +59,8 @@ const AvatarUploader = () => {
         <p className={styles.placeholder}>Загружаем...</p>
       ) : (
         <>
-          {file ? (
+          {error && <p className={styles.placeholder}>{error}</p>}
+          {file && !error ? (
             <div className={styles.infoWrapper}>
               <p className={styles.info}>Название файла: {file.name}</p>
               <p className={styles.info}>
@@ -51,7 +69,7 @@ const AvatarUploader = () => {
               <p className={styles.info}>Формат: {file.type}</p>
             </div>
           ) : (
-            <p className={styles.placeholder}>Файл не выбран</p>
+            !error && <p className={styles.placeholder}>Файл не выбран</p>
           )}
         </>
       )}
