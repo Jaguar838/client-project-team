@@ -2,56 +2,58 @@
 @import '../../../assets/scss/colors.scss';
 
 .popupBackdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-  
-  .popupContent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  
-    min-height: 180px;
-    max-width: 280px;
-    width: 100%;
-  
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
 
-    font-size: 25px;
-    text-align: center;
-  }
+.popupContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  .popupQuestion {
-      margin-bottom: 30px;
-  }
+  min-height: 180px;
+  max-width: 280px;
+  width: 100%;
 
-  .popupButton {
-      width: 100px;
-      border-radius: 20px;
-      border: 0;
-      color: $secondary-text;
-      background-color: $text-profit;
-  }
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 20px;
 
-  .popupButton:last-child {
-    margin-left: 10px;
-    border: 1px solid $text-cansel;
-    background-color: transparent;
-    color: $text-cansel;
-  }
+  font-size: 25px;
+  text-align: center;
+}
 
-  .popupButton:last-child:hover {
-    box-shadow: 0px 0px 26px 1px #4A56E2;
-  }
+.popupQuestion {
+  margin-bottom: 30px;
+}
 
-  .popupButton:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 0px 26px 1px #24cca7;
-  }
+.popupButton {
+  width: 100px;
+  border-radius: 20px;
+  border: 0;
+  color: $secondary-text;
+  background-color: $text-profit;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.popupButton:last-child {
+  margin-left: 10px;
+  border: 1px solid $text-cansel;
+  background-color: transparent;
+  color: $text-cansel;
+}
+
+.popupButton:last-child:hover {
+  box-shadow: 0px 0px 26px 1px #4a56e2;
+}
+
+.popupButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 26px 1px #24cca7;
+}
