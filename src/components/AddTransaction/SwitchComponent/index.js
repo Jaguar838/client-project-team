@@ -1,12 +1,8 @@
-import { useState } from 'react';
 import Switch from './Switch';
+import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 const SwitchComponent = ({onChange,checked}) => {
-  const [isChecked, setIsChecked] = useState(false);
-  // const onChange = () => {
-  //   setIsChecked(!isChecked);
-  // };
 
   return (
     <div className={styles.block}>
@@ -19,6 +15,11 @@ const SwitchComponent = ({onChange,checked}) => {
       </span>
     </div>
   );
+};
+
+SwitchComponent.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  checked: PropTypes.bool.isRequired,
 };
 
 export default SwitchComponent;

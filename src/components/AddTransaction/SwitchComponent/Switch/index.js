@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './styles.module.scss';
 
 const Switch = ({ onChange, checked }) => {
@@ -12,4 +13,9 @@ const Switch = ({ onChange, checked }) => {
     </label>
   );
 };
+
+Switch.propTypes = {
+  onchange: PropTypes.func,
+  checked: PropTypes.bool.isRequired,
+}
 export default Switch;
