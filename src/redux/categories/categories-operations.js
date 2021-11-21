@@ -7,7 +7,7 @@ const getCategories = createAsyncThunk(
   'categories/getCategories',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('categories');
+      const { data } = await axios.get('api/categories');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
@@ -21,7 +21,7 @@ const getTransactionStats = createAsyncThunk(
     const { year, month } = params;
 
     try {
-      const { data } = await axios.get('transactions/stats', {
+      const { data } = await axios.get('api/transactions/stats', {
         params: {
           year,
           month,
