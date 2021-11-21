@@ -7,6 +7,7 @@ const getToken = state => state.auth.token;
 const getBalance = state => state.auth.balance;
 const getAvatar = state => state.auth.avatarUrl;
 
+
 const authSelectors = {
   getIsLoggedIn,
   getUsername,
