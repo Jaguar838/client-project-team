@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useSelector } from 'react-redux';
-import authSelectors from '../../../redux/auth/auth-selectors'
+import authSelectors from '../../../redux/auth/auth-selectors';
 import ChabgeInputButton from '../../buttons/changeInputButton';
+import AvatarUploader from '../../../components/AvatarUploader';
+
 import PropTypes from "prop-types";
 
 import { useState } from 'react';
@@ -90,7 +92,8 @@ const UserInfoPopup = ({ onClose, userAvatar }) => {
                         <button className={css.buttonSubmit}>Применить</button>
                         <button onClick={onClose} className={css.buttonCancel}>Отменить</button>
                     </div>
-               </form>
+          </form>
+          <AvatarUploader/>
             </div>
         </div>,
         modalRoot,

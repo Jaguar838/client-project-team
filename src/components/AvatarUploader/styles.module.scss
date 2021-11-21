@@ -4,9 +4,16 @@
 .uploadWrapper {
   display: flex;
   flex-direction: column;
-  max-width: 320px;
+  max-width: 280px;
   justify-content: space-between;
   padding: 20px;
+  margin: 0 auto;
+  overflow: hidden;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  border: 1px solid $text-passive-toggle;
+  align-items: center;
+  justify-content: center;
 }
 .uploadInput {
   width: 0;
@@ -18,9 +25,19 @@
 .placeholder {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 10px;
+  padding: 20px 0;
+}
+
+.infoWrapper {
+  overflow: hidden;
+
+  @media screen and (max-width: $max-mobile) {
+    width: 200px;
+  }
+
+  @media screen and (min-width: $min-tablet) {
+    width: 240px;
+  }
 }
 
 .placeholder,
@@ -30,4 +47,46 @@
   font-weight: 400;
   line-height: 1.5;
   color: $main-text;
+}
+
+.uploadButton {
+  border: 2px solid $base-lose;
+  background-color: $main-bg;
+}
+
+.submitButton {
+  border: 1px solid $main-bg;
+  background-color: $base-lose;
+}
+
+.submitButton,
+.uploadButton {
+  font-family: $main-font;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: $main-text;
+  cursor: pointer;
+  transition: all 250ms ease;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  height: 40px;
+  box-shadow: none;
+  outline: none;
+
+  @media screen and (max-width: $max-mobile) {
+    width: 180px;
+  }
+
+  @media screen and (min-width: $min-tablet) {
+    width: 200px;
+  }
+}
+
+.submitButton:hover,
+.submitButton:focus,
+.uploadButton:hover,
+.uploadButton:focus {
+  transform: scale(1.1);
 }
