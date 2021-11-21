@@ -11,6 +11,7 @@ import * as yup from 'yup';
 import registerIcon from '../../assets/img/registerIcon.svg';
 import PasswordStrengthMete from './PasswordStrengthMeter';
 import LogoutButton from '../../UI/buttons/LogoutButton'
+import  { Toaster  } from 'react-hot-toast';
 
 const RegistrationForm = () => {
   const [password, setPassword] = useState('');
@@ -33,12 +34,7 @@ const RegistrationForm = () => {
     const name = e.name;
     const email = e.email;
     const password = e.password;
-    console.log(name, email, password);
-    // e.preventDefault();
     dispatch(authOperations.signUp({ email, password, name }));
-    // setName('');
-    // setEmail('');
-    // setPassword('');
   };
 
   return (
@@ -146,6 +142,29 @@ const RegistrationForm = () => {
           <NavLink to="/login" className="button">
             Вход
           </NavLink>
+          <Toaster
+            toastOptions={{
+              success: {
+                style: {
+                  background: '#24cca7',
+                  color: '#ffffff'
+          },
+                duration: 8000,
+              },
+              error: {
+                style: {
+                  background: '#ff6596',
+                  color: '#ffffff',
+                },
+
+                duration: 3000,
+              },
+            }}
+            containerStyle={{
+              top: 0,
+              left: 260,
+            }}
+          />
         </form>
       )}
     </Formik>
