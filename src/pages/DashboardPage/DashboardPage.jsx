@@ -2,10 +2,10 @@ import { useEffect, Suspense, useState } from 'react';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import apiOperations from '../../redux/categories/categories-operations';
-import {getTransactionOperation} from '../../redux/transactions/transactions-operations';
+import { getTransactionOperation } from '../../redux/transactions/transactions-operations';
 import authSelectors from '../../redux/auth/auth-selectors';
 import transactionSelectors from '../../redux/transactions/transactions-selectors';
-import {getIsLoading} from '../../redux/categories/categories-selectors';
+import { getIsLoading } from '../../redux/categories/categories-selectors';
 import Spinner from '../../UI/Spinner/';
 import Sidebar from '../../components/Sidebar';
 import Currency from '../../components/Currency/Currency';
@@ -19,7 +19,7 @@ import AddTransaction from '../../components/AddTransaction';
 import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { mediaBreakpoints } from '../../assets/constants';
-import  { Toaster  } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 // import FireworksCanvas from '../../components/FireworksCanvas';
 // import AvatarUploader from '../../components/AvatarUploader';
@@ -45,25 +45,27 @@ const DashboardPage = () => {
   };
 
   const authLoading = useSelector(state => authSelectors.isLoading(state));
-  const transactionsLoading = useSelector(state => transactionSelectors.getLoader(state));
+  const transactionsLoading = useSelector(state =>
+    transactionSelectors.getLoader(state),
+  );
   const categoriesLoading = useSelector(state => getIsLoading(state));
-  const isFetchingData = authLoading || transactionsLoading || categoriesLoading;
-
+  const isFetchingData =
+    authLoading || transactionsLoading || categoriesLoading;
 
   return (
     <>
       <Toaster
-      toastOptions={{
-              success: {
-                style: {
-                  background: '#24cca7',
-                  color: '#ffffff'
+        toastOptions={{
+          success: {
+            style: {
+              background: '#24cca7',
+              color: '#ffffff',
+            },
+            duration: 3000,
           },
-                duration: 3000
-              }
-            }}
+        }}
       />
-    {/* <FireworksCanvas/> */}
+      {/* <FireworksCanvas/> */}
       <Header />
       <div className={style.dashboard}>
         <Container>
@@ -83,6 +85,10 @@ const DashboardPage = () => {
                       path="currency"
                       element={<Navigate to="/dashboard/home" />}
                     />
+                    <Route
+                      path="*"
+                      element={<Navigate to="/dashboard/home" />}
+                    />
                   </Routes>
                 ) : (
                   <Routes>
@@ -90,6 +96,10 @@ const DashboardPage = () => {
                     <Route path="home" element={<TransactionTab />} />
                     <Route path="statistics" element={<StatisticsTab />} />
                     <Route path="currency" element={<Currency />} />
+                    <Route
+                      path="*"
+                      element={<Navigate to="/dashboard/home" />}
+                    />
                   </Routes>
                 )}
               </Suspense>
@@ -106,10 +116,14 @@ const DashboardPage = () => {
           </div>
         </Container>
       </div>
-      {isFetchingData && <div className={style.spinnerWrapper}><Spinner /></div>}
-                   { (pathname==='/dashboard/home' || pathname==='/dashboard') &&
-                <AddTransactionButton onChange={() => handleChange} />
-      }
+      {isFetchingData && (
+        <div className={style.spinnerWrapper}>
+          <Spinner />
+        </div>
+      )}
+      {(pathname === '/dashboard/home' || pathname === '/dashboard') && (
+        <AddTransactionButton onChange={() => handleChange} />
+      )}
     </>
   );
 };
