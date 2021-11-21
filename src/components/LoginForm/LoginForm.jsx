@@ -20,8 +20,8 @@ const LoginForm = () => {
 
   const handleSubmit = e => {
     // e.preventDefault();
-    console.log(e.email);
-    console.log(e.password);
+    // console.log(e.email);
+    // console.log(e.password);
     const email = e.email;
     const password = e.password;
     dispatch(authOperations.logIn({ email, password }));
