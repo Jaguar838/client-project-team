@@ -24,13 +24,26 @@ td {
 .item {
   table-layout: fixed;
   width: 280px;
-  height: 282px;
+  // height: 282px;
   margin: 0 auto;
   background-color: $main-bg;
   margin-bottom: 10px;
   // padding: 0 20px;
   border-radius: 6px;
   border-left: 4px solid;
+}
+
+.item tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 270px;
+  height: 9vh;
+}
+
+.item tr:not(:last-child) {
+  border-bottom: 1px solid $border-table;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 }
 
 .profit {
