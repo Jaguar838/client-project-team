@@ -66,7 +66,7 @@ const transactionsSlice = createSlice({
       state.error = true;
     },
     [deleteTransaction.fulfilled](state, action) {
-      state.finance = state.finance.filter(transaction => transaction.id !== action.payload);
+      state.finance = [...action.payload.transactions];
       state.isLoading = false;
     },
   },

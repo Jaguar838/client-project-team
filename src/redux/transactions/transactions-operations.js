@@ -37,8 +37,9 @@ const deleteTransaction = createAsyncThunk(
   'transactions/deleteContact',
   async (transactionId, thunkAPI) => {
     try {
-      await axios.delete(`api/transactions/${transactionId}`);
-      return transactionId;
+      const { data } = await axios.delete(`api/transactions/${transactionId}`);
+      console.log(data.data);
+      return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
