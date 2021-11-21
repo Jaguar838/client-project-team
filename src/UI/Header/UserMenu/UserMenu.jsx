@@ -7,12 +7,14 @@ import defaultAvatar from "./user.png";
 import css from './UserMenu.module.scss'
 
 
-const UserMenu = ({ onClick, name, avatar }) => {
+const UserMenu = ({ onClickUserInfoButton, onClick, name, avatar }) => {
   const userName = useSelector(state => authSelectors.getUsername(state));
     return (
         <div className={css.userMenuContainer}>
-            <img className={css.userAvatar} src={avatar} alt={name}/>
-            <p className={css.userName}>{userName}</p>
+            <button type="button" onClick={onClickUserInfoButton} className={css.userInfoButton}>
+              <img className={css.userAvatar} src={avatar} alt={name}/>
+              <p className={css.userName}>{userName}</p>
+            </button>
             <LogoutButton onClick={onClick} />
         </div>
     )
