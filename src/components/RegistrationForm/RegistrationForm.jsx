@@ -10,6 +10,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import registerIcon from '../../assets/img/registerIcon.svg';
 import PasswordStrengthMete from './PasswordStrengthMeter';
+import LogoutButton from '../../UI/buttons/LogoutButton'
 
 const RegistrationForm = () => {
   const [password, setPassword] = useState('');
