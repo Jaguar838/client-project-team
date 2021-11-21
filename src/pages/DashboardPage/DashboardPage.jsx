@@ -22,6 +22,7 @@ import { mediaBreakpoints } from '../../assets/constants';
 import  { Toaster  } from 'react-hot-toast';
 
 // import FireworksCanvas from '../../components/FireworksCanvas';
+// import AvatarUploader from '../../components/AvatarUploader';
 
 import style from './DashboardPage.module.scss';
 
@@ -66,6 +67,7 @@ const DashboardPage = () => {
       <Header />
       <div className={style.dashboard}>
         <Container>
+          {/* <AvatarUploader/> */}
           <div className={style.container}>
             <Sidebar />
             <Divider />

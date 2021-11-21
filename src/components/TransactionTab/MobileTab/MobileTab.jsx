@@ -9,7 +9,7 @@ const MobileTab = () => {
   const transactions = useSelector(state => getAllTransactions(state));
   const isLoading = useSelector(state => getLoader(state));
   let filterTrans = [...transactions];
-  filterTrans = filterTrans?.reverse();
+  filterTrans.sort((a, b) => (a.date > b.date ? -1 : 1));
 
   return isLoading ? (
     <div>

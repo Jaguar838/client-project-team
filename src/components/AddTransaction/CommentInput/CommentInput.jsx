@@ -2,12 +2,11 @@ import { useField } from 'formik';
 import PropTypes from 'prop-types';
 import css from "./CommentInput.module.scss";
 
-const CommentInput = ({ children, label, ...props }) => {
+const CommentInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <div className={css.commentContainer}>
       <label htmlFor={props.id || props.name}>
-        {children}
       </label>
       <input className={css.commentInput} {...field} {...props} />
       {meta.touched && meta.error ? (
