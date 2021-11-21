@@ -4,6 +4,7 @@ const isLoading = state => state.auth.isLoading;
 const getAuthError = state => state.auth.error;
 const getToken = state => state.auth.token;
 const getBalance = state => state.auth.balance;
+const getAvatar = state => state.auth.avatar;
 
 const authSelectors = {
   getIsLoggedIn,
@@ -12,5 +13,6 @@ const authSelectors = {
   getAuthError,
   getToken,
   getBalance,
+  getAvatar,
 };
 export default authSelectors;
