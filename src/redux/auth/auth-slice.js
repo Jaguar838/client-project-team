@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+import avatarOperations from '../avatar/avatar-operations';
 import { addTransaction } from '../../redux/transactions/transactions-operations';
 
 const initialState = {
@@ -9,6 +10,7 @@ const initialState = {
   error: null,
   isLoading: false,
   balance: null,
+  avatarUrl: null,
 };
 
 const authSlice = createSlice({
@@ -52,6 +54,7 @@ const authSlice = createSlice({
       };
       state.token = action.payload.data.token;
       state.balance = action.payload.data.balance;
+      state.avatarUrl = action.payload.data.avatar;
       state.isLoggedIn = true;
       state.isLoading = false;
     },
@@ -86,6 +89,18 @@ const authSlice = createSlice({
     [addTransaction.fulfilled](state, action) {
       state.balance = action.payload.balance;
       state.isLoading = false;
+    },
+    [avatarOperations.setAvatar.pending](state, action) {
+      state.isLoading = true;
+      state.error = false;
+    },
+    [avatarOperations.setAvatar.fulfilled](state, action) {
+      state.isLoading = false;
+      state.avatarUrl = action.payload;
+    },
+    [avatarOperations.setAvatar.rejected](state, action) {
+      state.isLoading = false;
+      state.error = true;
     },
   },
 });
