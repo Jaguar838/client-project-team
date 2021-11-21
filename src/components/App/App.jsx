@@ -6,7 +6,7 @@ import authOperations from '../../redux/auth/auth-operations';
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
 import Spinner from '../../UI/Spinner/';
-import Notifications from '../../UI/Notifications';
+// import Notifications from '../../UI/Notifications';
 
 const LoginPage = lazy(() =>
   import('../../pages/LoginPage' /* webpackChunkName: "LoginPage" */),
@@ -33,7 +33,7 @@ function App() {
 
   return (
     <>
-      <Notifications />
+      {/* <Notifications /> */}
       {/* <Suspense fallback={<Spinner />}> */}
       <Suspense fallback={null}>
         <Routes>

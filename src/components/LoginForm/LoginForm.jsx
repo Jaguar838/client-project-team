@@ -1,12 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
+import { Toaster } from 'react-hot-toast';
+
 import './LoginForm.scss';
 import SvgIcon from '../../UI/SvgIcon';
 import Logo from '../../UI/Logo';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import loginIcon from '../../assets/img/loginIcon.svg';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -20,8 +21,6 @@ const LoginForm = () => {
 
   const handleSubmit = e => {
     // e.preventDefault();
-    // console.log(e.email);
-    // console.log(e.password);
     const email = e.email;
     const password = e.password;
     dispatch(authOperations.logIn({ email, password }));
@@ -85,6 +84,23 @@ const LoginForm = () => {
             <SvgIcon iconName={'password'} />
           </div>
 
+          <Toaster
+            toastOptions={{
+              error: {
+                style: {
+                  background: '#ff6596',
+                  color: '#ffffff',
+                },
+
+                duration: 3000,
+              },
+            }}
+            containerStyle={{
+              top: 115,
+              left: 260,
+            }}
+          />
+
           <button
             className="logButton logCurrent-button"
             type={`submit`}
@@ -99,7 +115,6 @@ const LoginForm = () => {
         </form>
       )}
     </Formik>
-    // </div>
   );
 };
 

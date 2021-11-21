@@ -19,6 +19,7 @@ import AddTransaction from '../../components/AddTransaction';
 import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { mediaBreakpoints } from '../../assets/constants';
+import  { Toaster  } from 'react-hot-toast';
 
 // import FireworksCanvas from '../../components/FireworksCanvas';
 // import AvatarUploader from '../../components/AvatarUploader';
@@ -51,6 +52,17 @@ const DashboardPage = () => {
 
   return (
     <>
+      <Toaster
+      toastOptions={{
+              success: {
+                style: {
+                  background: '#24cca7',
+                  color: '#ffffff'
+          },
+                duration: 3000
+              }
+            }}
+      />
     {/* <FireworksCanvas/> */}
       <Header />
       <div className={style.dashboard}>
@@ -97,7 +109,7 @@ const DashboardPage = () => {
       {isFetchingData && <div className={style.spinnerWrapper}><Spinner /></div>}
                    { (pathname==='/dashboard/home' || pathname==='/dashboard') &&
                 <AddTransactionButton onChange={() => handleChange} />
-              }
+      }
     </>
   );
 };

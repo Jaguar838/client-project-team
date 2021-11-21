@@ -1,4 +1,5 @@
 const getIsLoggedIn = state => state.auth.isLoggedIn;
+
 const getUsername = state => state.auth.user.name;
 const isLoading = state => state.auth.isLoading;
 const getAuthError = state => state.auth.error;
