@@ -4,7 +4,8 @@ const isLoading = state => state.auth.isLoading;
 const getAuthError = state => state.auth.error;
 const getToken = state => state.auth.token;
 const getBalance = state => state.auth.balance;
-const getAvatar = state => state.auth.avatar;
+const getAvatar = state => state.auth.avatarUrl;
+
 
 const authSelectors = {
   getIsLoggedIn,
