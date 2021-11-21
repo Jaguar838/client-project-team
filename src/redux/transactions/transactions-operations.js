@@ -24,7 +24,6 @@ const getTransactionOperation = createAsyncThunk(
 const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
   async (transaction, thunkAPI) => {
-    // setToken(token);
     try {
       const { data } = await axios.post('api/transactions', transaction);
       return data.data;
@@ -34,4 +33,26 @@ const addTransaction = createAsyncThunk(
   },
 );
 
-export { getTransactionOperation, addTransaction };
+const deleteTransaction = createAsyncThunk(
+  'transactions/deleteContact',
+  async (transactionId, thunkAPI) => {
+    try {
+      await axios.delete(`api/transactions/${transactionId}`);
+      return transactionId;
+    } catch (error) {
+      return thunkAPI.rejectWithValue();
+    }
+  });
+
+const editTransaction = createAsyncThunk(
+  'transactions/editContact',
+  async ({operationId, values, thunkAPI}) => {
+    try {
+      const {data} = await axios.patch(`api/transactions/${operationId}`, values);
+      return data.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue();
+    }
+  });
+
+export { getTransactionOperation, addTransaction, editTransaction, deleteTransaction };

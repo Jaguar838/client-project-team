@@ -3,6 +3,8 @@ import {
   getAllTransactions,
   getLoader,
 } from '../../../redux/transactions/transactions-selectors';
+import EditTransaction from "../../EditTransaction";
+import DeleteTransaction from "../../DeleteTransaction";
 import styles from './MobileTab.module.scss';
 
 const MobileTab = () => {
@@ -56,8 +58,16 @@ const MobileTab = () => {
                 <td className={colorTxt}>{item.amount}</td>
               </tr>
               <tr>
-                <th className={styles.border__end}>Баланс</th>
+                <th>Баланс</th>
                 <td>{item.balanceAfter}</td>
+              </tr>
+              <tr>
+                <th>Изменить</th>
+                <td><EditTransaction operationId={item.id} type={text} category={checked()} comment={item.comment} amount={item.amount} /></td>
+              </tr>
+              <tr>
+                <th className={styles.border__end}>Удалить</th>
+                <td><DeleteTransaction operationId={item.id} /></td>
               </tr>
             </tbody>
           </table>
