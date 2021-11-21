@@ -3,10 +3,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../assets/constants';
 axios.defaults.baseURL = BASE_URL;
 
-// const setToken = token => {
-//   if (!axios.defaults.headers.common.Authorization)
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-// };
+const setToken = token => {
+  if (!axios.defaults.headers.common.Authorization)
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 const getTransactionOperation = createAsyncThunk(
   'transactions/getFinance',
