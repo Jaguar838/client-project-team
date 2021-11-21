@@ -3,7 +3,8 @@ import {
   getAllTransactions,
   // getLoader,
 } from '../../../redux/transactions/transactions-selectors';
-
+import EditTransaction from "../../EditTransaction";
+import DeleteTransaction from "../../DeleteTransaction";
 import styles from './HomeTab.module.scss';
 
 const HomeTab = () => {
@@ -21,7 +22,9 @@ const HomeTab = () => {
             <th>Категория</th>
             <th>Комментарий</th>
             <th>Сумма</th>
-            <th className={styles.border__end}>Баланс</th>
+            <th>Баланс</th>
+            <th>Изменить</th>
+            <th className={styles.border__end}>Удалить</th>
           </tr>
         </thead>
         <tbody className={styles.tbody}>
@@ -47,6 +50,8 @@ const HomeTab = () => {
                 <td>{item.comment}</td>
                 <td className={colorTxt}>{item.amount}</td>
                 <td>{item.balanceAfter}</td>
+                <td><EditTransaction operationId={item.id} type={text} category={item.category.name} comment={item.comment} amount={item.amount} /></td>
+                <td><DeleteTransaction operationId={item.id} /></td>
               </tr>
             );
           })}
