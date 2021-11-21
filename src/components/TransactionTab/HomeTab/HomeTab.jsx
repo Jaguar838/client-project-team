@@ -5,6 +5,8 @@ import {
 } from '../../../redux/transactions/transactions-selectors';
 import EditTransaction from "../../EditTransaction";
 import DeleteTransaction from "../../DeleteTransaction";
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import EditIcon from '@material-ui/icons/Edit';
 import styles from './HomeTab.module.scss';
 
 const HomeTab = () => {
@@ -23,8 +25,8 @@ const HomeTab = () => {
             <th>Комментарий</th>
             <th>Сумма</th>
             <th>Баланс</th>
-            <th>Изменить</th>
-            <th className={styles.border__end}>Удалить</th>
+            <th><EditIcon/></th>
+            <th className={styles.border__end}><DeleteForeverIcon/></th>
           </tr>
         </thead>
         <tbody className={styles.tbody}>
