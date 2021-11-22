@@ -1,6 +1,4 @@
 @import '../../../assets/scss/colors.scss';
-@import '../../../assets/scss/index.scss';
-@import '../../../assets/scss/utils/base';
 @import '../../../assets/scss/utils/variables';
 
 .button {
@@ -26,7 +24,7 @@
   @media (max-width: $max-mobile) {
     right: 20px;
     bottom: 30px;
-}
+  }
 
   @media (min-width: $min-tablet) and (max-width: $max-tablet) {
     right: 40px;

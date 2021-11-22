@@ -12,7 +12,7 @@ const ValidationTransaction = () => {
             .required('Введите, пожалуйста, сумму'),
         // date: Yup.string().required('Required'),
         comment: Yup.string()
-            .max(20, 'Комментарий должен быть не более 20 символов.'),
+            .max(20, 'Комментарий должен быть не более 20 символов.').required('Укажите, пожалуйста, назначение'),
         category: Yup.string()
             .oneOf(
                 [...idExpenses,...idIncomes],

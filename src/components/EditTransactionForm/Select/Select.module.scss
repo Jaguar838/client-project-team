@@ -1,3 +1,5 @@
+@import '../../../assets/scss/utils/variables';
+
 // select:focus + .focus {
 //   position: absolute;
 //   top: -1px;
@@ -15,7 +17,7 @@
 .textSelector {
   width: 100%;
   padding: 0 20px 10px 20px;
-  font-family: Circe;
+  font-family: $main-font;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

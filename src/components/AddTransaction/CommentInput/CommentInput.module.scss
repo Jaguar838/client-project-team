@@ -1,4 +1,4 @@
-@import '../../../assets/scss/index.scss';
+@import '../../../assets/scss/utils/variables';
 .commentContainer {
   margin-bottom: 40px;
 }
@@ -21,4 +21,8 @@
 
 .commentInput::placeholder {
   color: #bdbdbd;
+}
+
+.error {
+  color: red;
 }

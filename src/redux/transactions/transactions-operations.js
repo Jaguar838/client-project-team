@@ -48,7 +48,7 @@ const editTransaction = createAsyncThunk(
   'transactions/editContact',
   async ({operationId, values, thunkAPI}) => {
     try {
-      const {data} = await axios.patch(`api/transactions/${operationId}`, values);
+      const { data } = await axios.patch(`api/transactions/${operationId}`, values);
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue();

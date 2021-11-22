@@ -52,7 +52,7 @@
 
     .navText {
       display: block;
-      font-family: Poppins, sans-serif;
+      font-family: $second-font;
       font-weight: 400;
       @include font(18px, 27px);
     }
