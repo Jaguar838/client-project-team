@@ -17,9 +17,9 @@ import Divider from '../../UI/Divider';
 import ModalUI from '../../UI/ModalUI';
 import AddTransaction from '../../components/AddTransaction';
 import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
-import { useMediaQuery } from '../../hooks/useMediaQuery';
-import { mediaBreakpoints } from '../../assets/constants';
+
 import { Toaster } from 'react-hot-toast';
+import MediaQuery from 'react-responsive';
 
 // import FireworksCanvas from '../../components/FireworksCanvas';
 // import AvatarUploader from '../../components/AvatarUploader';
@@ -27,8 +27,6 @@ import { Toaster } from 'react-hot-toast';
 import style from './DashboardPage.module.scss';
 
 const DashboardPage = () => {
-  const minTablet = useMediaQuery(mediaBreakpoints.minTablet);
-  const minDesktop = useMediaQuery(mediaBreakpoints.minDesktop);
   const token = useSelector(state => authSelectors.getToken(state));
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -73,36 +71,42 @@ const DashboardPage = () => {
           {/* <AvatarUploader/> */}
           <div className={style.container}>
             <Sidebar />
-            {minDesktop && <Divider />}
+            <MediaQuery minWidth={1280}>
+              <Divider />
+            </MediaQuery>
             <main>
               {/* <Suspense fallback={<Spinner />}> */}
               <Suspense fallback={null}>
-                {minTablet ? (
-                  <Routes>
-                    <Route index element={<TransactionTab />} />
-                    <Route path="home" element={<TransactionTab />} />
-                    <Route path="statistics" element={<StatisticsTab />} />
-                    <Route
-                      path="currency"
-                      element={<Navigate to="/dashboard/home" />}
-                    />
-                    <Route
-                      path="*"
-                      element={<Navigate to="/dashboard/home" />}
-                    />
-                  </Routes>
-                ) : (
-                  <Routes>
-                    <Route index element={<TransactionTab />} />
-                    <Route path="home" element={<TransactionTab />} />
-                    <Route path="statistics" element={<StatisticsTab />} />
-                    <Route path="currency" element={<Currency />} />
-                    <Route
-                      path="*"
-                      element={<Navigate to="/dashboard/home" />}
-                    />
-                  </Routes>
-                )}
+                <MediaQuery minWidth={768}>
+                  {matches =>
+                    matches ? (
+                      <Routes>
+                        <Route index element={<TransactionTab />} />
+                        <Route path="home" element={<TransactionTab />} />
+                        <Route path="statistics" element={<StatisticsTab />} />
+                        <Route
+                          path="currency"
+                          element={<Navigate to="/dashboard/home" />}
+                        />
+                        <Route
+                          path="*"
+                          element={<Navigate to="/dashboard/home" />}
+                        />
+                      </Routes>
+                    ) : (
+                      <Routes>
+                        <Route index element={<TransactionTab />} />
+                        <Route path="home" element={<TransactionTab />} />
+                        <Route path="statistics" element={<StatisticsTab />} />
+                        <Route path="currency" element={<Currency />} />
+                        <Route
+                          path="*"
+                          element={<Navigate to="/dashboard/home" />}
+                        />
+                      </Routes>
+                    )
+                  }
+                </MediaQuery>
               </Suspense>
               {/* { (pathname==='/dashboard/home' || pathname==='/dashboard') &&
                 <AddTransactionButton onChange={() => handleChange} />
