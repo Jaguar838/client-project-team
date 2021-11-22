@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -8,9 +7,7 @@ import SvgIcon from '../../UI/SvgIcon';
 import Logo from '../../UI/Logo';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import registerIcon from '../../assets/img/registerIcon.svg';
 import PasswordStrengthMete from './PasswordStrengthMeter';
-import LogoutButton from '../../UI/buttons/LogoutButton'
 import  { Toaster  } from 'react-hot-toast';
 
 const RegistrationForm = () => {

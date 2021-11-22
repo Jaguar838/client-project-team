@@ -6,6 +6,7 @@ const getAuthError = state => state.auth.error;
 const getToken = state => state.auth.token;
 const getBalance = state => state.auth.balance;
 const getAvatar = state => state.auth.avatarUrl;
+// const getUserEmail = state => state.auth.user.email;
 
 
 const authSelectors = {
@@ -16,5 +17,6 @@ const authSelectors = {
   getToken,
   getBalance,
   getAvatar,
+  // getUserEmail,
 };
 export default authSelectors;

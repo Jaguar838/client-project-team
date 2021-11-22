@@ -19,7 +19,11 @@ const UserMenu = ({ onClickUserInfoButton, onClick, name, avatar }) => {
                 :
                 <img className={css.userAvatar} src={avatar} alt={name}/>
               }
-              <p className={css.userName}>{userName}</p>
+              {userName ?
+                <p className={css.userName}>{userName}</p>
+                :
+                <p className={css.userName}>{name}</p>
+              }
             </button>
             <LogoutButton onClick={onClick} />
         </div>

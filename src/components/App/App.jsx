@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 // Navigate is Redirect for react-router-dom v6
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
@@ -67,6 +67,14 @@ function App() {
             element={
               <PrivateRoute>
                 <DashboardPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <PrivateRoute>
+                <Navigate to="/dashboard/home" />
               </PrivateRoute>
             }
           />

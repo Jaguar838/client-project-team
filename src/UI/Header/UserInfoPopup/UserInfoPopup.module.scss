@@ -8,33 +8,49 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.2);
+
+  @media screen and (max-height: 675px) {
+    overflow: scroll;
+  }
 }
 
 .popupContent {
   position: absolute;
-  top: 50%;
+  top: 5%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  // overflow-y: scroll;
+  transform: translate(-50%, 0);
 
-  min-height: 280px;
+  min-height: 340px;
   max-width: 280px;
   width: 100%;
 
-  padding: 20px;
+  padding: 100px 20px 30px;
   background-color: #fff;
   border-radius: 20px;
-  border-top: 60px solid #fed057;
+  
 
   @media screen and (min-width: $tablet) {
     max-width: 480px;
-    border-top: 80px solid #fed057;
+  }
+}
+
+.topBlock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: #fed057;
+  @media screen and (min-width: $tablet) {
+    height: 80px;
   }
 }
 
 .avatarBlock {
   position: absolute;
-  top: -45px;
+  top: 14px;
   left: 100px;
   display: flex;
   align-items: center;
@@ -44,22 +60,10 @@
   border-radius: 50%;
 
   @media screen and (min-width: $tablet) {
-    top: -55px;
+    top: 22px;
     left: 190px;
     width: 100px;
   }
-}
-
-.changeAvatarButton {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  border: 0;
-  outline: 0;
-  cursor: pointer;
 }
 
 .userAvatar {
@@ -116,7 +120,6 @@
   align-items: center;
   width: 200px;
   margin: 0 auto;
-  // padding: 5px;
   border-radius: 20px;
   border: 0;
   font-size: 19px;
@@ -126,29 +129,26 @@
   text-transform: uppercase;
   height: 35px;
   transition: all 250ms ease;
+  cursor: pointer;
 
   @media screen and (min-width: $tablet) {
     display: inline-flex;
   }
 }
 
-.buttonSubmit:hover {
+.buttonSubmit:hover,
+.buttonCancel:hover {
   transform: scale(1.1);
   box-shadow: 0px 0px 26px 1px #24cca7;
 }
 
 .buttonCancel {
   margin-top: 10px;
-  border: 1px solid $text-cansel;
+  border: 1px solid #24cca7;
   background-color: transparent;
-  color: $text-cansel;
+  color: #24cca7;
 
   @media screen and (min-width: $tablet) {
     margin-top: 0;
   }
-}
-
-.buttonCancel:last-child:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 0px 26px 1px #4a56e2;
 }

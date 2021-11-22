@@ -18,7 +18,7 @@ function Table({ data, expenses, incomes }) {
                 <div style={{ background: color }} className={style.box}></div>
                 <p>{name}</p>
               </td>
-              <td>{amount}</td>
+              <td className={style.amount}>{amount}</td>
             </tr>
           ))}
         </tbody>
