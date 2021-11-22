@@ -10,7 +10,7 @@ const CommentInput = ({ label, ...props }) => {
       </label>
       <input className={css.commentInput} {...field} {...props} />
       {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
+        <div className={css.error}>{meta.error}</div>
       ) : null}
     </div>
   );
