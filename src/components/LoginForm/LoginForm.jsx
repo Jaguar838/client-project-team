@@ -88,8 +88,8 @@ const LoginForm = () => {
             toastOptions={{
               error: {
                 style: {
-                  background: '#ff6596',
-                  color: '#ffffff',
+                  background: '#ffffff',
+                  color: '#000000',
                 },
 
                 duration: 3000,
