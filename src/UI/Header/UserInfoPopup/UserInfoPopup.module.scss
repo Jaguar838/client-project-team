@@ -70,17 +70,21 @@
 }
 
 .userEmail {
-  font-size: 18px;
   font-weight: 700;
   line-height: 1.5;
   text-align: center;
 
+  overflow: hidden;
+
   @media screen and (max-width: $max-mobile) {
     margin-top: 20px;
+    font-size: 15px;
+    max-width: 240px;
   }
 
   @media screen and (min-width: $min-tablet) {
     margin-top: 50px;
+    font-size: 18px;
   }
 }
 
