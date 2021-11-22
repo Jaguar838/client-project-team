@@ -28,7 +28,9 @@ const AvatarUploader = () => {
       return;
     }
 
-    if (!file?.type.includes('image')) {
+    const type = file.type.split('/').pop().toLowerCase().trim();
+
+    if (!['png', 'jpg', 'jpeg'].includes(type)) {
       setError('Неверный формат файла');
       setFile(null);
       return;
@@ -48,7 +50,6 @@ const AvatarUploader = () => {
 
   return (
     <div className={styles.uploadWrapper}>
-      {/* <MainButton onClick={onHiddenInputClick} text="Выберите аватар" /> */}
       <button
         className={styles.uploadButton}
         type="button"
@@ -80,7 +81,6 @@ const AvatarUploader = () => {
           )}
         </>
       )}
-      {/* <MainButton text="Загрузить" secondary onClick={onFileUpload} /> */}
       <button className={styles.submitButton} onClick={onFileUpload}>
         Загрузить
       </button>

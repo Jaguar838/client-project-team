@@ -47,10 +47,6 @@ const UserInfoPopup = ({ onClose, avatar }) => {
      setIsVisible(true);
   }
 
-   const onBlur = () => {
-     setIsVisible(false);
-  }
-
   const onClick = () => {
     setIsVisible(true);
     nameInput.current.focus();
@@ -79,7 +75,7 @@ const UserInfoPopup = ({ onClose, avatar }) => {
     return createPortal(
         <div className={css.popupBackdrop} onClick={handleBackdropClick}>
             <div className={css.popupContent}>
-                <div className={css.topBlock}></div>
+                <div className={css.topBlock}/>
                 <div className={css.avatarBlock}>
                 {/* {userAvatar ?
                   <img className={css.userAvatar} src={userAvatar} alt={userName}/> 
@@ -94,7 +90,6 @@ const UserInfoPopup = ({ onClose, avatar }) => {
               <input
                 autoComplete='off'
                         onFocus={onFocus}
-                        onBlur={onBlur}
                         ref={nameInput}
                         className={css.userInput}
                         type='text'
@@ -111,8 +106,8 @@ const UserInfoPopup = ({ onClose, avatar }) => {
             <div className={css.buttonsBlock}>
               {isVisible && (
                          <>
-                         <button className={css.buttonSubmit}>Применить</button>
-                         <button onClick={onCancel} className={css.buttonCancel}>Отменить</button>
+                         <button type='submit' className={css.buttonSubmit}>Применить</button>
+                         <button type='button' onClick={onCancel} className={css.buttonCancel}>Отменить</button>
                         </>
               )}
                         
