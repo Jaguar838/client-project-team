@@ -23,7 +23,7 @@ const AddTransaction = ({ onClose }) => {
     const handleChange = () => {
         setCheckBox(!checkBox)
     };
-
+    const currentDate = new Date().toLocaleDateString()
     const IdCategory = !checkBox ? '' : idIncomes.id;
     
     return (
@@ -40,14 +40,14 @@ const AddTransaction = ({ onClose }) => {
                     enableReinitialize
                     initialValues={{
                         amount: '',
-                        date: new Date(),
+                        date: currentDate,
                         comment: '',
                         category: IdCategory,
                     }}
                     validationSchema={schema}
                     onSubmit={(values, { resetForm }) => {
-                        dispatch(addTransaction(values));
-                        // alert(JSON.stringify(values, null, 2));
+                        // dispatch(addTransaction(values));
+                        alert(JSON.stringify(values, null, 2));
                         resetForm();
                         onClose()
                     }}
@@ -88,7 +88,7 @@ const AddTransaction = ({ onClose }) => {
                                 <Calendar
                                     name="date"
                                     selected={values.date}
-                                    onChange={date => setFieldValue('date', date)}
+                                    onChange={date => setFieldValue('date', date.toLocaleDateString())}
                                 />
                             </div>
                         

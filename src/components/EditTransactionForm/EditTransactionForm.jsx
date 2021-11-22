@@ -25,7 +25,7 @@ const EditTransactionForm = ({ onClose, operationId, type, category, comment, am
     const handleChange = () => {
         setCheckBox(!checkBox)
     };
-    
+
     const IdCategory = !checkBox ? idExpenses.id : idIncomes.id;
     
     return (
