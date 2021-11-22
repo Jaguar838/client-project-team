@@ -1,3 +1,5 @@
+@import '../../assets/scss/utils/variables';
+
 .calendarContainer {
   position: relative;
   display: flex;
@@ -18,7 +20,7 @@
 .calendarInput {
   width: 100%;
   padding: 0 20px 10px 20px;
-  font-family: Circe;
+  font-family: $main-font;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -31,7 +33,7 @@
 }
 
 .text {
-  font-family: Circe;
+  font-family: $main-font;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;

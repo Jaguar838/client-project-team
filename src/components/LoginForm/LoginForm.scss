@@ -39,7 +39,7 @@
 }
 
 .loginTitle {
-  font-family: Poppins;
+  font-family: $second-font;
   font-style: normal;
   font-weight: normal;
   font-size: 30px;
@@ -115,7 +115,7 @@
   }
 
   &::placeholder {
-    font-family: Circe;
+    font-family: $main-font;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -125,7 +125,7 @@
 }
 
 .loginError {
-  font-family: Circe;
+  font-family: $main-font;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -141,7 +141,7 @@
   padding: 13px 55px;
   border-radius: 20px;
   cursor: pointer;
-  font-family: Circe;
+  font-family: $main-font;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
