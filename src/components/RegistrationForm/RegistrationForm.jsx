@@ -17,14 +17,14 @@ const RegistrationForm = () => {
   const validationSchema = yup.object().shape({
     email: yup.string().email('Введите верный email').required('Обязательно'),
     password: yup
-      .string()
+      .string().min(6)
       .typeError('Должно быть строкой')
       .required('Обязательно'),
     confirmPassword: yup
       .string()
       .oneOf([yup.ref('password')], 'Пароли не совпадают')
       .required('Обязательно'),
-    name: yup.string().typeError('Должно быть строкой').required('Обязательно'),
+    name: yup.string().min(1).max(12).typeError('Должно быть строкой').required('Обязательно'),
   });
 
   const handleSubmit = e => {
