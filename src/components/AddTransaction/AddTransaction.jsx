@@ -46,8 +46,8 @@ const AddTransaction = ({ onClose }) => {
                     }}
                     validationSchema={schema}
                     onSubmit={(values, { resetForm }) => {
-                        // dispatch(addTransaction(values));
-                        alert(JSON.stringify(values, null, 2));
+                        dispatch(addTransaction(values));
+                        // alert(JSON.stringify(values, null, 2));
                         resetForm();
                         onClose()
                     }}
