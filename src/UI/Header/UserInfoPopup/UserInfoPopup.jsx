@@ -53,6 +53,7 @@ const UserInfoPopup = ({ onClose, avatar }) => {
   }
 
   const onCancel = () => {
+    setName(userName);
     setIsVisible(false);
   }
 
