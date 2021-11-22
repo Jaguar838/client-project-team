@@ -20,7 +20,7 @@ const token = {
 const signUp = createAsyncThunk('auth/signup', async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post('api/users/signup', credentials);
-    //TODO Изменить сообщение ниже
+    //TODO Изменить сообщение регистрации ниже
     toast.success('Thank you for signing up! We have sent you an email with a link to verify your account.');
     return data
   } catch ({response}) {
