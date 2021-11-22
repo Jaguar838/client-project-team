@@ -56,12 +56,13 @@ const DashboardPage = () => {
       <Toaster
         position="top-center"
         reverseOrder={true}
-      toastOptions={{
-              success: {
-                style: {
-                  background: '#ffffff',
-                  color: '#000000'
-          },
+        toastOptions={{
+          success: {
+            style: {
+              background: '#ffffff',
+              color: '#000000'
+            },
+          }
         }}
       />
       {/* <FireworksCanvas/> */}
