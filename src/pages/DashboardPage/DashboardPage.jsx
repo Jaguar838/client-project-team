@@ -53,11 +53,13 @@ const DashboardPage = () => {
   return (
     <>
       <Toaster
+        position="top-center"
+        reverseOrder={true}
       toastOptions={{
               success: {
                 style: {
-                  background: '#24cca7',
-                  color: '#ffffff'
+                  background: '#ffffff',
+                  color: '#000000'
           },
                 duration: 3000
               }

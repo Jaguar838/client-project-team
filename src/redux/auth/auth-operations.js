@@ -22,7 +22,8 @@ const signUp = createAsyncThunk('auth/signup', async (credentials, thunkAPI) => 
     const {data} = await axios.post('api/users/signup', credentials);
     toast.success('Thank you for signing up! We have sent you an email with a link to verify your account.');
     return data
-  } catch (error) {
+  } catch ({response}) {
+    toast.error(response.data.message);
     return thunkAPI.rejectWithValue()
   }
 });
@@ -33,8 +34,12 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     token.set(data.data.token);  
     toast.success('Welcome to your Wallet!');
     return data;
-  } catch (error) {
-    toast.error('Wrong email or password!');
+  } catch ({ response }) {
+    if (response.data.message === 'User email not verified yet.') {
+      toast.error(response.data.message);
+    } else {
+      toast.error(response.data.message);
+    }
     return thunkAPI.rejectWithValue();
   }
 });

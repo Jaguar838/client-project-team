@@ -146,15 +146,15 @@ const RegistrationForm = () => {
             toastOptions={{
               success: {
                 style: {
-                  background: '#24cca7',
-                  color: '#ffffff'
+                  background: '#ffffff',
+                  color: '#000000'
           },
                 duration: 8000,
               },
               error: {
                 style: {
-                  background: '#ff6596',
-                  color: '#ffffff',
+                  background: '#ffffff',
+                  color: '#000000',
                 },
 
                 duration: 3000,
