@@ -27,7 +27,6 @@
   padding: 100px 20px 30px;
   background-color: #fff;
   border-radius: 20px;
-  
 
   @media screen and (min-width: $tablet) {
     max-width: 480px;
@@ -68,6 +67,21 @@
 
 .userAvatar {
   width: 100%;
+}
+
+.userEmail {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+
+  @media screen and (max-width: $max-mobile) {
+    margin-top: 20px;
+  }
+
+  @media screen and (min-width: $min-tablet) {
+    margin-top: 50px;
+  }
 }
 
 .userForm {

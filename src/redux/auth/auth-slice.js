@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
 import avatarOperations from '../avatar/avatar-operations';
+import userOperations from '../../redux/user/user-operations';
 import { addTransaction, editTransaction, deleteTransaction } from '../../redux/transactions/transactions-operations';
+
 
 const initialState = {
   user: { name: null, email: null },
@@ -110,6 +112,18 @@ const authSlice = createSlice({
       state.avatarUrl = action.payload;
     },
     [avatarOperations.setAvatar.rejected](state, action) {
+      state.isLoading = false;
+      state.error = true;
+    },
+    [userOperations.changeUserName.pending](state, action) {
+      state.isLoading = true;
+      state.error = false;
+    },
+    [userOperations.changeUserName.fulfilled](state, action) {
+      state.isLoading = false;
+      state.user = { ...state.user, name: action.payload };
+    },
+    [userOperations.changeUserName.rejected](state, action) {
       state.isLoading = false;
       state.error = true;
     },
