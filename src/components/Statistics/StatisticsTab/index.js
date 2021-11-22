@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import apiOperations from '../../../redux/categories/categories-operations';
+import { getTransactionOperation } from '../../../redux/transactions/transactions-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { mediaBreakpoints } from '../../../assets/constants';
@@ -30,6 +31,7 @@ const StatisticsTab = () => {
 
   useEffect(() => {
     const params = { year, month };
+    dispatch(getTransactionOperation());
     dispatch(apiOperations.getTransactionStats(params));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [month, year]);

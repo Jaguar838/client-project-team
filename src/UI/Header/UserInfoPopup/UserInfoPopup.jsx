@@ -4,12 +4,10 @@ import { useSelector } from 'react-redux';
 import authSelectors from '../../../redux/auth/auth-selectors';
 import ChabgeInputButton from '../../buttons/changeInputButton';
 import AvatarUploader from '../../../components/AvatarUploader';
-import authOperations from '../../../redux/auth/auth-operations';
+import userOperations from '../../../redux/user/user-operations';
 import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { Formik } from 'formik';
-import * as yup from 'yup';
 
 import css from './UserInfoPopup.module.scss'
 import defaultAvatar from "../UserMenu/user.png";
@@ -18,24 +16,49 @@ const modalRoot = document.querySelector('#root-modal');
 
 const UserInfoPopup = ({ onClose, avatar }) => {
   // const userAvatar = useSelector(state => authSelectors.getUserAvatar(state));
-    // const userName = useSelector(state => authSelectors.getUsername(state));
-    // const userEmail = useSelector(state => authSelectors.getUserEmail(state));
+    const userName = useSelector(state => authSelectors.getUsername(state));
+    const userEmail = useSelector(state => authSelectors.getUserEmail(state));
 
-    // const dispatch = useDispatch();
-
+    const dispatch = useDispatch();
     const windowListener = useRef(null);
-
-    const [userName, setUserName] = useState('Roman');
-    const [userEmail, setUserEmail] = useState('Roman@gmail.com');
+    const [name, setName] = useState(userName);
+  const [isVisible, setIsVisible] = useState(false);
+  const nameInput = useRef(null);
 
     useEffect(() => {
       windowListener.current = window.addEventListener('keydown', handleKeyDown);
     });
 
-    const validationSchema = yup.object().shape({
-      userEmail: yup.string().email('Введите верный email').required('Обязательно'),
-      userName: yup.string().typeError('Должно быть строкой').required('Обязательно'),
-    });
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if(userName === name) {
+      setIsVisible(false);
+      return;
+    }
+    dispatch(userOperations.changeUserName(name.trim()));
+    setIsVisible(false);
+  }
+
+  const onChange = (e) => {
+    setName(e.target.value);
+  }
+
+  const onFocus = () => {
+     setIsVisible(true);
+  }
+
+   const onBlur = () => {
+     setIsVisible(false);
+  }
+
+  const onClick = () => {
+    setIsVisible(true);
+    nameInput.current.focus();
+  }
+
+  const onCancel = () => {
+    setIsVisible(false);
+  }
 
     const handleKeyDown = e => {
         if (e.code === 'Escape') {
@@ -53,28 +76,6 @@ const UserInfoPopup = ({ onClose, avatar }) => {
         }
     };
 
-    const handleInputChange = e => {
-        const { name, value } = e.target;
-    
-        switch (name) {
-          case 'name':
-            setUserName(value);
-            break;
-    
-          case 'email':
-            setUserEmail(value);
-            break;
-    
-          default:
-            return;
-        }
-      };
-
-      const handleSubmit = e => {
-        e.preventDefault();
-        // dispatch(authOperations.editUserInfo({ userName, userEmail}));
-      };
-
     return createPortal(
         <div className={css.popupBackdrop} onClick={handleBackdropClick}>
             <div className={css.popupContent}>
@@ -87,35 +88,34 @@ const UserInfoPopup = ({ onClose, avatar }) => {
                 } */}
                 <img className={css.userAvatar} src={avatar} alt={userName}/>
                 </div>
-                <form className={css.userForm} onSubmit={handleSubmit}>
+                        <p className={css.userEmail}>{userEmail}</p>
+                <form className={css.userForm} onSubmit={onSubmit}>
                     <div className={css.userInfoLine}>
-                        <input
+              <input
+                autoComplete='off'
+                        onFocus={onFocus}
+                        onBlur={onBlur}
+                        ref={nameInput}
                         className={css.userInput}
-                        type={`text`}
-                        value={userName}
+                        type='text'
+                        value={name}
                         name="name"
-                        onChange={handleInputChange}
-                        validationSchema={validationSchema}
-                        // pattern={validationSchema}
+                        onChange={onChange}
+                        pattern=".{3,12}"
+                        title="Поле может содержать от 3 до 12 символов"
+                        required
                         />
-                        <ChabgeInputButton />
-                    </div>
-
-                    <div className={css.userInfoLine}>
-                        <input
-                        className={css.userInput}
-                        type={`text`}
-                        value={userEmail}
-                        name="email"
-                        onChange={handleInputChange}
-                        // pattern={validationSchema}
-                        />
-                        <ChabgeInputButton />
+                        <ChabgeInputButton onChange={onClick} />
                     </div>
                     
-                    <div className={css.buttonsBlock}>
-                        <button className={css.buttonSubmit}>Применить</button>
-                        <button onClick={onClose} className={css.buttonCancel}>Отменить</button>
+            <div className={css.buttonsBlock}>
+              {isVisible && (
+                         <>
+                         <button className={css.buttonSubmit}>Применить</button>
+                         <button onClick={onCancel} className={css.buttonCancel}>Отменить</button>
+                        </>
+              )}
+                        
                     </div>
                 </form>
                 <AvatarUploader/>
