@@ -28,6 +28,7 @@ import style from './DashboardPage.module.scss';
 
 const DashboardPage = () => {
   const minTablet = useMediaQuery(mediaBreakpoints.minTablet);
+  const minDesktop = useMediaQuery(mediaBreakpoints.minDesktop);
   const token = useSelector(state => authSelectors.getToken(state));
   const dispatch = useDispatch();
   const { pathname } = useLocation();
@@ -72,7 +73,7 @@ const DashboardPage = () => {
           {/* <AvatarUploader/> */}
           <div className={style.container}>
             <Sidebar />
-            <Divider />
+            {minDesktop && <Divider />}
             <main>
               {/* <Suspense fallback={<Spinner />}> */}
               <Suspense fallback={null}>
