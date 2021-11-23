@@ -11,7 +11,6 @@ import CommentInput from "./CommentInput";
 import Select from "./Select";
 import SwitchComponent from "./SwitchComponent";
 import MainButton from "../../UI/buttons/MainButton";
-// import Calendar from "../Calendar";
 import css from "./EditTransactionForm.module.scss";
  
 const EditTransactionForm = ({ onClose, operationId, type, category, comment, amount }) => {

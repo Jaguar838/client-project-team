@@ -1,12 +1,7 @@
-import { useState } from 'react';
 import Switch from './Switch';
 import styles from './styles.module.scss';
 
 const SwitchComponent = ({onChange,checked}) => {
-  const [isChecked, setIsChecked] = useState(false);
-  // const onChange = () => {
-  //   setIsChecked(!isChecked);
-  // };
 
   return (
     <div className={styles.block}>

@@ -19,6 +19,7 @@ import customStyles from './CustomStyles/customStyles';
 import SvgIcon from '../../UI/SvgIcon';
 
 const AddTransaction = ({ onClose }) => {
+  
   const [checkBox, setCheckBox] = useState(true);
   const [selectedOption, setSelectedOption] = useState({
     value: null,
@@ -31,19 +32,19 @@ const AddTransaction = ({ onClose }) => {
   const handleChange = () => {
     setCheckBox(!checkBox);
   };
-
+  
   const sort = arr => {
     let optionsSpend = [];
     arr.forEach(({ id, name }) =>
-      optionsSpend.push({
-        value: id,
-        label: name,
-      }),
+    optionsSpend.push({
+      value: id,
+      label: name,
+    }),
     );
     return optionsSpend;
   };
-
-  const currentDate = new Date().toLocaleDateString();
+  const date=new Date()
+  const currentDate=new Date(Math.floor(date / 1000 / 60 / 60 / 24 - date.getTimezoneOffset() / 60 / 24 + 1,) * 1000 * 60 * 60 * 24 - 1,)
   const IdCategory = !checkBox ? selectedOption.value : idIncomes.id;
 
   return (
@@ -64,7 +65,6 @@ const AddTransaction = ({ onClose }) => {
           validationSchema={schema}
           onSubmit={(values, { resetForm }) => {
             dispatch(addTransaction(values));
-            // alert(JSON.stringify(values, null, 2));
             resetForm();
             onClose();
           }}
@@ -104,9 +104,10 @@ const AddTransaction = ({ onClose }) => {
 
                 <Calendar
                   name="date"
-                  selected={values.date}
+            
+                  // selected={values.date}
                   onChange={date =>
-                    setFieldValue('date', date.toLocaleDateString())
+                    setFieldValue('date', date=new Date(Math.floor(date / 1000 / 60 / 60 / 24 - date.getTimezoneOffset() / 60 / 24 + 1,) * 1000 * 60 * 60 * 24 - 1,))
                   }
                 />
               </div>
