@@ -3,7 +3,7 @@ const customStyles = {
     ...provided,
     color: state.isSelected || state.isFocused ? '#FF6596' : '#000000',
     backgroundColor:
-      state.isSelected || state.isFocused ? '#FFFFFF' : 'inherit',
+      state.isSelected || state.isFocused ? '#ffe0f2' : '#FFFFFF',
     paddingLeft: 20,
     paddingTop: 13,
     height: 44,
@@ -62,6 +62,34 @@ const customStyles = {
 
     borderRadius: 20,
     boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
+
+    '::-webkit-scrollbar': {
+      height: '100%',
+      width: 5,
+      backgroundColor: 'transparent',
+    },
+
+    '::-webkit-scrollbar-track-piece:corner-present': {
+      marginTop: 12,
+    },
+    '::-webkit-scrollbar-track-piece:start': {
+      background: 'transparent',
+      marginTop: 10,
+      overflow: 'hidden',
+    },
+
+    '::-webkit-scrollbar-track-piece:end': {
+      backgroundColor: 'transparent',
+      marginBottom: 10,
+    },
+    '::-webkit-scrollbar-thumb': {
+      borderRadius: 10,
+      backgroundColor: '#ff96d9',
+    },
+    '::-webkit-scrollbar-track': {
+      borderRadius: 20,
+      backgroundColor: 'transparent',
+    },
   }),
   container: provided => ({
     ...provided,
@@ -71,9 +99,11 @@ const customStyles = {
     cursor: 'pointer',
     '&:hover': {
       borderColor: '#24CCA7',
+      // backgroundColor: 'green',
     },
     '&:focus': {
       borderColor: '#24CCA7',
+      // backgroundColor: 'green',
     },
   }),
   singleValue: provided => ({
