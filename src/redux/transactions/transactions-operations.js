@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { createAsyncThunk, createAction } from '@reduxjs/toolkit';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import { BASE_URL } from '../../assets/constants';
 axios.defaults.baseURL = BASE_URL;
 
@@ -14,7 +14,6 @@ const getTransactionOperation = createAsyncThunk(
     try {
       setToken(token);
       const { data } = await axios.get(`api/transactions?limit=5&page=${page}&sortByDesc=date%7CCreatedAt`);
-      console.log(data.data);
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
