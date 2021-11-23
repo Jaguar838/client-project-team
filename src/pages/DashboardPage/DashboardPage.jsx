@@ -113,7 +113,7 @@ const DashboardPage = () => {
                     )
                   }
                 </MediaQuery>
-                {(pathname === '/dashboard/home' || pathname === '/dashboard') && !totalPages && (
+                {(pathname === '/dashboard/home' || pathname === '/dashboard') && (
                   <Pagination totalPages={totalPages} />
                 )}
                 
