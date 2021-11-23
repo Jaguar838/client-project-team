@@ -29,6 +29,9 @@ const getTransactionStats = createAsyncThunk(
       });
       return data;
     } catch (error) {
+      if (error.response.statusText === 'Unauthorized') {
+        window.location.reload()
+      }
       return thunkAPI.rejectWithValue();
     }
   },

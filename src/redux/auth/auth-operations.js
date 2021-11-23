@@ -50,6 +50,9 @@ const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     await axios.post('api/users/logout');
     token.unset();
   } catch (error) {
+    if (error.response.statusText === 'Unauthorized') {
+        window.location.reload()
+      }
     return thunkAPI.rejectWithValue();
   }
 });
