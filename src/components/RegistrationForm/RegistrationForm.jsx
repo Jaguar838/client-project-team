@@ -88,6 +88,7 @@ const RegistrationForm = () => {
               value={values.password}
               id="password"
               placeholder="Пароль"
+              autoComplete="off"
             />
             {touched.password && errors.password && (
               <p className={'error'}>{errors.password}</p>

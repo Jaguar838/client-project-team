@@ -77,6 +77,7 @@ const LoginForm = () => {
               value={values.password}
               id="password"
               placeholder="Пароль"
+              autoComplete="off"
             />
             {touched.password && errors.password && (
               <p className={'loginError'}>{errors.password}</p>
