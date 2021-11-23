@@ -35,11 +35,11 @@ const DashboardPage = () => {
   const page = useSelector(getPage);
   const totalPages = useSelector(getTotalPages);
 
-  const currentPage = page===null ? 1 : page;
+  // const currentPage = page===null ? 1 : page;
   useEffect(() => {
     dispatch(apiOperations.getCategories());
-    dispatch(getTransactionOperation({ token, currentPage }));
-  }, [dispatch, currentPage, token]);
+    dispatch(getTransactionOperation({ token, page }));
+  }, [dispatch, page, token]);
 
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
     useState(false);

@@ -5,7 +5,6 @@ import {getCategories} from '../../redux/categories/categories-selectors';
 import {getPage} from '../../redux/transactions/transactions-selectors';
 import PropTypes from 'prop-types'
 import ValidationEdit from "./ValidationEditForm";
-import { paginationTransaction } from "../../redux/transactions/transactions-slice";
 import { editTransaction } from "../../redux/transactions/transactions-operations";
 import BtnClose from "./BtnClose";
 import TextInput from "./TextInput";
@@ -16,7 +15,7 @@ import MainButton from "../../UI/buttons/MainButton";
 import css from "./EditTransactionForm.module.scss";
  
 const EditTransactionForm = ({ onClose, operationId, type, category, comment, amount }) => {
-    const checked = true ? type === "+" : false;
+    const checked = type === "+" ? true : false;
     const [checkBox, setCheckBox] = useState(checked);
     const categories = useSelector(state => getCategories(state));
     const page = useSelector(getPage);
@@ -24,11 +23,18 @@ const EditTransactionForm = ({ onClose, operationId, type, category, comment, am
     const idExpenses = categories.expenses.find(operation => operation.name === category);
     const schema = ValidationEdit();
     const dispatch = useDispatch();
+
     const handleChange = () => {
         setCheckBox(!checkBox)
     };
-
-    const IdCategory = !checkBox ? idExpenses.id : idIncomes.id;
+    
+    let IdCategory;
+    if (checked) {
+     IdCategory = checkBox ? idIncomes.id : '';
+    };
+    if (!checked) {
+        IdCategory = !checkBox ? idExpenses.id : idIncomes.id;
+    };
     
     return (
         <>
@@ -49,9 +55,7 @@ const EditTransactionForm = ({ onClose, operationId, type, category, comment, am
                     }}
                     validationSchema={schema}
                     onSubmit={(values, { resetForm }) => {
-                        dispatch(paginationTransaction(1));
-                        dispatch(editTransaction({operationId,values}));
-                        dispatch(paginationTransaction(page));
+                        dispatch(editTransaction({ operationId, values, page }));
                         resetForm();
                         onClose()
                     }}
