@@ -80,7 +80,7 @@ const UserInfoPopup = ({ onClose, avatar }) => {
             <div className={css.popupContent}>
                 <div className={css.topBlock}/>
                 <div className={css.avatarBlock}>
-                {userAvatarUrl ?
+                {userAvatarUrl !== null ?
                   <img className={css.userAvatar} src={`${BASE_URL}${userAvatarUrl}`} alt={userName}/> 
                   :
                   <img className={css.userAvatar} src={avatar} alt={userName}/> 
@@ -102,7 +102,7 @@ const UserInfoPopup = ({ onClose, avatar }) => {
                         title="Поле может содержать от 3 до 12 символов"
                         required
                         />
-                      {isVisible && (
+                      {userName && (
                       <ChabgeInputButton onChange={onClick} />
                       )}  
                     </div>
