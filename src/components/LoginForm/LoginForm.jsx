@@ -11,10 +11,10 @@ import * as yup from 'yup';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const validationLoginSchema = yup.object().shape({
+  const validationSchema = yup.object().shape({
     email: yup.string().email('Введите верный email').required('Обязательно'),
     password: yup
-      .string()
+      .string().min(6)
       .typeError('Должно быть строкой')
       .required('Обязательно'),
   });
@@ -34,7 +34,7 @@ const LoginForm = () => {
       }}
       validateOnBlur
       onSubmit={handleSubmit}
-      validationLoginSchema={validationLoginSchema}
+      validationSchema={validationSchema}
     >
       {({
         values,
@@ -63,7 +63,7 @@ const LoginForm = () => {
               placeholder="E-mail"
             />
             {touched.email && errors.email && (
-              <p class={'Error'}>{errors.email}</p>
+              <p className={'loginError'}>{errors.email}</p>
             )}
             <SvgIcon iconName={'email'} />
           </div>
@@ -79,7 +79,7 @@ const LoginForm = () => {
               placeholder="Пароль"
             />
             {touched.password && errors.password && (
-              <p class={'Error'}>{errors.password}</p>
+              <p className={'loginError'}>{errors.password}</p>
             )}
             <SvgIcon iconName={'password'} />
           </div>
