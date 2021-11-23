@@ -4,11 +4,11 @@ import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { mediaBreakpoints } from '../../../assets/constants';
 
 const LogoutButton = ({ onClick }) => {
-  const minTablet = useMediaQuery(mediaBreakpoints.minTablet);
+  const minDesktop = useMediaQuery(mediaBreakpoints.minDesktop);
   return (
     <button className={styles.button} onClick={onClick}>
       <SvgIcon iconName="logout" />
-      {minTablet && <span className={styles.text}>Выйти</span>}
+      {minDesktop && <span className={styles.text}>Выйти</span>}
     </button>
   );
 };

@@ -10,17 +10,18 @@ const setToken = token => {
 
 const getTransactionOperation = createAsyncThunk(
   'transactions/getFinance',
-  async ({token, currentPage, thunkAPI}) => {
+  async ({ token, currentPage, thunkAPI }) => {
     try {
       setToken(token);
-      const { data } = await axios.get(`api/transactions?limit=5&page=${currentPage}&sortByDesc=date%7CCreatedAt`);
+      const { data } = await axios.get(
+        `api/transactions?limit=5&page=${currentPage}&sortByDesc=date%7CCreatedAt`,
+      );
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
   },
 );
-
 
 const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
@@ -43,18 +44,27 @@ const deleteTransaction = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
-  });
+  },
+);
 
 const editTransaction = createAsyncThunk(
   'transactions/editContact',
-  async ({operationId, values, thunkAPI}) => {
+  async ({ operationId, values, thunkAPI }) => {
     try {
-      const { data } = await axios.patch(`api/transactions/${operationId}`, values);
+      const { data } = await axios.patch(
+        `api/transactions/${operationId}`,
+        values,
+      );
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
-  });
+  },
+);
 
-export { getTransactionOperation, addTransaction, editTransaction, deleteTransaction };
-
+export {
+  getTransactionOperation,
+  addTransaction,
+  editTransaction,
+  deleteTransaction,
+};
