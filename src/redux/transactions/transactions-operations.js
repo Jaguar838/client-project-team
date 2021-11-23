@@ -10,6 +10,7 @@ const setToken = token => {
 
 const getTransactionOperation = createAsyncThunk(
   'transactions/getFinance',
+
   async ({token, page, thunkAPI}) => {
     try {
       setToken(token);
@@ -20,7 +21,6 @@ const getTransactionOperation = createAsyncThunk(
     }
   },
 );
-
 
 const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
@@ -43,7 +43,8 @@ const deleteTransaction = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
-  });
+  },
+);
 
 const editTransaction = createAsyncThunk(
   'transactions/editContact',
@@ -54,7 +55,12 @@ const editTransaction = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue();
     }
-  });
+  },
+);
 
-export { getTransactionOperation, addTransaction, editTransaction, deleteTransaction };
-
+export {
+  getTransactionOperation,
+  addTransaction,
+  editTransaction,
+  deleteTransaction,
+};
