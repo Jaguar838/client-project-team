@@ -29,6 +29,9 @@ const addTransaction = createAsyncThunk(
       const { data } = await axios.post('api/transactions', transaction);
       return data.data;
     } catch (error) {
+      if (error.response.statusText === 'Unauthorized') {
+        window.location.reload()
+      }
       return thunkAPI.rejectWithValue();
     }
   },
@@ -41,6 +44,9 @@ const deleteTransaction = createAsyncThunk(
       const { data } = await axios.delete(`api/transactions/${transactionId}`);
       return data.data;
     } catch (error) {
+      if (error.response.statusText === 'Unauthorized') {
+        window.location.reload()
+      }
       return thunkAPI.rejectWithValue();
     }
   });
@@ -52,6 +58,9 @@ const editTransaction = createAsyncThunk(
       const { data } = await axios.patch(`api/transactions/${operationId}`, values);
       return data.data;
     } catch (error) {
+      if (error.response.statusText === 'Unauthorized') {
+        window.location.reload()
+      }
       return thunkAPI.rejectWithValue();
     }
   });
