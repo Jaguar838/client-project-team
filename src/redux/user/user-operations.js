@@ -10,7 +10,9 @@ const changeUserName = createAsyncThunk(
       const { data } = await axios.patch('api/users', { name });
       return data.data.name;
     } catch (error) {
-      console.log(error);
+      if (error.response.statusText === 'Unauthorized') {
+        window.location.reload()
+      }
       return thunkAPI.rejectWithValue();
     }
   },

@@ -136,7 +136,7 @@
   height: 8vh;
 }
 
-.tr:not(:first-child) {
+.tr:not(:last-child) {
   border-bottom: 1px solid $border-table;
   box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 }
