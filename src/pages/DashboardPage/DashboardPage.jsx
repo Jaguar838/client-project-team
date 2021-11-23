@@ -3,6 +3,7 @@ import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import apiOperations from '../../redux/categories/categories-operations';
 import { getTransactionOperation } from '../../redux/transactions/transactions-operations';
+import { getPage, getTotalPages } from "../../redux/transactions/transactions-selectors";
 import authSelectors from '../../redux/auth/auth-selectors';
 import transactionSelectors from '../../redux/transactions/transactions-selectors';
 import { getIsLoading } from '../../redux/categories/categories-selectors';
@@ -15,6 +16,7 @@ import StatisticsTab from '../../components/Statistics/StatisticsTab';
 import Container from '../../components/Container';
 import Divider from '../../UI/Divider';
 import ModalUI from '../../UI/ModalUI';
+import Pagination from "../../UI/Pagination";
 import AddTransaction from '../../components/AddTransaction';
 import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
 
@@ -30,11 +32,13 @@ const DashboardPage = () => {
   const token = useSelector(state => authSelectors.getToken(state));
   const dispatch = useDispatch();
   const { pathname } = useLocation();
-
+  const page = useSelector(getPage);
+  const totalPages = useSelector(getTotalPages);
+  
   useEffect(() => {
     dispatch(apiOperations.getCategories());
-    dispatch(getTransactionOperation(token));
-  }, []);
+    dispatch(getTransactionOperation({token, page}));
+  }, [dispatch, page, token]);
 
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
     useState(false);
@@ -108,6 +112,7 @@ const DashboardPage = () => {
                     )
                   }
                 </MediaQuery>
+                <Pagination totalPages={totalPages}/>
               </Suspense>
               {/* { (pathname==='/dashboard/home' || pathname==='/dashboard') &&
                 <AddTransactionButton onChange={() => handleChange} />
