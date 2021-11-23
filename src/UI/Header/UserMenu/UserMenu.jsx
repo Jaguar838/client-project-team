@@ -15,7 +15,7 @@ const UserMenu = ({ onClickUserInfoButton, onClick, name, avatar }) => {
         <div className={css.userMenuContainer}>
             <button type="button" onClick={onClickUserInfoButton} className={css.userInfoButton}>
               {userAvatarUrl ?
-                <img className={css.userAvatar} src={`${BASE_URL}${userAvatarUrl}`} alt={name}/> 
+                <img className={css.userAvatar} src={`${BASE_URL}${userAvatarUrl}`} alt={userName}/> 
                 :
                 <img className={css.userAvatar} src={avatar} alt={name}/>
               }

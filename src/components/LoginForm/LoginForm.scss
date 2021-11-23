@@ -62,7 +62,8 @@
 .loginForm {
   display: flex;
   flex-direction: column;
-
+  min-height: 568px;
+  height: 100vh;
   margin: 0;
   padding: 110px 20px;
   background: #fff;
@@ -75,6 +76,7 @@
     width: 540px;
     max-width: 540px;
     height: 468px;
+    min-height: 468px;
     padding: 40px 65px 60px 65px;
     border-radius: 20px;
   }

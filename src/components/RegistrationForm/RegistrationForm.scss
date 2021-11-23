@@ -63,18 +63,12 @@
 .form {
   display: flex;
   flex-direction: column;
-
+  min-height: 616px;
+  height: 100vh;
   margin: 0;
   padding: 36px 20px;
 
   background: #fff;
-  // width: 540px;
-  // height: 616px;
-  // padding: 40px 65px 60px 65px;
-  // margin-top: 52px;
-  // margin-bottom: 52px;
-  // margin-left: 95px;
-  // border-radius: 20px;
 
   @media screen and (min-width: $max-mobile) {
     max-width: $max-mobile;

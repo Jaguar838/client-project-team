@@ -9,15 +9,17 @@ import PropTypes from "prop-types";
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 
+import { BASE_URL } from '../../../assets/constants';
+
 import css from './UserInfoPopup.module.scss'
 import defaultAvatar from "../UserMenu/user.png";
 
 const modalRoot = document.querySelector('#root-modal');
 
 const UserInfoPopup = ({ onClose, avatar }) => {
-  // const userAvatar = useSelector(state => authSelectors.getUserAvatar(state));
-    const userName = useSelector(state => authSelectors.getUsername(state));
-    const userEmail = useSelector(state => authSelectors.getUserEmail(state));
+  const userAvatarUrl = useSelector(state => authSelectors.getAvatar(state));
+  const userName = useSelector(state => authSelectors.getUsername(state));
+  const userEmail = useSelector(state => authSelectors.getUserEmail(state));
 
     const dispatch = useDispatch();
     const windowListener = useRef(null);
@@ -78,12 +80,11 @@ const UserInfoPopup = ({ onClose, avatar }) => {
             <div className={css.popupContent}>
                 <div className={css.topBlock}/>
                 <div className={css.avatarBlock}>
-                {/* {userAvatar ?
-                  <img className={css.userAvatar} src={userAvatar} alt={userName}/> 
+                {userAvatarUrl ?
+                  <img className={css.userAvatar} src={`${BASE_URL}${userAvatarUrl}`} alt={userName}/> 
                   :
                   <img className={css.userAvatar} src={avatar} alt={userName}/> 
-                } */}
-                <img className={css.userAvatar} src={avatar} alt={userName}/>
+                }
                 </div>
                         <p className={css.userEmail}>{userEmail}</p>
                 <form className={css.userForm} onSubmit={onSubmit}>
@@ -101,7 +102,9 @@ const UserInfoPopup = ({ onClose, avatar }) => {
                         title="Поле может содержать от 3 до 12 символов"
                         required
                         />
-                        <ChabgeInputButton onChange={onClick} />
+                      {isVisible && (
+                      <ChabgeInputButton onChange={onClick} />
+                      )}  
                     </div>
                     
             <div className={css.buttonsBlock}>
