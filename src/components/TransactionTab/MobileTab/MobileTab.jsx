@@ -10,12 +10,12 @@ import styles from './MobileTab.module.scss';
 const MobileTab = () => {
   const transactions = useSelector(state => getAllTransactions(state));
   // const isLoading = useSelector(state => getLoader(state));
-  let filterTrans = [...transactions];
-  filterTrans.sort((a, b) => (a.date > b.date ? -1 : 1));
+  // let filterTrans = [...transactions];
+  // filterTrans.sort((a, b) => (a.date > b.date ? -1 : 1));
 
   return (
     <div className={styles.container}>
-      {filterTrans?.map(item => {
+      {transactions?.map(item => {
         // const checked = () => {
         //   if (!item.category) {
         //     return 'sorry';
