@@ -5,10 +5,10 @@ import { getCategories } from '../../redux/categories/categories-selectors';
 import PropTypes from 'prop-types';
 import ValidationTransaction from './ValidationTransaction';
 import { addTransaction } from '../../redux/transactions/transactions-operations';
+import { getPage } from '../../redux/transactions/transactions-selectors';
 import BtnClose from './BtnClose';
 import TextInput from './TextInput';
 import CommentInput from './CommentInput';
-// import Select from "./Select";
 import SwitchComponent from './SwitchComponent';
 import MainButton from '../../UI/buttons/MainButton';
 import Calendar from '../Calendar';
@@ -26,6 +26,7 @@ const AddTransaction = ({ onClose }) => {
     label: '',
   });
   const categories = useSelector(state => getCategories(state));
+  const page = useSelector(getPage);
   const idIncomes = categories.incomes.find(category => category.id);
   const schema = ValidationTransaction();
   const dispatch = useDispatch();
@@ -64,7 +65,7 @@ const AddTransaction = ({ onClose }) => {
           }}
           validationSchema={schema}
           onSubmit={(values, { resetForm }) => {
-            dispatch(addTransaction(values));
+            dispatch(addTransaction({values,page}));
             resetForm();
             onClose();
           }}
