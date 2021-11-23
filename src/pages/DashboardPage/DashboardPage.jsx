@@ -34,11 +34,12 @@ const DashboardPage = () => {
   const { pathname } = useLocation();
   const page = useSelector(getPage);
   const totalPages = useSelector(getTotalPages);
-  
+
+  const currentPage = page===null ? 1 : page;
   useEffect(() => {
     dispatch(apiOperations.getCategories());
-    dispatch(getTransactionOperation({token, page}));
-  }, [dispatch, page, token]);
+    dispatch(getTransactionOperation({ token, currentPage }));
+  }, [dispatch, currentPage, token]);
 
   const [isModalAddTransactionOpen, setIsModalAddTransactionOpen] =
     useState(false);
@@ -112,7 +113,10 @@ const DashboardPage = () => {
                     )
                   }
                 </MediaQuery>
-                <Pagination totalPages={totalPages}/>
+                {(pathname === '/dashboard/home' || pathname === '/dashboard') && (
+                  <Pagination totalPages={totalPages} />
+                )}
+                
               </Suspense>
               {/* { (pathname==='/dashboard/home' || pathname==='/dashboard') &&
                 <AddTransactionButton onChange={() => handleChange} />
