@@ -57,11 +57,12 @@
   width: 80px;
   border: 5px solid #24cca7;
   border-radius: 50%;
+  overflow: hidden;
 
   @media screen and (min-width: $tablet) {
-    top: 22px;
-    left: 190px;
-    width: 100px;
+    top: 15px;
+    left: 180px;
+    width: 120px;
   }
 }
 
