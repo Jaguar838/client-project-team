@@ -10,10 +10,10 @@ const setToken = token => {
 
 const getTransactionOperation = createAsyncThunk(
   'transactions/getFinance',
-  async ({token, page, thunkAPI}) => {
+  async ({token, currentPage, thunkAPI}) => {
     try {
       setToken(token);
-      const { data } = await axios.get(`api/transactions?limit=5&page=${page}&sortByDesc=date%7CCreatedAt`);
+      const { data } = await axios.get(`api/transactions?limit=5&page=${currentPage}&sortByDesc=date%7CCreatedAt`);
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue();

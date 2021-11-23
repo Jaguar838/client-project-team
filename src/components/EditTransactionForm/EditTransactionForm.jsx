@@ -2,8 +2,10 @@ import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import {getCategories} from '../../redux/categories/categories-selectors';
+import {getPage} from '../../redux/transactions/transactions-selectors';
 import PropTypes from 'prop-types'
 import ValidationEdit from "./ValidationEditForm";
+import { paginationTransaction } from "../../redux/transactions/transactions-slice";
 import { editTransaction } from "../../redux/transactions/transactions-operations";
 import BtnClose from "./BtnClose";
 import TextInput from "./TextInput";
@@ -17,6 +19,7 @@ const EditTransactionForm = ({ onClose, operationId, type, category, comment, am
     const checked = true ? type === "+" : false;
     const [checkBox, setCheckBox] = useState(checked);
     const categories = useSelector(state => getCategories(state));
+    const page = useSelector(getPage);
     const idIncomes = categories.incomes.find(category => category.id);
     const idExpenses = categories.expenses.find(operation => operation.name === category);
     const schema = ValidationEdit();
@@ -41,13 +44,14 @@ const EditTransactionForm = ({ onClose, operationId, type, category, comment, am
                     enableReinitialize
                     initialValues={{
                         amount: amount,
-                        // date: new Date(),
                         comment: comment,
                         category: IdCategory,
                     }}
                     validationSchema={schema}
                     onSubmit={(values, { resetForm }) => {
+                        dispatch(paginationTransaction(1));
                         dispatch(editTransaction({operationId,values}));
+                        dispatch(paginationTransaction(page));
                         resetForm();
                         onClose()
                     }}
@@ -84,12 +88,6 @@ const EditTransactionForm = ({ onClose, operationId, type, category, comment, am
                                     type="number"
                                     placeholder={amount}
                                 />
-                   
-                                {/* <Calendar
-                                    name="date"
-                                    selected={values.date}
-                                    onChange={date => setFieldValue('date', date)}
-                                /> */}
                             </div>
                         
                             <CommentInput
