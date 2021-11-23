@@ -21,9 +21,25 @@
     flex-direction: column;
   }
 }
-.form :first-child {
-  margin-right: 20px;
+// .form :first-child {
+//   @media screen and (max-width: $max-mobile) {
+//     margin-bottom: 20px;
+//   }
+// }
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+
+  @media screen and (min-width: $max-mobile) {
+    &:not(:last-child) {
+      margin-right: 14px;
+    }
+  }
+
   @media screen and (max-width: $max-mobile) {
-    margin-bottom: 20px;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
   }
 }
