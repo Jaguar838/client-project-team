@@ -9,14 +9,21 @@ import {
 const initialState = {
   finance: [],
   years: [],
+  page: 1,
+  totalPages: '',
   isLoading: false,
   error: false,
 };
 
+
 const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
-  reducers: {},
+  reducers: {
+    paginationTransaction: (state, action) => {
+      state.page = action.payload
+    },
+  },
   extraReducers: {
     [getTransactionOperation.pending](state, action) {
       state.isLoading = true;
@@ -31,6 +38,7 @@ const transactionsSlice = createSlice({
     [getTransactionOperation.fulfilled](state, action) {
       state.finance = [...action.payload.transactions];
       state.years = [...action.payload.years];
+      state.totalPages = action.payload.pageInfo.totalPages;
       state.isLoading = false;
     },
     [addTransaction.pending](state, action) {
@@ -72,4 +80,5 @@ const transactionsSlice = createSlice({
   },
 });
 
+export const {paginationTransaction} = transactionsSlice.actions;
 export default transactionsSlice.reducer;
