@@ -11,10 +11,12 @@ const setToken = token => {
 const getTransactionOperation = createAsyncThunk(
   'transactions/getFinance',
 
-  async ({token, page, thunkAPI}) => {
+  async ({ token, page }, thunkAPI) => {
     try {
       setToken(token);
-      const { data } = await axios.get(`api/transactions?limit=5&page=${page}&sortByDesc=date%7CCreatedAt`);
+      const { data } = await axios.get(
+        `api/transactions?limit=5&page=${page}&sortByDesc=date%7CCreatedAt`,
+      );
       return data.data;
     } catch (error) {
       return thunkAPI.rejectWithValue();
@@ -26,11 +28,14 @@ const addTransaction = createAsyncThunk(
   'transactions/addTransaction',
   async ({ values, page, thunkAPI }) => {
     try {
-      const { data } = await axios.post(`api/transactions?limit=5&page=${page}&sortByDesc=date%7CCreatedAt`, values);
+      const { data } = await axios.post(
+        `api/transactions?limit=5&page=${page}&sortByDesc=date%7CCreatedAt`,
+        values,
+      );
       return data.data;
     } catch (error) {
       if (error.response.statusText === 'Unauthorized') {
-        window.location.reload()
+        window.location.reload();
       }
       return thunkAPI.rejectWithValue();
     }
@@ -41,11 +46,13 @@ const deleteTransaction = createAsyncThunk(
   'transactions/deleteContact',
   async ({ operationId, page, thunkAPI }) => {
     try {
-      const { data } = await axios.delete(`api/transactions/${operationId}?limit=5&page=${page}&sortByDesc=date%7CCreatedAt`);
+      const { data } = await axios.delete(
+        `api/transactions/${operationId}?limit=5&page=${page}&sortByDesc=date%7CCreatedAt`,
+      );
       return data.data;
     } catch (error) {
       if (error.response.statusText === 'Unauthorized') {
-        window.location.reload()
+        window.location.reload();
       }
       return thunkAPI.rejectWithValue();
     }
@@ -54,13 +61,16 @@ const deleteTransaction = createAsyncThunk(
 
 const editTransaction = createAsyncThunk(
   'transactions/editContact',
-  async ({operationId, values, page, thunkAPI}) => {
+  async ({ operationId, values, page, thunkAPI }) => {
     try {
-      const { data } = await axios.patch(`api/transactions/${operationId}?limit=5&page=${page}&sortByDesc=date%7CCreatedAt`, values);
+      const { data } = await axios.patch(
+        `api/transactions/${operationId}?limit=5&page=${page}&sortByDesc=date%7CCreatedAt`,
+        values,
+      );
       return data.data;
     } catch (error) {
       if (error.response.statusText === 'Unauthorized') {
-        window.location.reload()
+        window.location.reload();
       }
       return thunkAPI.rejectWithValue();
     }
