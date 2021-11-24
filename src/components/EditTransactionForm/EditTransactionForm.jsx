@@ -62,6 +62,18 @@ const EditTransactionForm = ({
 
   const IdCategory = !checkBox ? selectedOption.value : idIncomes.id;
 
+  let findCategory = categoryFind(category);
+
+  const onHandleChange = () => {
+    setTimeout(() => {
+      if (!selectedOption.value) {
+        setSelectedOption(findCategory);
+      }
+    }, 1000);
+
+    return;
+  };
+
   return (
     <>
       <div className={css.transactionContainer}>
@@ -98,14 +110,11 @@ const EditTransactionForm = ({
               {!checkBox && (
                 <div className={css.inputWrapper}>
                   <Select
-                    defaultValue={categoryFind(category)}
+                    defaultValue={findCategory}
                     isOptionSelected={true}
                     name="selectedOption"
-                    onChange={
-                      !selectedOption.value
-                        ? setSelectedOption(categoryFind(category))
-                        : setSelectedOption
-                    }
+                    onCreateOption={onHandleChange()}
+                    onChange={setSelectedOption}
                     options={sort(categories.expenses)}
                     placeholder={categoryFind(category)}
                     styles={customStyles}
