@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Formik, Form } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import {getCategories} from '../../redux/categories/categories-selectors';

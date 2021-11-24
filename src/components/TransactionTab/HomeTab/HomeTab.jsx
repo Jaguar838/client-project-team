@@ -1,13 +1,16 @@
 import { useSelector } from 'react-redux';
-import {getAllTransactions} from '../../../redux/transactions/transactions-selectors';
+import {getAllTransactions, getTotalPages} from '../../../redux/transactions/transactions-selectors';
 import EditTransaction from "../../EditTransaction";
 import DeleteTransaction from "../../DeleteTransaction";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
+import Pagination from "../../../UI/Pagination";
 import styles from './HomeTab.module.scss';
 
 const HomeTab = () => {
   const transactions = useSelector(state => getAllTransactions(state));
+  const totalPages = useSelector(getTotalPages);
+  console.log(totalPages);
   // const isLoading = useSelector(state => getLoader(state));
   // let filterTrans = [...transactions];
   // filterTrans.sort((a, b) => (a.date > b.date ? -1 : 1));
@@ -59,6 +62,7 @@ const HomeTab = () => {
           })}
         </tbody>
       </table>
+      {totalPages>1 && <Pagination totalPages={totalPages} />}
     </div>
   );
 };

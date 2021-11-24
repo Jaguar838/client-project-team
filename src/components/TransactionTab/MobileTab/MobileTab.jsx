@@ -1,14 +1,17 @@
 import { useSelector } from 'react-redux';
 import {
   getAllTransactions,
+  getTotalPages
   // getLoader,
 } from '../../../redux/transactions/transactions-selectors';
 import EditTransaction from "../../EditTransaction";
 import DeleteTransaction from "../../DeleteTransaction";
+import Pagination from "../../../UI/Pagination";
 import styles from './MobileTab.module.scss';
 
 const MobileTab = () => {
   const transactions = useSelector(state => getAllTransactions(state));
+  const totalPages=useSelector(getTotalPages)
   // const isLoading = useSelector(state => getLoader(state));
   // let filterTrans = [...transactions];
   // filterTrans.sort((a, b) => (a.date > b.date ? -1 : 1));
@@ -69,6 +72,7 @@ const MobileTab = () => {
           </table>
         );
       })}
+       {totalPages>1 && <Pagination totalPages={totalPages} />}
     </div>
   );
 };

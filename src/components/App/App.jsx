@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
 import PrivateRoute from '../../routes/PrivateRouter';
 import PublicRoute from '../../routes/PublicRouter';
-import Spinner from '../../UI/Spinner/';
+// import Spinner from '../../UI/Spinner/';
 
 
 const LoginPage = lazy(() =>
