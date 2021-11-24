@@ -1,12 +1,12 @@
 import styles from './styles.module.scss';
 
-const Switch = ({ onChange, checked }) => {
+const Switch = ({ checked }) => {
   return (
     <label className={styles.toggleSwitch}>
       <input
         type="checkbox"
         checked={checked}
-        onChange={onChange}
+        readOnly
       />
       <span className={styles.switch}></span>
     </label>

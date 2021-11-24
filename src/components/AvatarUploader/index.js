@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import avatarOperations from '../../redux/avatar/avatar-operations';
 import authSelectors from '../../redux/auth/auth-selectors';
-import MainButton from '../../UI/buttons/MainButton';
+// import MainButton from '../../UI/buttons/MainButton';
 import styles from './styles.module.scss';
 
 const AvatarUploader = () => {
