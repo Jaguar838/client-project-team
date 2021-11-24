@@ -1,5 +1,7 @@
-import { CSSProperties } from 'react';
+// import { CSSProperties } from 'react';
 import { Fireworks, useFireworks } from 'fireworks-js/dist/react';
+import { ReactComponent as Shark } from "./shark.svg";
+import css from "./styles.module.scss";
 
 export default function FireworksCanvas() {
   const { enabled, options, setEnabled, setOptions } = useFireworks({
@@ -53,7 +55,7 @@ export default function FireworksCanvas() {
     },
   });
 
-  const style = {
+  const mainStyle = {
     top: 0,
     left: 0,
     width: '100%',
@@ -63,26 +65,46 @@ export default function FireworksCanvas() {
     zIndex: '1',
   };
 
+  const disabledStyle = {
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    position: 'fixed',
+    background: 'none',
+    // zIndex: '1',
+  };
+
+const style=!enabled ? mainStyle : disabledStyle
   // const toggleSound = () => {
   //   setOptions({ sound: { enabled: !options.sound?.enabled } });
   // };
 
+  const handleChange = () => {
+    setEnabled()
+    setOptions({ sound: { enabled: !options.sound?.enabled } });
+  }
+
   return (
-    <Fireworks style={style} enabled={enabled} options={options}>
+    <Fireworks style={style} enabled={!enabled} options={options}>
       <div
         style={{
           gap: '6px',
           padding: '6px',
           display: 'flex',
-          background: '#607d8b',
+          // background: '#607d8b',
         }}
       >
-        <button onClick={() => setEnabled()}>
+        {/* <button className={css.fireworksButton} onClick={() => setEnabled()}>
           Fireworks {enabled ? 'enabled' : 'disabled'}
         </button>
-        {/* <button onClick={() => toggleSound()}>
+        <button onClick={() => toggleSound()}>
           Sound {options.sound?.enabled ? 'enabled' : 'disabled'}
         </button> */}
+
+        <button className={css.fireworksButton} onClick={handleChange}>
+          <Shark width='80' height='60'/>
+        </button>
       </div>
     </Fireworks>
   );

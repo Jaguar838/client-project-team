@@ -8,3 +8,24 @@
   left: 0;
   right: 0;
 }
+
+.fireworksButton {
+  display: none;
+  @media screen and (min-width: $min-tablet) {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    z-index: 999;
+    opacity: 0.5;
+    transition: opacity 250ms cubic-bezier();
+
+    &:hover,
+    &:focus {
+      opacity: 1;
+    }
+  }
+}
