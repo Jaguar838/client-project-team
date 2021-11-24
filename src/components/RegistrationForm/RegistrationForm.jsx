@@ -8,23 +8,37 @@ import Logo from '../../UI/Logo';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import PasswordStrengthMete from './PasswordStrengthMeter';
-import  { Toaster  } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const RegistrationForm = () => {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
 
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+
+  const onCLick = (e) => {
+    e.preventDefault();
+    setIsPasswordHidden(!isPasswordHidden);
+  };
+
   const validationSchema = yup.object().shape({
     email: yup.string().email('Введите верный email').required('Обязательно'),
     password: yup
-      .string().min(6)
+      .string()
+      .min(6)
       .typeError('Должно быть строкой')
       .required('Обязательно'),
     confirmPassword: yup
       .string()
       .oneOf([yup.ref('password')], 'Пароли не совпадают')
       .required('Обязательно'),
-    name: yup.string().min(1).max(12).typeError('Должно быть строкой').required('Обязательно'),
+    name: yup
+      .string()
+      .min(1)
+      .max(15)
+      .typeError('Должно быть строкой')
+      .required('Обязательно'),
   });
 
   const handleSubmit = e => {
@@ -45,6 +59,7 @@ const RegistrationForm = () => {
       validateOnBlur
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
+      onCLick={onCLick}
     >
       {({
         values,
@@ -80,7 +95,7 @@ const RegistrationForm = () => {
           <div className="input-container password">
             <input
               className={'input'}
-              type={`password`}
+              type={isPasswordHidden ? 'password' : 'text'}
               name={`password`}
               onChange={handleChange}
               onInput={e => setPassword(e.target.value)}
@@ -90,6 +105,11 @@ const RegistrationForm = () => {
               placeholder="Пароль"
               autoComplete="off"
             />
+
+            <button className={'iconEye'} onClick={onCLick}>
+              {isPasswordHidden ? <BsEye /> : <BsEyeSlash />}
+            </button>
+
             {touched.password && errors.password && (
               <p className={'error'}>{errors.password}</p>
             )}
@@ -145,8 +165,8 @@ const RegistrationForm = () => {
               success: {
                 style: {
                   background: '#ffffff',
-                  color: '#000000'
-          },
+                  color: '#000000',
+                },
                 duration: 8000,
               },
               error: {
