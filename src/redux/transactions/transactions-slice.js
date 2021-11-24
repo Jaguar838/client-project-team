@@ -51,6 +51,7 @@ const transactionsSlice = createSlice({
     },
     [addTransaction.fulfilled](state, action) {
       state.finance = [...action.payload.transactions];
+      state.totalPages = action.payload.pageInfo.totalPages;
       state.isLoading = false;
     },
     [editTransaction.pending](state, action) {
@@ -63,6 +64,7 @@ const transactionsSlice = createSlice({
     },
     [editTransaction.fulfilled](state, action) {
       state.finance = [...action.payload.transactions];
+      state.totalPages = action.payload.pageInfo.totalPages;
       state.isLoading = false;
     },
     [deleteTransaction.pending](state, action) {
@@ -75,6 +77,7 @@ const transactionsSlice = createSlice({
     },
     [deleteTransaction.fulfilled](state, action) {
       state.finance = [...action.payload.transactions];
+      state.totalPages = action.payload.pageInfo.totalPages;
       state.isLoading = false;
     },
   },

@@ -16,7 +16,7 @@ import css from "./EditTransactionForm.module.scss";
  
 const EditTransactionForm = ({ onClose, operationId, type, category, comment, amount }) => {
     const checked = type === "+" ? true : false;
-    const [checkBox, setCheckBox] = useState(checked);
+    const checkBox = checked;
     const categories = useSelector(state => getCategories(state));
     const page = useSelector(getPage);
     const idIncomes = categories.incomes.find(category => category.id);
@@ -24,9 +24,6 @@ const EditTransactionForm = ({ onClose, operationId, type, category, comment, am
     const schema = ValidationEdit();
     const dispatch = useDispatch();
 
-    const handleChange = () => {
-        setCheckBox(!checkBox)
-    };
     
     let IdCategory;
     if (checked) {
@@ -44,7 +41,6 @@ const EditTransactionForm = ({ onClose, operationId, type, category, comment, am
 
                 <SwitchComponent
                     checked={checkBox}
-                    onChange={handleChange}
                 />
                 <Formik
                     enableReinitialize
