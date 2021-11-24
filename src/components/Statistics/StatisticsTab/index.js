@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import apiOperations from '../../../redux/categories/categories-operations';
 import { getTransactionOperation } from '../../../redux/transactions/transactions-operations';
 import authSelectors from '../../../redux/auth/auth-selectors';
+import transactionSelectors from '../../../redux/transactions/transactions-selectors';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import { mediaBreakpoints } from '../../../assets/constants';
 import {
@@ -19,10 +20,15 @@ import styles from './styles.module.scss';
 const StatisticsTab = () => {
   const minDesktop = useMediaQuery(mediaBreakpoints.minDesktop);
 
-  const balance = useSelector(state => authSelectors.getBalance(state));
-  const years = useSelector(state => getYears(state)) || [];
-  const categories = useSelector(state => getCategories(state));
-  const transactionStats = useSelector(state => getTransactionStats(state));
+  const balance = useSelector(authSelectors.getBalance);
+  const years = useSelector(getYears) || [];
+  const categories = useSelector(getCategories);
+  const transactionStats = useSelector(getTransactionStats);
+  const transactionHistory = useSelector(
+    transactionSelectors.getAllTransactions,
+  );
+  const page = useSelector(transactionSelectors.getPage);
+  const token = useSelector(authSelectors.getToken);
 
   const date = new Date();
   const [month, setMonth] = useState(() => date.getUTCMonth() + 1);
@@ -31,12 +37,13 @@ const StatisticsTab = () => {
 
   useEffect(() => {
     const params = { year, month };
-    dispatch(getTransactionOperation());
+    dispatch(getTransactionOperation({ token, page }));
     dispatch(apiOperations.getTransactionStats(params));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [month, year]);
 
   let data, totalForAllCategories;
+  const transactionsActivity = transactionHistory.length;
 
   if (categories.expenses && transactionStats.expenseStats) {
     data = categories.expenses.map((el, index) => {
@@ -98,7 +105,7 @@ const StatisticsTab = () => {
 
   return (
     <div className={styles.statsContainer}>
-      {data && balance !== 0 && (
+      {transactionsActivity !== 0 && data && (
         <>
           <h2 className={styles.title}>Статистика</h2>
           <div className={styles.statsWrapper}>
@@ -125,7 +132,7 @@ const StatisticsTab = () => {
           </div>
         </>
       )}
-      {balance === 0 && <NoStatsPlaceholder />}
+      {transactionsActivity === 0 && data && <NoStatsPlaceholder />}
     </div>
   );
 };

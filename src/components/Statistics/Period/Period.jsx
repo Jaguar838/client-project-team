@@ -26,7 +26,13 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
   const [monthState, setMonthState] = useState(
     () => allMonths[date.getUTCMonth() + 1].name,
   );
-  const [yearsState, setYearState] = useState(() => date.getFullYear());
+  // eslint-disable-next-line no-unused-vars
+  const [yearState, setYearState] = useState(() => date.getFullYear());
+
+  // eslint-disable-next-line no-unused-vars
+  const setMonthInputValue = () => {
+    return allMonths.find(el => el.name === monthState)
+  }
 
   const allYears = () => {
     const yearsArr = ['Год', ...years];
@@ -43,7 +49,7 @@ const Period = ({ setRequestedMonth, setRequestedYear, years }) => {
     const monthId = value;
     setMonthState(label);
 
-    if (monthId === '1') {
+    if (monthId === '0') {
       setRequestedMonth('');
       return;
     }

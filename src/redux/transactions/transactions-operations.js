@@ -11,7 +11,7 @@ const setToken = token => {
 const getTransactionOperation = createAsyncThunk(
   'transactions/getFinance',
 
-  async ({token, page, thunkAPI}) => {
+  async ({ token, page }, thunkAPI) => {
     try {
       setToken(token);
       const { data } = await axios.get(`api/transactions?limit=5&page=${page}&sortByDesc=date%7CcreatedAt`);
@@ -30,7 +30,7 @@ const addTransaction = createAsyncThunk(
       return data.data;
     } catch (error) {
       if (error.response.statusText === 'Unauthorized') {
-        window.location.reload()
+        window.location.reload();
       }
       return thunkAPI.rejectWithValue();
     }
@@ -45,7 +45,7 @@ const deleteTransaction = createAsyncThunk(
       return data.data;
     } catch (error) {
       if (error.response.statusText === 'Unauthorized') {
-        window.location.reload()
+        window.location.reload();
       }
       return thunkAPI.rejectWithValue();
     }
@@ -54,13 +54,13 @@ const deleteTransaction = createAsyncThunk(
 
 const editTransaction = createAsyncThunk(
   'transactions/editContact',
-  async ({operationId, values, page, thunkAPI}) => {
+  async ({ operationId, values, page, thunkAPI }) => {
     try {
       const { data } = await axios.patch(`api/transactions/${operationId}?limit=5&page=${page}&sortByDesc=date%7CcreatedAt`, values);
       return data.data;
     } catch (error) {
       if (error.response.statusText === 'Unauthorized') {
-        window.location.reload()
+        window.location.reload();
       }
       return thunkAPI.rejectWithValue();
     }
