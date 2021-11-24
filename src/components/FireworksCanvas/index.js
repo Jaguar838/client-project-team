@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+// import { CSSProperties } from 'react';
 import { Fireworks, useFireworks } from 'fireworks-js/dist/react';
 import { ReactComponent as Shark } from "./shark.svg";
 import css from "./styles.module.scss";
@@ -76,9 +76,9 @@ export default function FireworksCanvas() {
   };
 
 const style=!enabled ? mainStyle : disabledStyle
-  const toggleSound = () => {
-    setOptions({ sound: { enabled: !options.sound?.enabled } });
-  };
+  // const toggleSound = () => {
+  //   setOptions({ sound: { enabled: !options.sound?.enabled } });
+  // };
 
   const handleChange = () => {
     setEnabled()
