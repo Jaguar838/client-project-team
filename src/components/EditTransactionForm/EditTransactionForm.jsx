@@ -27,7 +27,7 @@ const EditTransactionForm = ({
   amount,
 }) => {
   const checked = type === '+' ? true : false;
-    const checkBox = checked;
+  const checkBox = checked;
   const [selectedOption, setSelectedOption] = useState({
     value: null,
     label: '',
@@ -35,11 +35,19 @@ const EditTransactionForm = ({
   const categories = useSelector(state => getCategories(state));
   const page = useSelector(getPage);
   const idIncomes = categories.incomes.find(category => category.id);
-//   const idExpenses = categories.expenses.find(
-//     operation => operation.name === category,
-//   );
+
   const schema = ValidationEdit();
   const dispatch = useDispatch();
+
+  const categoryFind = category => {
+    let searchQuery = category;
+    let defValues = sort(categories.expenses);
+    let defaultCategory = defValues.find(
+      category => category.label === searchQuery,
+    );
+
+    return defaultCategory;
+  };
 
   const sort = arr => {
     let optionsSpend = [];
@@ -51,14 +59,6 @@ const EditTransactionForm = ({
     );
     return optionsSpend;
   };
-
-  //   let IdCategory;
-  //   if (checked) {
-  //     IdCategory = checkBox ? idIncomes.id : '';
-  //   }
-  //   if (!checked) {
-  //     IdCategory = !checkBox ? idExpenses.id : idIncomes.id;
-  //   }
 
   const IdCategory = !checkBox ? selectedOption.value : idIncomes.id;
 
@@ -98,10 +98,16 @@ const EditTransactionForm = ({
               {!checkBox && (
                 <div className={css.inputWrapper}>
                   <Select
+                    defaultValue={categoryFind(category)}
+                    isOptionSelected={true}
                     name="selectedOption"
-                    onChange={setSelectedOption}
+                    onChange={
+                      !selectedOption.value
+                        ? setSelectedOption(categoryFind(category))
+                        : setSelectedOption
+                    }
                     options={sort(categories.expenses)}
-                    placeholder="Выберите категорию"
+                    placeholder={categoryFind(category)}
                     styles={customStyles}
                   />
                   <SvgIcon iconName="categoryArrow" />
