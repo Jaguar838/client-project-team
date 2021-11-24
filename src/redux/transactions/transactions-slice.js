@@ -5,6 +5,7 @@ import {
   deleteTransaction,
   editTransaction,
 } from './transactions-operations';
+import authOperations from '../auth/auth-operations';
 
 const initialState = {
   finance: [],
@@ -79,6 +80,9 @@ const transactionsSlice = createSlice({
       state.finance = [...action.payload.transactions];
       state.totalPages = action.payload.pageInfo.totalPages;
       state.isLoading = false;
+    },
+    [authOperations.logOut.fulfilled](state) {
+      state.page = 1;
     },
   },
 });

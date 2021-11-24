@@ -10,7 +10,6 @@ const setAvatar = createAsyncThunk(
       const { data } = await axios.patch('api/users/avatar', avatarFile);
       return data.data.avatar;
     } catch (error) {
-      console.log(error.response)
       if (error.response.statusText === 'Unauthorized') {
         window.location.reload()
       }

@@ -27,7 +27,7 @@ const EditTransactionForm = ({
   amount,
 }) => {
   const checked = type === '+' ? true : false;
-  const [checkBox, setCheckBox] = useState(checked);
+    const checkBox = checked;
   const [selectedOption, setSelectedOption] = useState({
     value: null,
     label: '',
@@ -35,18 +35,13 @@ const EditTransactionForm = ({
   const categories = useSelector(state => getCategories(state));
   const page = useSelector(getPage);
   const idIncomes = categories.incomes.find(category => category.id);
-  const idExpenses = categories.expenses.find(
-    operation => operation.name === category,
-  );
+//   const idExpenses = categories.expenses.find(
+//     operation => operation.name === category,
+//   );
   const schema = ValidationEdit();
   const dispatch = useDispatch();
 
-  const handleChange = () => {
-    setCheckBox(!checkBox);
-  };
-
   const sort = arr => {
-    console.log(arr);
     let optionsSpend = [];
     arr.forEach(({ id, name }) =>
       optionsSpend.push({
@@ -73,7 +68,7 @@ const EditTransactionForm = ({
         <BtnClose onClick={onClose} />
         <h1 className={css.title}>Изменить транзакцию</h1>
 
-        <SwitchComponent checked={checkBox} onChange={handleChange} />
+        <SwitchComponent checked={checkBox} />
         <Formik
           enableReinitialize
           initialValues={{
