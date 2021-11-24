@@ -16,6 +16,7 @@ import StatisticsTab from '../../components/Statistics/StatisticsTab';
 import Container from '../../components/Container';
 import Divider from '../../UI/Divider';
 import ModalUI from '../../UI/ModalUI';
+import FireworksCanvas from "../../components/FireworksCanvas";
 // import Pagination from "../../UI/Pagination";
 import AddTransaction from '../../components/AddTransaction';
 import AddTransactionButton from '../../UI/buttons/AddTransactionButton';
@@ -69,7 +70,7 @@ const DashboardPage = () => {
           }
         }}
       />
-      {/* <FireworksCanvas/> */}
+      <FireworksCanvas/>
       <Header />
       <div className={style.dashboard}>
         <Container>
