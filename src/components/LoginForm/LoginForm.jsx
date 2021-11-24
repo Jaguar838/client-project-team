@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
@@ -8,13 +9,23 @@ import SvgIcon from '../../UI/SvgIcon';
 import Logo from '../../UI/Logo';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { BsEye, BsEyeSlash } from 'react-icons/bs';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+
+  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
+
+  const onCLick = e => {
+    e.preventDefault();
+    setIsPasswordHidden(!isPasswordHidden);
+  };
+
   const validationSchema = yup.object().shape({
     email: yup.string().email('Введите верный email').required('Обязательно'),
     password: yup
-      .string().min(6)
+      .string()
+      .min(6)
       .typeError('Должно быть строкой')
       .required('Обязательно'),
   });
@@ -35,6 +46,7 @@ const LoginForm = () => {
       validateOnBlur
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
+      onCLick={onCLick}
     >
       {({
         values,
@@ -70,7 +82,7 @@ const LoginForm = () => {
           <div className="input-logContainer password">
             <input
               className={'logInput'}
-              type={`password`}
+              type={isPasswordHidden ? 'password' : 'text'}
               name={`password`}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -79,6 +91,11 @@ const LoginForm = () => {
               placeholder="Пароль"
               autoComplete="off"
             />
+
+            <button className={'loginIconEye'} onClick={onCLick}>
+              {isPasswordHidden ? <BsEye /> : <BsEyeSlash />}
+            </button>
+
             {touched.password && errors.password && (
               <p className={'loginError'}>{errors.password}</p>
             )}
