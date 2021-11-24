@@ -10,7 +10,6 @@ import styles from './HomeTab.module.scss';
 const HomeTab = () => {
   const transactions = useSelector(state => getAllTransactions(state));
   const totalPages = useSelector(getTotalPages);
-  console.log(totalPages);
   // const isLoading = useSelector(state => getLoader(state));
   // let filterTrans = [...transactions];
   // filterTrans.sort((a, b) => (a.date > b.date ? -1 : 1));
