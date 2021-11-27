@@ -17,7 +17,7 @@ const RegistrationForm = () => {
 
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
 
-  const onCLick = (e) => {
+  const onCLick = e => {
     e.preventDefault();
     setIsPasswordHidden(!isPasswordHidden);
   };
@@ -119,7 +119,7 @@ const RegistrationForm = () => {
           <div className="input-container password-confirm">
             <input
               className={'input'}
-              type={`password`}
+              type={isPasswordHidden ? 'password' : 'text'}
               name={`confirmPassword`}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -127,6 +127,7 @@ const RegistrationForm = () => {
               id="confirm-password"
               placeholder="Подтвердите пароль"
             />
+
             {touched.confirmPassword && errors.confirmPassword && (
               <p className={'error'}>{errors.confirmPassword}</p>
             )}
@@ -157,6 +158,11 @@ const RegistrationForm = () => {
           >
             Регистрация
           </button>
+
+          <button className="button google-button" type={`submit`}>
+            Google
+          </button>
+
           <NavLink to="/login" className="button">
             Вход
           </NavLink>
