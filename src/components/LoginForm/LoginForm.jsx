@@ -10,6 +10,7 @@ import Logo from '../../UI/Logo';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { GoogleIcon } from '../../UI/buttons/GoogleButton/googleIcon'
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -127,6 +128,12 @@ const LoginForm = () => {
           >
             Вход
           </button>
+
+          <button className="logButton google-button" type={`submit`}>
+            <GoogleIcon svg="svgGoogle" />
+            Google
+          </button>
+
           <NavLink to="/register" className="logButton">
             Регистрация
           </NavLink>

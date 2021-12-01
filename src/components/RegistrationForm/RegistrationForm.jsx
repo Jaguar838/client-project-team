@@ -10,6 +10,7 @@ import * as yup from 'yup';
 import PasswordStrengthMete from './PasswordStrengthMeter';
 import { Toaster } from 'react-hot-toast';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { GoogleIcon } from '../../UI/buttons/GoogleButton/googleIcon'
 
 const RegistrationForm = () => {
   const [password, setPassword] = useState('');
@@ -160,6 +161,7 @@ const RegistrationForm = () => {
           </button>
 
           <button className="button google-button" type={`submit`}>
+            <GoogleIcon svg="svgGoogle" />
             Google
           </button>
 
