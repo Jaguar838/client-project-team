@@ -10,6 +10,7 @@ import * as yup from 'yup';
 import PasswordStrengthMete from './PasswordStrengthMeter';
 import { Toaster } from 'react-hot-toast';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
+import { GoogleIcon } from '../../UI/buttons/GoogleButton/googleIcon'
 
 const RegistrationForm = () => {
   const [password, setPassword] = useState('');
@@ -17,7 +18,7 @@ const RegistrationForm = () => {
 
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
 
-  const onCLick = (e) => {
+  const onCLick = e => {
     e.preventDefault();
     setIsPasswordHidden(!isPasswordHidden);
   };
@@ -119,7 +120,7 @@ const RegistrationForm = () => {
           <div className="input-container password-confirm">
             <input
               className={'input'}
-              type={`password`}
+              type={isPasswordHidden ? 'password' : 'text'}
               name={`confirmPassword`}
               onChange={handleChange}
               onBlur={handleBlur}
@@ -127,6 +128,7 @@ const RegistrationForm = () => {
               id="confirm-password"
               placeholder="Подтвердите пароль"
             />
+
             {touched.confirmPassword && errors.confirmPassword && (
               <p className={'error'}>{errors.confirmPassword}</p>
             )}
@@ -157,6 +159,12 @@ const RegistrationForm = () => {
           >
             Регистрация
           </button>
+
+          <button className="button google-button" type={`submit`}>
+            <GoogleIcon svg="svgGoogle" />
+            Google
+          </button>
+
           <NavLink to="/login" className="button">
             Вход
           </NavLink>
