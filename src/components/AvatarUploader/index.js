@@ -5,7 +5,7 @@ import authSelectors from '../../redux/auth/auth-selectors';
 // import MainButton from '../../UI/buttons/MainButton';
 import styles from './styles.module.scss';
 
-const AvatarUploader = () => {
+const AvatarUploader = ({ onClosePopup }) => {
   const dispatch = useDispatch();
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
@@ -46,6 +46,7 @@ const AvatarUploader = () => {
     formData.append('avatar', file, file.name);
     dispatch(avatarOperations.setAvatar(formData));
     setFile(null);
+    onClosePopup();
   };
 
   return (

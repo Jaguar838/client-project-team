@@ -35,10 +35,12 @@ const UserInfoPopup = ({ onClose, avatar }) => {
     e.preventDefault();
     if(userName === name) {
       setIsVisible(false);
+       onClose();
       return;
     }
     dispatch(userOperations.changeUserName(name.trim()));
     setIsVisible(false);
+     onClose();
   }
 
   const onChange = (e) => {
@@ -117,7 +119,7 @@ const UserInfoPopup = ({ onClose, avatar }) => {
                         
                     </div>
                 </form>
-                <AvatarUploader/>
+          <AvatarUploader onClosePopup={onClose}/>
             </div>
         </div>,
         modalRoot,
