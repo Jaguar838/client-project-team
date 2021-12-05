@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
 import { Toaster } from 'react-hot-toast';
+import { BASE_URL } from '../../assets/constants';
 
 import './LoginForm.scss';
-import SvgIcon from '../../UI/SvgIcon';
+import SvgIcon from '../../UI/SvgIcon'; 
 import Logo from '../../UI/Logo';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -21,6 +22,10 @@ const LoginForm = () => {
     e.preventDefault();
     setIsPasswordHidden(!isPasswordHidden);
   };
+
+  const onGoogleAuthSubmit = () => {
+    window.open(`${BASE_URL}api/users/google`, '_self')
+  }
 
   const validationSchema = yup.object().shape({
     email: yup.string().email('Введите верный email').required('Обязательно'),
@@ -129,7 +134,7 @@ const LoginForm = () => {
             Вход
           </button>
 
-          <button className="logButton google-button" type={`submit`}>
+          <button className="logButton google-button" type='button' onClick={onGoogleAuthSubmit}>
             <GoogleIcon svg="svgGoogle" />
             Google
           </button>

@@ -2,8 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
 import avatarOperations from '../avatar/avatar-operations';
 import userOperations from '../../redux/user/user-operations';
-import { addTransaction, editTransaction, deleteTransaction } from '../../redux/transactions/transactions-operations';
-
+import {
+  addTransaction,
+  editTransaction,
+  deleteTransaction,
+} from '../../redux/transactions/transactions-operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -60,6 +63,28 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isLoading = false;
     },
+    [authOperations.logInByGoogle.pending](state, action) {
+      state.isLoading = true;
+      state.error = false;
+    },
+    [authOperations.logInByGoogle.rejected](state, action) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+      state.isLoading = false;
+      state.error = true;
+    },
+    [authOperations.logInByGoogle.fulfilled](state, action) {
+      state.user = {
+        name: action.payload.data.name,
+        email: action.payload.data.email,
+      };
+      state.token = action.payload.data.token;
+      state.balance = action.payload.data.balance;
+      state.avatarUrl = action.payload.data.avatar;
+      state.isLoggedIn = true;
+      state.isLoading = false;
+    },
     [authOperations.logOut.pending](state) {
       state.isLoading = true;
       state.error = false;
@@ -81,7 +106,7 @@ const authSlice = createSlice({
       state.isLoading = true;
     },
     [authOperations.refreshCurrentUser.rejected](state, _) {
-      state.isLoggedIn = false
+      state.isLoggedIn = false;
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoading = false;
