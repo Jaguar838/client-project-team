@@ -10,7 +10,8 @@ import * as yup from 'yup';
 import PasswordStrengthMete from './PasswordStrengthMeter';
 import { Toaster } from 'react-hot-toast';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
-import { GoogleIcon } from '../../UI/buttons/GoogleButton/googleIcon'
+import { GoogleIcon } from '../../UI/buttons/GoogleButton/googleIcon';
+import { BASE_URL } from '../../assets/constants';
 
 const RegistrationForm = () => {
   const [password, setPassword] = useState('');
@@ -22,6 +23,10 @@ const RegistrationForm = () => {
     e.preventDefault();
     setIsPasswordHidden(!isPasswordHidden);
   };
+
+    const onGoogleAuthSubmit = () => {
+    window.open(`${BASE_URL}api/users/google`, '_self')
+  }
 
   const validationSchema = yup.object().shape({
     email: yup.string().email('Введите верный email').required('Обязательно'),
@@ -160,7 +165,7 @@ const RegistrationForm = () => {
             Регистрация
           </button>
 
-          <button className="button google-button" type={`submit`}>
+          <button className="button google-button" type='button' onClick={onGoogleAuthSubmit}>
             <GoogleIcon svg="svgGoogle" />
             Google
           </button>

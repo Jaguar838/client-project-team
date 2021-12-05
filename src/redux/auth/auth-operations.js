@@ -5,8 +5,6 @@ import { BASE_URL } from '../../assets/constants';
 import toast from 'react-hot-toast';
 axios.defaults.baseURL = BASE_URL;
 
-
-
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -16,23 +14,27 @@ const token = {
   },
 };
 
-
-const signUp = createAsyncThunk('auth/signup', async (credentials, thunkAPI) => {
-  try {
-    const { data } = await axios.post('api/users/signup', credentials);
-    //TODO Изменить сообщение регистрации ниже
-    toast.success('Thank you for signing up! We have sent you an email with a link to verify your account.');
-    return data
-  } catch ({response}) {
-    toast.error(response.data.message);
-    return thunkAPI.rejectWithValue()
-  }
-});
+const signUp = createAsyncThunk(
+  'auth/signup',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await axios.post('api/users/signup', credentials);
+      //TODO Изменить сообщение регистрации ниже
+      toast.success(
+        'Thank you for signing up! We have sent you an email with a link to verify your account.',
+      );
+      return data;
+    } catch ({ response }) {
+      toast.error(response.data.message);
+      return thunkAPI.rejectWithValue();
+    }
+  },
+);
 
 const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post('api/users/login', credentials);
-    token.set(data.data.token);  
+    token.set(data.data.token);
     toast.success('Welcome to your Wallet!');
     return data;
   } catch ({ response }) {
@@ -45,14 +47,35 @@ const logIn = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   }
 });
 
+const logInByGoogle = createAsyncThunk(
+  'auth/loginByGoogle',
+  async (extractedToken, thunkAPI) => {
+    try {
+      const { data } = await axios.post('api/users/loginByGoogle', {
+        token: extractedToken,
+      });
+      token.set(data.data.token);
+      toast.success('Welcome to your Wallet!');
+      return data;
+    } catch ({ response }) {
+      if (response.data.message === 'User email not verified yet.') {
+        toast.error(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+      return thunkAPI.rejectWithValue();
+    }
+  },
+);
+
 const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('api/users/logout');
     token.unset();
   } catch (error) {
     if (error.response.statusText === 'Unauthorized') {
-        window.location.reload()
-      }
+      window.location.reload();
+    }
     return thunkAPI.rejectWithValue();
   }
 });
@@ -80,6 +103,7 @@ const authOperations = {
   logIn,
   logOut,
   refreshCurrentUser,
+  logInByGoogle,
 };
 
 export default authOperations;
